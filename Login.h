@@ -13,13 +13,13 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class Login : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit Login(QWidget *parent = 0);
+    ~Login();
 
 private slots:
     void on_btnLogin_clicked();

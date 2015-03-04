@@ -12,10 +12,11 @@ TARGET = QTtest
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    Login.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    Login.h
 
 FORMS    += mainwindow.ui
 
