@@ -12,20 +12,12 @@ TARGET = QTtest
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
-    Login.cpp \
-    grostlimpl.cpp \
-    moc_mainwindow.cpp \
-    qgrostlhash.cpp \
-    debug/moc_mainwindow.cpp
+SOURCES += main.cpp\
+        mainwindow.cpp
 
-HEADERS  += \
-    Login.h \
-    qgrostlhash.h \
-    ui_mainwindow.h
+HEADERS  += mainwindow.h
 
-FORMS    += \
-    login.ui
+FORMS    += mainwindow.ui
 
 DISTFILES += \
     login.db

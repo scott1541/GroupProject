@@ -1,11 +1,11 @@
-#include "Login.h"
+#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #define Path_to_DB "login.db"
-bool LoggingIn = true;
+bool Login = true;
 bool Creation = false;
 
-Login::Login(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -29,14 +29,14 @@ Login::Login(QWidget *parent) :
     }
 }
 
-Login::~Login()
+MainWindow::~MainWindow()
 {
     delete ui;
     qDebug() << "Closing connection on exit";
     myDB.close();
 }
 
-void Login::on_btnLogin_clicked()
+void MainWindow::on_btnLogin_clicked()
 {
     QString Username, Password;
     Username = ui->txtUser->text();
@@ -49,7 +49,7 @@ void Login::on_btnLogin_clicked()
 
     QSqlQuery qry;
 
-    if (LoggingIn)
+    if (Login)
     {
 
         if (qry.exec("SELECT username, password FROM user WHERE username=\'" + Username
@@ -92,7 +92,7 @@ void Login::on_btnLogin_clicked()
 
 }
 
-void Login::on_txtUser_textChanged(const QString &arg1)
+void MainWindow::on_txtUser_textChanged(const QString &arg1)
 {
     qDebug() << "Username has been changed";
     QString Username;
@@ -107,25 +107,25 @@ void Login::on_txtUser_textChanged(const QString &arg1)
 
 }
 
-void Login::on_radioButton_2_toggled(bool checked)
+void MainWindow::on_radioButton_2_toggled(bool checked)
 {
-    LoggingIn = false;
+    Login = false;
     ui->btnLogin->setText("Create account");
     ui->label_3->show();
     ui->txtVerify->show();
     Creation = true;
 }
 
-void Login::on_radioButton_toggled(bool checked)
+void MainWindow::on_radioButton_toggled(bool checked)
 {
     Creation = false;
     ui->btnLogin->setText("Login");
     ui->label_3->hide();
     ui->txtVerify->hide();
-    LoggingIn = true;
+    Login = true;
 }
 
-void Login::CreateAccount(const QString Username, const QString Password)
+void MainWindow::CreateAccount(const QString Username, const QString Password)
 {
     QString queryString = "INSERT INTO user (username, password) VALUES (?,?)";
     QSqlQuery qry(queryString);
@@ -136,7 +136,7 @@ void Login::CreateAccount(const QString Username, const QString Password)
 
 }
 
-bool Login::CheckUsername(const QString Username)
+bool MainWindow::CheckUsername(const QString Username)
 {
     QSqlQuery qry;
 
