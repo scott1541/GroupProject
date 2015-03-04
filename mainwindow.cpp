@@ -39,11 +39,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnLogin_clicked()
 {
-    QString Username, Password;
+    QString Username, Password, Salt;
     Username = ui->txtUser->text();
-    //Password = ui->txtPass->text();
-    Password = QGrostlHash(ui->txtPass->text()).toHexString(); //Set password to hashed password input
-            //No password salting yet
+    Salt = Username;
+    Salt.resize(4);  //Make salt first 4 characters of username
+    Password = (Salt + (QGrostlHash(ui->txtPass->text()).toHexString())); //Set password to salted & hashed password input
 
     if (!myDB.isOpen()){
         qDebug() << "Lost connection to db.";
@@ -74,7 +74,7 @@ void MainWindow::on_btnLogin_clicked()
     if (Creation)
     {
         QString PasswordV;
-        PasswordV = QGrostlHash(ui->txtVerify->text()).toHexString(); //No password salting here either
+        PasswordV = (Salt + (QGrostlHash(ui->txtVerify->text()).toHexString()));
         if (!CheckUsername(Username))
         {
             if (Password == PasswordV)
