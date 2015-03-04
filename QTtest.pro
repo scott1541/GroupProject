@@ -13,10 +13,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    Login.cpp
+    Login.cpp \
+    grostlimpl.cpp \
+    moc_mainwindow.cpp \
+    qgrostlhash.cpp \
+    debug/moc_mainwindow.cpp
 
 HEADERS  += \
-    Login.h
+    Login.h \
+    qgrostlhash.h \
+    ui_mainwindow.h
 
 FORMS    += \
     login.ui
