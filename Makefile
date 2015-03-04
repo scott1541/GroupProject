@@ -50,11 +50,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		mainwindow.cpp \
-		application.cpp moc_mainwindow.cpp \
+		application.cpp \
+		qgrostlhash.cpp moc_mainwindow.cpp \
 		moc_application.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		application.o \
+		qgrostlhash.o \
 		moc_mainwindow.o \
 		moc_application.o
 DIST          = login.db \
@@ -187,9 +189,11 @@ DIST          = login.db \
 		../../Qt/5.4/clang_64/mkspecs/features/yacc.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/lex.prf \
 		QTtest.pro mainwindow.h \
-		application.h main.cpp \
+		application.h \
+		qgrostlhash.h main.cpp \
 		mainwindow.cpp \
-		application.cpp
+		application.cpp \
+		qgrostlhash.cpp
 QMAKE_TARGET  = QTtest
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = QTtest.app/Contents/MacOS/QTtest
@@ -527,8 +531,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h application.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp application.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h application.h qgrostlhash.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp application.cpp qgrostlhash.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui application.ui $(DISTDIR)/
 
 
@@ -666,7 +670,14 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qfileinfo.h \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		qgrostlhash.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 application.o: application.cpp application.h \
@@ -674,6 +685,18 @@ application.o: application.cpp application.h \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		ui_application.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o application.o application.cpp
+
+qgrostlhash.o: qgrostlhash.cpp qgrostlhash.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		grostlimpl.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qgrostlhash.o qgrostlhash.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

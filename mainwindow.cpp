@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "qgrostlhash.h"
 
 #define Path_to_DB "login.db"
 bool Login = true;
@@ -40,7 +41,9 @@ void MainWindow::on_btnLogin_clicked()
 {
     QString Username, Password;
     Username = ui->txtUser->text();
-    Password = ui->txtPass->text();
+    //Password = ui->txtPass->text();
+    Password = QGrostlHash(ui->txtPass->text()).toHexString(); //Set password to hashed password input
+            //No password salting yet
 
     if (!myDB.isOpen()){
         qDebug() << "Lost connection to db.";
@@ -71,7 +74,7 @@ void MainWindow::on_btnLogin_clicked()
     if (Creation)
     {
         QString PasswordV;
-        PasswordV = ui->txtVerify->text();
+        PasswordV = QGrostlHash(ui->txtVerify->text()).toHexString(); //No password salting here either
         if (!CheckUsername(Username))
         {
             if (Password == PasswordV)
