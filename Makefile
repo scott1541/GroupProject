@@ -49,10 +49,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		mainwindow.cpp moc_mainwindow.cpp
+		mainwindow.cpp \
+		application.cpp moc_mainwindow.cpp \
+		moc_application.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		application.o \
+		moc_mainwindow.o \
+		moc_application.o
 DIST          = login.db \
 		../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/qdevice.pri \
@@ -161,6 +165,7 @@ DIST          = login.db \
 		../../Qt/5.4/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.4/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.4/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/default_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -181,8 +186,10 @@ DIST          = login.db \
 		../../Qt/5.4/clang_64/mkspecs/features/exceptions.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/yacc.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/lex.prf \
-		QTtest.pro mainwindow.h main.cpp \
-		mainwindow.cpp
+		QTtest.pro mainwindow.h \
+		application.h main.cpp \
+		mainwindow.cpp \
+		application.cpp
 QMAKE_TARGET  = QTtest
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = QTtest.app/Contents/MacOS/QTtest
@@ -220,7 +227,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_application.h $(OBJECTS)  
 	@test -d QTtest.app/Contents/MacOS/ || mkdir -p QTtest.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -331,6 +338,7 @@ Makefile: QTtest.pro ../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf ../../Q
 		../../Qt/5.4/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.4/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.4/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/default_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -464,6 +472,7 @@ Makefile: QTtest.pro ../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf ../../Q
 ../../Qt/5.4/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt/5.4/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/5.4/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.4/clang_64/mkspecs/features/default_pre.prf:
 ../../Qt/5.4/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -518,9 +527,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h application.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp application.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.ui application.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -545,9 +554,9 @@ compiler_objective_c_make_all:
 compiler_objective_c_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_application.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_application.cpp
 moc_mainwindow.cpp: ../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
@@ -575,13 +584,21 @@ moc_mainwindow.cpp: ../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Hea
 		mainwindow.h
 	/Users/scott/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/scott/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/scott/GitHub/GroupProject -I/Users/scott/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/scott/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/scott/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/scott/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/scott/Qt/5.4/clang_64/lib mainwindow.h -o moc_mainwindow.cpp
 
+moc_application.cpp: ../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		application.h
+	/Users/scott/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/scott/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/scott/GitHub/GroupProject -I/Users/scott/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/scott/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/scott/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/scott/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/scott/Qt/5.4/clang_64/lib application.h -o moc_application.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_application.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_application.h
 ui_mainwindow.h: mainwindow.ui
 	/Users/scott/Qt/5.4/clang_64/bin/uic mainwindow.ui -o ui_mainwindow.h
+
+ui_application.h: application.ui
+	/Users/scott/Qt/5.4/clang_64/bin/uic application.ui -o ui_application.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -652,8 +669,17 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
+application.o: application.cpp application.h \
+		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		ui_application.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o application.o application.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_application.o: moc_application.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_application.o moc_application.cpp
 
 ####### Install
 
