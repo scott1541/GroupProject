@@ -18,7 +18,8 @@ SOURCES += main.cpp \
 HEADERS  += \
     Login.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    login.ui
 
 DISTFILES += \
     login.db
