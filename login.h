@@ -7,7 +7,6 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include "mainwindow.h"
-#include <mainwindow.h>
 
 namespace Ui {
 class Login;
@@ -36,6 +35,7 @@ private slots:
 
 private:
     Ui::Login *ui;
+
     QSqlDatabase myDB;
 };
 
