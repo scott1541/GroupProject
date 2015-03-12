@@ -6,8 +6,7 @@
 #include <QtSql>
 #include <QFileInfo>
 #include <QMessageBox>
-
-
+#include "mainwindow.h"
 
 namespace Ui {
 class Login;

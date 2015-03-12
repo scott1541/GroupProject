@@ -16,16 +16,21 @@ SOURCES += main.cpp\
     application.cpp \
     grostlimpl.cpp \
     qgrostlhash.cpp \
-    login.cpp
+    login.cpp \
+    startmenu.cpp \
+    mainwindow.cpp
 
 HEADERS  += \
     application.h \
     qgrostlhash.h \
-    login.h
+    login.h \
+    startmenu.h \
+    mainwindow.h
 
 FORMS    += \
     application.ui \
-    login.ui
+    login.ui \
+    mainwindow.ui
 
 DISTFILES += \
     login.db
