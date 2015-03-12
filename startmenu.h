@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
+#include <QDebug>
+#include <QtSql>
 #include <QDialog>
 
 
@@ -28,8 +30,18 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void CreateAccount(const QString Username, const QString Password);
+
+    bool CheckUsername(const QString Username);
+
+    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_lineEdit_textEdited(const QString &arg1);
+
 private:
     Ui::startmenu *ui;
+
+    QSqlDatabase myDB;
 };
 
 #endif // STARTMENU_H
