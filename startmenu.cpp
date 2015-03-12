@@ -2,6 +2,7 @@
 #include "ui_startmenu.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "qgrostlhash.h"
 
 #define Path_to_DB "login.db"
 bool Login = true;
@@ -65,9 +66,12 @@ void startmenu::on_radioButton_2_clicked()
 
 void startmenu::on_pushButton_clicked()
 {
-    QString Username, Password;
+    QString Username, Password, UsernameS;
     Username = ui->lineEdit->text();
-    Password = ui->lineEdit_2->text();
+    Password = QGrostlHash(ui->lineEdit_2->text()).toHexString();
+    UsernameS = Username;
+    UsernameS.resize(4);
+    Password = UsernameS + Password;
 
     if (!myDB.isOpen()){
         qDebug() << "Lost connection to db.";
@@ -101,7 +105,11 @@ void startmenu::on_pushButton_clicked()
     if (Creation)
     {
         QString PasswordV;
-        PasswordV = ui->lineEdit_3->text();
+        PasswordV = QGrostlHash(ui->lineEdit_3->text()).toHexString();
+        UsernameS = Username;
+        UsernameS.resize(4);
+        PasswordV = UsernameS + PasswordV;
+
         if (!CheckUsername(Username))
         {
             if (Password == PasswordV)

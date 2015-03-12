@@ -14,10 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         startmenu.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    grostlimpl.cpp \
+    qgrostlhash.cpp
 
 HEADERS  += startmenu.h \
-    mainwindow.h
+    mainwindow.h \
+    qgrostlhash.h
 
 FORMS    += startmenu.ui \
     mainwindow.ui

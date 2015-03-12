@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <QMessageBox>
 #include "startmenu.h"
+#include "qgrostlhash.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

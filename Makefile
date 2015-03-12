@@ -50,12 +50,14 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		startmenu.cpp \
-		mainwindow.cpp qrc_rescources.cpp \
+		mainwindow.cpp \
+		qgrostlhash.cpp qrc_rescources.cpp \
 		moc_startmenu.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		startmenu.o \
 		mainwindow.o \
+		qgrostlhash.o \
 		qrc_rescources.o \
 		moc_startmenu.o \
 		moc_mainwindow.o
@@ -166,6 +168,7 @@ DIST          = ../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.4/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.4/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/default_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -187,9 +190,11 @@ DIST          = ../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/yacc.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/lex.prf \
 		SecureShield.pro startmenu.h \
-		mainwindow.h main.cpp \
+		mainwindow.h \
+		qgrostlhash.h main.cpp \
 		startmenu.cpp \
-		mainwindow.cpp
+		mainwindow.cpp \
+		qgrostlhash.cpp
 QMAKE_TARGET  = SecureShield
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SecureShield.app/Contents/MacOS/SecureShield
@@ -338,6 +343,7 @@ Makefile: SecureShield.pro ../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf .
 		../../Qt/5.4/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.4/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.4/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/default_pre.prf \
 		../../Qt/5.4/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -472,6 +478,7 @@ Makefile: SecureShield.pro ../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf .
 ../../Qt/5.4/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.4/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt/5.4/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/5.4/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.4/clang_64/mkspecs/features/default_pre.prf:
 ../../Qt/5.4/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -528,8 +535,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents rescources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents startmenu.h mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents startmenu.h mainwindow.h qgrostlhash.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp qgrostlhash.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents startmenu.ui mainwindow.ui $(DISTDIR)/
 
 
@@ -1786,7 +1793,11 @@ startmenu.o: startmenu.cpp startmenu.h \
 		mainwindow.h \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		qgrostlhash.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startmenu.o startmenu.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -2077,8 +2088,24 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		qgrostlhash.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
+
+qgrostlhash.o: qgrostlhash.cpp qgrostlhash.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		grostlimpl.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qgrostlhash.o qgrostlhash.cpp
 
 qrc_rescources.o: qrc_rescources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_rescources.o qrc_rescources.cpp
