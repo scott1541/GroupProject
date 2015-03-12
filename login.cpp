@@ -1,6 +1,7 @@
 #include "login.h"
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
+#include "mainwindow.h"
 
 #define Path_to_DB "login.db"
 bool LoggingIn = true;
@@ -65,6 +66,7 @@ void Login::on_btnLogin_clicked()
                                 "password = " + qry.value(1).toString() + " \n";
 
                 QMessageBox::warning(this, "Login was successful", msg);
+
             } else {
                 ui->lblResult->setText("[-] Incorrect Username or Password");
             }
