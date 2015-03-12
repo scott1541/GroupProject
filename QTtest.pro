@@ -13,17 +13,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     application.cpp \
     grostlimpl.cpp \
-    qgrostlhash.cpp
+    qgrostlhash.cpp \
+    login.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     application.h \
-    qgrostlhash.h
+    qgrostlhash.h \
+    login.h
 
-FORMS    += mainwindow.ui \
-    application.ui
+FORMS    += \
+    application.ui \
+    login.ui
 
 DISTFILES += \
     login.db

@@ -1,14 +1,14 @@
-#include "mainwindow.h"
+#include "login.h"
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
 
 #define Path_to_DB "login.db"
-bool Login = true;
+bool LoggingIn = true;
 bool Creation = false;
 
-MainWindow::MainWindow(QWidget *parent) :
+Login::Login(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::Login)
 {
     ui->setupUi(this);
     ui->label_3->hide();
@@ -30,14 +30,14 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 }
 
-MainWindow::~MainWindow()
+Login::~Login()
 {
     delete ui;
     qDebug() << "Closing connection on exit";
     myDB.close();
 }
 
-void MainWindow::on_btnLogin_clicked()
+void Login::on_btnLogin_clicked()
 {
     QString Username, Password, Salt;
     Username = ui->txtUser->text();
@@ -52,7 +52,7 @@ void MainWindow::on_btnLogin_clicked()
 
     QSqlQuery qry;
 
-    if (Login)
+    if (LoggingIn)
     {
 
         if (qry.exec("SELECT username, password FROM user WHERE username=\'" + Username
@@ -95,7 +95,7 @@ void MainWindow::on_btnLogin_clicked()
 
 }
 
-void MainWindow::on_txtUser_textChanged(const QString &arg1)
+void Login::on_txtUser_textChanged(const QString &arg1)
 {
     qDebug() << "Username has been changed";
     QString Username;
@@ -110,25 +110,25 @@ void MainWindow::on_txtUser_textChanged(const QString &arg1)
 
 }
 
-void MainWindow::on_radioButton_2_toggled(bool checked)
+void Login::on_radioButton_2_toggled(bool checked)
 {
-    Login = false;
+    LoggingIn = false;
     ui->btnLogin->setText("Create account");
     ui->label_3->show();
     ui->txtVerify->show();
     Creation = true;
 }
 
-void MainWindow::on_radioButton_toggled(bool checked)
+void Login::on_radioButton_toggled(bool checked)
 {
     Creation = false;
     ui->btnLogin->setText("Login");
     ui->label_3->hide();
     ui->txtVerify->hide();
-    Login = true;
+    LoggingIn = true;
 }
 
-void MainWindow::CreateAccount(const QString Username, const QString Password)
+void Login::CreateAccount(const QString Username, const QString Password)
 {
     QString queryString = "INSERT INTO user (username, password) VALUES (?,?)";
     QSqlQuery qry(queryString);
@@ -139,7 +139,7 @@ void MainWindow::CreateAccount(const QString Username, const QString Password)
 
 }
 
-bool MainWindow::CheckUsername(const QString Username)
+bool Login::CheckUsername(const QString Username)
 {
     QSqlQuery qry;
 

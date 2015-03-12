@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'mainwindow.h'
+** Meta object code from reading C++ file 'login.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "mainwindow.h"
+#include "login.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'mainwindow.h' doesn't include <QObject>."
+#error "The header file 'login.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.4.1. It"
 #error "cannot be used with the include files from this version of Qt."

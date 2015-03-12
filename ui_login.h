@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file 'login.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
+#ifndef UI_LOGIN_H
+#define UI_LOGIN_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -159,9 +159,9 @@ public:
 };
 
 namespace Ui {
-class Login: public Ui_MainWindow {};
-}
+    class MainWindow: public Ui_MainWindow {};
+} // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H
+#endif // UI_LOGIN_H
