@@ -70,7 +70,9 @@ void startmenu::on_pushButton_clicked()
     Username = ui->lineEdit->text();
     UsernameS = Username;
     UsernameS.resize(4);
-    Password = (UsernameS + QGrostlHash(ui->lineEdit_2->text()).toHexString());
+    Password = ui->lineEdit_2->text();
+    Password = UsernameS + Password;
+    Password = QGrostlHash(Password).toHexString();
 
 
     if (!myDB.isOpen()){
@@ -107,7 +109,9 @@ void startmenu::on_pushButton_clicked()
         QString PasswordV;
         UsernameS = Username;
         UsernameS.resize(4);
-        PasswordV = (UsernameS + QGrostlHash(ui->lineEdit_3->text()).toHexString());
+        PasswordV = ui->lineEdit_3->text();
+        PasswordV = UsernameS + PasswordV;
+        PasswordV = QGrostlHash(PasswordV).toHexString();
 
 
         if (!CheckUsername(Username))
