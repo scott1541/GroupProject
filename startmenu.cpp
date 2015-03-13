@@ -166,3 +166,20 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
         ui->label_7->setText(("Username is available"));
     }
 }
+
+void startmenu::on_label_7_linkActivated(const QString &link)
+{
+    ui->label_7->hide();
+}
+
+
+
+void startmenu::on_lineEdit_3_textEdited(const QString &arg1)
+{
+    ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+}
+
+void startmenu::on_lineEdit_2_textEdited(const QString &arg1)
+{
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+}

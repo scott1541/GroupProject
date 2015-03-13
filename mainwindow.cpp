@@ -41,3 +41,13 @@ void MainWindow::on_actionShow_Toolbar_triggered(bool isTriggered)
 }
 
 
+
+void MainWindow::on_actionSecurity_2_triggered()
+{
+
+}
+
+void MainWindow::on_actionQuit_SecureShield_triggered()
+{
+    close();
+}

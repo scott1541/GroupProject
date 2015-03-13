@@ -53,6 +53,9 @@ public:
     QAction *actionQuit_SecureShield;
     QAction *actionSecurity_2;
     QAction *actionSecurity_3;
+    QAction *actionAddEntry;
+    QAction *actionDeleteEntry;
+    QAction *actionEditEntry;
     QWidget *centralwidget;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_2;
@@ -67,8 +70,6 @@ public:
     QMenu *menuTools;
     QMenu *menuHelp_2;
     QMenu *menuHelp;
-    QMenu *menuSecureShield;
-    QMenu *menuPreferences;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -193,11 +194,26 @@ public:
         actionSecurity_2->setObjectName(QStringLiteral("actionSecurity_2"));
         actionSecurity_3 = new QAction(MainWindow);
         actionSecurity_3->setObjectName(QStringLiteral("actionSecurity_3"));
+        actionAddEntry = new QAction(MainWindow);
+        actionAddEntry->setObjectName(QStringLiteral("actionAddEntry"));
+        QIcon icon15;
+        icon15.addFile(QStringLiteral(":/Images/addKey.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAddEntry->setIcon(icon15);
+        actionDeleteEntry = new QAction(MainWindow);
+        actionDeleteEntry->setObjectName(QStringLiteral("actionDeleteEntry"));
+        QIcon icon16;
+        icon16.addFile(QStringLiteral(":/Images/deleteKey.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionDeleteEntry->setIcon(icon16);
+        actionEditEntry = new QAction(MainWindow);
+        actionEditEntry->setObjectName(QStringLiteral("actionEditEntry"));
+        QIcon icon17;
+        icon17.addFile(QStringLiteral(":/Images/editKey.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEditEntry->setIcon(icon17);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 671, 41));
+        layoutWidget->setGeometry(QRect(10, 10, 791, 41));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -243,11 +259,6 @@ public:
         menuHelp_2->setObjectName(QStringLiteral("menuHelp_2"));
         menuHelp = new QMenu(menubar);
         menuHelp->setObjectName(QStringLiteral("menuHelp"));
-        menuSecureShield = new QMenu(menubar);
-        menuSecureShield->setObjectName(QStringLiteral("menuSecureShield"));
-        menuSecureShield->setFont(font);
-        menuPreferences = new QMenu(menuSecureShield);
-        menuPreferences->setObjectName(QStringLiteral("menuPreferences"));
         MainWindow->setMenuBar(menubar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QStringLiteral("toolBar"));
@@ -255,7 +266,6 @@ public:
         toolBar->setIconSize(QSize(16, 16));
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
-        menubar->addAction(menuSecureShield->menuAction());
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menu_Edit->menuAction());
         menubar->addAction(menuTools->menuAction());
@@ -267,7 +277,6 @@ public:
         menuFile->addAction(actionSave_Ctrl_S);
         menuFile->addAction(actionSave_As_F12);
         menuFile->addSeparator();
-        menuFile->addAction(actionAdd_New_Category);
         menu_Edit->addAction(action_Undo);
         menu_Edit->addAction(action_Redo);
         menu_Edit->addSeparator();
@@ -279,23 +288,18 @@ public:
         menuTools->addAction(actionShow_Toolbar);
         menuHelp->addAction(actionGet_Help_Online_2);
         menuHelp->addAction(actionAbout_SecureShield);
-        menuSecureShield->addAction(actionAbout_SecureShield_2);
-        menuSecureShield->addSeparator();
-        menuSecureShield->addAction(menuPreferences->menuAction());
-        menuSecureShield->addAction(actionHide_SecureShield);
-        menuSecureShield->addSeparator();
-        menuSecureShield->addAction(actionHide_SecureShield_2);
-        menuSecureShield->addAction(actionQuit_SecureShield);
-        menuPreferences->addAction(actionSecurity_2);
-        menuPreferences->addAction(actionSecurity_3);
         toolBar->addAction(action_File);
         toolBar->addAction(actionSave_Ctrl_S);
         toolBar->addSeparator();
         toolBar->addAction(action_Undo);
         toolBar->addAction(action_Redo);
         toolBar->addSeparator();
-        toolBar->addAction(actionEncryption);
+        toolBar->addAction(actionAddEntry);
+        toolBar->addAction(actionEditEntry);
+        toolBar->addAction(actionDeleteEntry);
+        toolBar->addSeparator();
         toolBar->addAction(actionHelpimage);
+        toolBar->addAction(actionEncryption);
         toolBar->addSeparator();
         toolBar->addAction(actionSearchFunction);
 
@@ -330,20 +334,21 @@ public:
         actionQuit_SecureShield->setText(QApplication::translate("MainWindow", "Quit SecureShield", 0));
         actionSecurity_2->setText(QApplication::translate("MainWindow", "General", 0));
         actionSecurity_3->setText(QApplication::translate("MainWindow", "Security", 0));
+        actionAddEntry->setText(QApplication::translate("MainWindow", "addEntry", 0));
+        actionDeleteEntry->setText(QApplication::translate("MainWindow", "deleteEntry", 0));
+        actionEditEntry->setText(QApplication::translate("MainWindow", "editEntry", 0));
         label->setText(QApplication::translate("MainWindow", "Find:", 0));
         textEdit->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Corbel'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Search...</span></p></body></html>", 0));
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#c1c1c1;\">Search...</span></p></body></html>", 0));
         pushButton->setText(QApplication::translate("MainWindow", "Go", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", 0));
         menuTools->setTitle(QApplication::translate("MainWindow", "View", 0));
         menuHelp_2->setTitle(QApplication::translate("MainWindow", "Tools", 0));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
-        menuSecureShield->setTitle(QApplication::translate("MainWindow", "SecureShield", 0));
-        menuPreferences->setTitle(QApplication::translate("MainWindow", "Preferences", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
         toolBar->setProperty("searchBar", QVariant(QString()));
     } // retranslateUi

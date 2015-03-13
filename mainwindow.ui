@@ -30,7 +30,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>671</width>
+      <width>791</width>
       <height>41</height>
      </rect>
     </property>
@@ -57,7 +57,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Corbel'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Search...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#c1c1c1;&quot;&gt;Search...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -99,7 +99,6 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionSave_Ctrl_S"/>
     <addaction name="actionSave_As_F12"/>
     <addaction name="separator"/>
-    <addaction name="actionAdd_New_Category"/>
    </widget>
    <widget class="QMenu" name="menu_Edit">
     <property name="title">
@@ -132,31 +131,6 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionGet_Help_Online_2"/>
     <addaction name="actionAbout_SecureShield"/>
    </widget>
-   <widget class="QMenu" name="menuSecureShield">
-    <property name="font">
-     <font>
-      <family>Corbel</family>
-     </font>
-    </property>
-    <property name="title">
-     <string>SecureShield</string>
-    </property>
-    <widget class="QMenu" name="menuPreferences">
-     <property name="title">
-      <string>Preferences</string>
-     </property>
-     <addaction name="actionSecurity_2"/>
-     <addaction name="actionSecurity_3"/>
-    </widget>
-    <addaction name="actionAbout_SecureShield_2"/>
-    <addaction name="separator"/>
-    <addaction name="menuPreferences"/>
-    <addaction name="actionHide_SecureShield"/>
-    <addaction name="separator"/>
-    <addaction name="actionHide_SecureShield_2"/>
-    <addaction name="actionQuit_SecureShield"/>
-   </widget>
-   <addaction name="menuSecureShield"/>
    <addaction name="menuFile"/>
    <addaction name="menu_Edit"/>
    <addaction name="menuTools"/>
@@ -191,8 +165,12 @@ p, li { white-space: pre-wrap; }
    <addaction name="action_Undo"/>
    <addaction name="action_Redo"/>
    <addaction name="separator"/>
-   <addaction name="actionEncryption"/>
+   <addaction name="actionAddEntry"/>
+   <addaction name="actionEditEntry"/>
+   <addaction name="actionDeleteEntry"/>
+   <addaction name="separator"/>
    <addaction name="actionHelpimage"/>
+   <addaction name="actionEncryption"/>
    <addaction name="separator"/>
    <addaction name="actionSearchFunction"/>
   </widget>
@@ -466,6 +444,33 @@ p, li { white-space: pre-wrap; }
   <action name="actionSecurity_3">
    <property name="text">
     <string>Security</string>
+   </property>
+  </action>
+  <action name="actionAddEntry">
+   <property name="icon">
+    <iconset resource="rescources.qrc">
+     <normaloff>:/Images/addKey.png</normaloff>:/Images/addKey.png</iconset>
+   </property>
+   <property name="text">
+    <string>addEntry</string>
+   </property>
+  </action>
+  <action name="actionDeleteEntry">
+   <property name="icon">
+    <iconset resource="rescources.qrc">
+     <normaloff>:/Images/deleteKey.png</normaloff>:/Images/deleteKey.png</iconset>
+   </property>
+   <property name="text">
+    <string>deleteEntry</string>
+   </property>
+  </action>
+  <action name="actionEditEntry">
+   <property name="icon">
+    <iconset resource="rescources.qrc">
+     <normaloff>:/Images/editKey.png</normaloff>:/Images/editKey.png</iconset>
+   </property>
+   <property name="text">
+    <string>editEntry</string>
    </property>
   </action>
  </widget>

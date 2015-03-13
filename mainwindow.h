@@ -26,6 +26,10 @@ private slots:
 
     void on_actionShow_Toolbar_triggered(bool isTriggered);
 
+    void on_actionSecurity_2_triggered();
+
+    void on_actionQuit_SecureShield_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

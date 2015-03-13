@@ -38,6 +38,12 @@ private slots:
 
     //void on_lineEdit_textEdited(const QString &arg1);
 
+    void on_label_7_linkActivated(const QString &link);
+
+    void on_lineEdit_3_textEdited(const QString &arg1);
+
+    void on_lineEdit_2_textEdited(const QString &arg1);
+
 private:
     Ui::startmenu *ui;
 

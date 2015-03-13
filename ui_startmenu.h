@@ -80,7 +80,7 @@ public:
         label->setFont(font2);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(60, 160, 111, 111));
+        label_2->setGeometry(QRect(40, 160, 111, 111));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/Images/SecureShieldQT.png")));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
@@ -155,14 +155,15 @@ public:
         label_5->setFont(font3);
         lineEdit_3 = new QLineEdit(centralWidget);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(280, 280, 191, 31));
+        lineEdit_3->setGeometry(QRect(270, 280, 201, 21));
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(210, 280, 47, 21));
+        label_6->setGeometry(QRect(160, 280, 101, 21));
+        label_6->setFont(font);
         label_7 = new QLabel(centralWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setEnabled(true);
-        label_7->setGeometry(QRect(490, 210, 47, 13));
+        label_7->setGeometry(QRect(490, 210, 151, 16));
         startmenu->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(startmenu);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -188,7 +189,7 @@ public:
         radioButton_2->setText(QApplication::translate("startmenu", "Create New Account", 0));
         pushButton->setText(QApplication::translate("startmenu", "Login", 0));
         label_5->setText(QApplication::translate("startmenu", "Connected To Database [+]", 0));
-        label_6->setText(QApplication::translate("startmenu", "Verify", 0));
+        label_6->setText(QApplication::translate("startmenu", "Verify Password", 0));
         label_7->setText(QApplication::translate("startmenu", "TextLabel", 0));
     } // retranslateUi
 

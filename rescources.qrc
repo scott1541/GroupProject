@@ -44,5 +44,9 @@
         <file>stk19975boj_160cff0.png</file>
         <file>Apple-icon-16x16.png</file>
         <file>Windows 8-icon-16.png</file>
+        <file>addKey.png</file>
+        <file>deleteKey.png</file>
+        <file>editKey.png</file>
     </qresource>
+    <qresource prefix="/Image"/>
 </RCC>
