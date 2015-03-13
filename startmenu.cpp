@@ -68,10 +68,10 @@ void startmenu::on_pushButton_clicked()
 {
     QString Username, Password, UsernameS;
     Username = ui->lineEdit->text();
-    Password = QGrostlHash(ui->lineEdit_2->text()).toHexString();
     UsernameS = Username;
     UsernameS.resize(4);
-    Password = UsernameS + Password;
+    Password = (UsernameS + QGrostlHash(ui->lineEdit_2->text()).toHexString());
+
 
     if (!myDB.isOpen()){
         qDebug() << "Lost connection to db.";
@@ -105,10 +105,10 @@ void startmenu::on_pushButton_clicked()
     if (Creation)
     {
         QString PasswordV;
-        PasswordV = QGrostlHash(ui->lineEdit_3->text()).toHexString();
         UsernameS = Username;
         UsernameS.resize(4);
-        PasswordV = UsernameS + PasswordV;
+        PasswordV = (UsernameS + QGrostlHash(ui->lineEdit_3->text()).toHexString());
+
 
         if (!CheckUsername(Username))
         {
