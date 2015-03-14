@@ -25,11 +25,11 @@ startmenu::startmenu(QWidget *parent) :
     {
         if(myDB.open())
         {
-            ui->label_5->setText("[+] Connected to database!");
+            ui->label_5->setText("[+] Connected To Database!");
         }
 
     }else{
-        ui->label_5->setText("[!] Database file not found.");
+        ui->label_5->setText("[!] Database File Not Found.");
     }
 
 }
@@ -98,6 +98,7 @@ void startmenu::on_pushButton_clicked()
                 MainWindow *mainWin = new MainWindow;
                 mainWin->show();
                 hide();
+
             } else {
                 ui->label_5->setText("[-] Incorrect Username or Password");
             }
@@ -120,6 +121,9 @@ void startmenu::on_pushButton_clicked()
             {
                 CreateAccount(Username, Password);
                 QMessageBox::warning(this, "Success!", "Your account has been created!");
+                MainWindow *mainWin = new MainWindow;
+                mainWin->show();
+                hide();
             } else {
                 QMessageBox::warning(this, "ERROR", "The passwords do not match");
             }
@@ -175,7 +179,6 @@ void startmenu::on_label_7_linkActivated(const QString &link)
 {
     ui->label_7->hide();
 }
-
 
 
 void startmenu::on_lineEdit_3_textEdited(const QString &arg1)

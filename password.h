@@ -15,6 +15,8 @@ public:
     explicit password(QWidget *parent = 0);
     ~password();
 
+private slots:
+
 private:
     Ui::password *ui;
 };

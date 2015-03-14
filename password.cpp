@@ -12,3 +12,4 @@ password::~password()
 {
     delete ui;
 }
+
