@@ -13,6 +13,7 @@ startmenu::startmenu(QWidget *parent) :
     ui(new Ui::startmenu)
 {
     ui->setupUi(this);
+    ui->pushButton->setGeometry(360,290,77,32);
     ui->lineEdit_3->hide();
     ui->label_6->hide();
     ui->label_7->hide();
@@ -41,10 +42,11 @@ startmenu::~startmenu()
 
 void startmenu::on_radioButton_clicked()
 {
+    ui->pushButton->setGeometry(360,290,77,32);
     ui->lineEdit->show();
     ui->lineEdit_2->show();
-    ui->label_3->setText("Username");
-    ui->label_4->setText("Password");
+    ui->label_3->setText("Enter Username");
+    ui->label_4->setText("Enter Password");
     Creation = false;
     ui->lineEdit_3->hide();
     ui->label_6->hide();
@@ -54,6 +56,7 @@ void startmenu::on_radioButton_clicked()
 
 void startmenu::on_radioButton_2_clicked()
 {
+    ui->pushButton->setGeometry(360,370,77,32);
     ui->label_3->setText("Create Username");
     ui->label_4->setText("Create Password");
     ui->label_6->show();
@@ -169,7 +172,7 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
 
     if (CheckUsername(Username))
     {
-        ui->label_7->setText("Username in use");
+        ui->label_7->setText("Username is already taken.");
     } else {
         ui->label_7->setText(("Username is available"));
     }
