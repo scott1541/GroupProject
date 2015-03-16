@@ -53,6 +53,7 @@ void startmenu::on_radioButton_clicked()
     ui->lineEdit_3->hide();
     ui->label_6->hide();
     ui->label_7->hide();
+    ui->label_8->hide();
     Login = true;
 }
 
@@ -64,8 +65,11 @@ void startmenu::on_radioButton_2_clicked()
     ui->label_6->show();
     ui->lineEdit_3->show();
     ui->label_7->show();
+    ui->label_8->show();
     Login = false;
     Creation = true;
+    QString Username = ui->lineEdit->text();
+    CheckUsername(Username);
 }
 
 
@@ -160,9 +164,11 @@ bool startmenu::CheckUsername(const QString Username)
         if (qry.next())
         {
             ui->label_8->hide();
+            ui->label_7->setText("Username is already taken.");
             return true;
         } else {
             ui->label_8->show();
+            ui->label_7->setText("Username is available");
             return false;
         }
     }
@@ -174,12 +180,10 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
     QString Username;
     Username = ui->lineEdit->text();
 
-    if (CheckUsername(Username))
-    {
-        ui->label_7->setText("Username is already taken.");
-    } else {
-        ui->label_7->setText(("Username is available"));
 
+    if (Creation)
+    {
+        CheckUsername(Username);
     }
 }
 
