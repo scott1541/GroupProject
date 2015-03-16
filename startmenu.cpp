@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
+#include <QLabel>
 
 #define Path_to_DB "login.db"
 bool Login = true;
@@ -13,12 +14,12 @@ startmenu::startmenu(QWidget *parent) :
     ui(new Ui::startmenu)
 {
     ui->setupUi(this);
-    ui->label_8->hide();
-    ui->label_9->hide();
     ui->pushButton->setGeometry(320,290,77,32);
     ui->lineEdit_3->hide();
     ui->label_6->hide();
     ui->label_7->hide();
+    ui->label_8->hide();
+    ui->label_9->hide();
 
     myDB = QSqlDatabase::addDatabase("QSQLITE");
     myDB.setDatabaseName(Path_to_DB);
@@ -53,6 +54,8 @@ void startmenu::on_radioButton_clicked()
     ui->lineEdit_3->hide();
     ui->label_6->hide();
     ui->label_7->hide();
+    ui->label_8->hide();
+    ui->label_9->hide();
     Login = true;
 }
 
@@ -159,10 +162,9 @@ bool startmenu::CheckUsername(const QString Username)
     {
         if (qry.next())
         {
-            ui->label_8->hide();
+
             return true;
         } else {
-            ui->label_8->show();
             return false;
         }
     }
@@ -176,8 +178,16 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
 
     if (CheckUsername(Username))
     {
-        ui->label_7->setText("Username is already taken.");
+            QPixmap mypix (":Images/error.png");
+            ui->label_8->setPixmap(mypix);
+            ui->label_8->show();
+            ui->label_9->hide();
+        ui->label_7->setText("Username is already taken");
     } else {
+        QPixmap mypix (":Images/tick.png");
+        ui->label_9->setPixmap(mypix);
+        ui->label_9->show();
+        ui->label_8->hide();
         ui->label_7->setText(("Username is available"));
 
     }
@@ -197,4 +207,16 @@ void startmenu::on_lineEdit_3_textEdited(const QString &arg1)
 void startmenu::on_lineEdit_2_textEdited(const QString &arg1)
 {
     ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+}
+
+
+void startmenu::on_label_8_linkActivated(const QString &link)
+{
+    ui->label_8->hide();
+}
+
+
+void startmenu::on_label_9_linkActivated(const QString &link)
+{
+    ui->label_9->hide();
 }

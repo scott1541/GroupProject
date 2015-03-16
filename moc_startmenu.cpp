@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_startmenu_t {
-    QByteArrayData data[15];
-    char stringdata[236];
+    QByteArrayData data[17];
+    char stringdata[286];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,7 +43,9 @@ QT_MOC_LITERAL(10, 151, 4), // "arg1"
 QT_MOC_LITERAL(11, 156, 24), // "on_label_7_linkActivated"
 QT_MOC_LITERAL(12, 181, 4), // "link"
 QT_MOC_LITERAL(13, 186, 24), // "on_lineEdit_3_textEdited"
-QT_MOC_LITERAL(14, 211, 24) // "on_lineEdit_2_textEdited"
+QT_MOC_LITERAL(14, 211, 24), // "on_lineEdit_2_textEdited"
+QT_MOC_LITERAL(15, 236, 24), // "on_label_8_linkActivated"
+QT_MOC_LITERAL(16, 261, 24) // "on_label_9_linkActivated"
 
     },
     "startmenu\0on_radioButton_clicked\0\0"
@@ -52,7 +54,9 @@ QT_MOC_LITERAL(14, 211, 24) // "on_lineEdit_2_textEdited"
     "CheckUsername\0on_lineEdit_textChanged\0"
     "arg1\0on_label_7_linkActivated\0link\0"
     "on_lineEdit_3_textEdited\0"
-    "on_lineEdit_2_textEdited"
+    "on_lineEdit_2_textEdited\0"
+    "on_label_8_linkActivated\0"
+    "on_label_9_linkActivated"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +66,7 @@ static const uint qt_meta_data_startmenu[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,15 +74,17 @@ static const uint qt_meta_data_startmenu[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x08 /* Private */,
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    0,   61,    2, 0x08 /* Private */,
-       5,    2,   62,    2, 0x08 /* Private */,
-       8,    1,   67,    2, 0x08 /* Private */,
-       9,    1,   70,    2, 0x08 /* Private */,
-      11,    1,   73,    2, 0x08 /* Private */,
-      13,    1,   76,    2, 0x08 /* Private */,
-      14,    1,   79,    2, 0x08 /* Private */,
+       1,    0,   69,    2, 0x08 /* Private */,
+       3,    0,   70,    2, 0x08 /* Private */,
+       4,    0,   71,    2, 0x08 /* Private */,
+       5,    2,   72,    2, 0x08 /* Private */,
+       8,    1,   77,    2, 0x08 /* Private */,
+       9,    1,   80,    2, 0x08 /* Private */,
+      11,    1,   83,    2, 0x08 /* Private */,
+      13,    1,   86,    2, 0x08 /* Private */,
+      14,    1,   89,    2, 0x08 /* Private */,
+      15,    1,   92,    2, 0x08 /* Private */,
+      16,    1,   95,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -90,6 +96,8 @@ static const uint qt_meta_data_startmenu[] = {
     QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void, QMetaType::QString,   10,
     QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, QMetaType::QString,   12,
+    QMetaType::Void, QMetaType::QString,   12,
 
        0        // eod
 };
@@ -109,6 +117,8 @@ void startmenu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: _t->on_label_7_linkActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 7: _t->on_lineEdit_3_textEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 8: _t->on_lineEdit_2_textEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 9: _t->on_label_8_linkActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 10: _t->on_label_9_linkActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -139,13 +149,13 @@ int startmenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 11;
     }
     return _id;
 }

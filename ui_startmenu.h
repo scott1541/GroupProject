@@ -141,12 +141,10 @@ public:
         lineEdit->setGeometry(QRect(250, 190, 221, 21));
         label_8 = new QLabel(centralWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(480, 180, 41, 41));
-        label_8->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
+        label_8->setGeometry(QRect(490, 170, 59, 51));
         label_9 = new QLabel(centralWidget);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(480, 250, 41, 41));
-        label_9->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
+        label_9->setGeometry(QRect(490, 170, 59, 51));
         startmenu->setCentralWidget(centralWidget);
         lineEdit_2->raise();
         label_4->raise();
