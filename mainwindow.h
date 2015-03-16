@@ -7,6 +7,8 @@
 #include <QDialog>
 #include "startmenu.h"
 #include <QMessageBox>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +37,8 @@ private slots:
     void on_actionFormat_triggered();
 
     void on_action_Cut_triggered();
+
+    void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
 private:
     Ui::MainWindow *ui;
