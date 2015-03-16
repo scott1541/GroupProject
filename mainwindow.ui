@@ -62,6 +62,12 @@ p, li { white-space: pre-wrap; }
          <property name="overwriteMode">
           <bool>true</bool>
          </property>
+<<<<<<< Updated upstream
+=======
+         <property name="cursorWidth">
+          <number>1</number>
+         </property>
+>>>>>>> Stashed changes
         </widget>
        </item>
       </layout>

@@ -262,6 +262,10 @@
       <width>221</width>
       <height>21</height>
      </rect>
+=======
+    <property name="text">
+     <string/>
+>>>>>>> Stashed changes
     </property>
    </widget>
    <zorder>menuTitle</zorder>
