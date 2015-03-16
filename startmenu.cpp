@@ -13,7 +13,9 @@ startmenu::startmenu(QWidget *parent) :
     ui(new Ui::startmenu)
 {
     ui->setupUi(this);
-    ui->pushButton->setGeometry(360,290,77,32);
+    ui->label_8->hide();
+    ui->label_9->hide();
+    ui->pushButton->setGeometry(320,290,77,32);
     ui->lineEdit_3->hide();
     ui->label_6->hide();
     ui->label_7->hide();
@@ -42,7 +44,7 @@ startmenu::~startmenu()
 
 void startmenu::on_radioButton_clicked()
 {
-    ui->pushButton->setGeometry(360,290,77,32);
+    ui->pushButton->setGeometry(320,290,77,32);
     ui->lineEdit->show();
     ui->lineEdit_2->show();
     ui->label_3->setText("Enter Username");
@@ -56,7 +58,7 @@ void startmenu::on_radioButton_clicked()
 
 void startmenu::on_radioButton_2_clicked()
 {
-    ui->pushButton->setGeometry(360,370,77,32);
+    ui->pushButton->setGeometry(320,370,77,32);
     ui->label_3->setText("Create Username");
     ui->label_4->setText("Create Password");
     ui->label_6->show();
@@ -157,8 +159,10 @@ bool startmenu::CheckUsername(const QString Username)
     {
         if (qry.next())
         {
+            ui->label_8->hide();
             return true;
         } else {
+            ui->label_8->show();
             return false;
         }
     }
@@ -175,6 +179,7 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
         ui->label_7->setText("Username is already taken.");
     } else {
         ui->label_7->setText(("Username is available"));
+
     }
 }
 

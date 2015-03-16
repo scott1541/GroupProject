@@ -30,6 +30,12 @@ private slots:
 
     void on_actionQuit_SecureShield_triggered();
 
+    void on_actionCopy_triggered();
+
+    void on_actionFormat_triggered();
+
+    void on_action_Cut_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

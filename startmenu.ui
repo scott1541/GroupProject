@@ -61,7 +61,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>70</x>
       <y>180</y>
       <width>111</width>
       <height>111</height>
@@ -77,8 +77,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>370</y>
+      <x>320</x>
+      <y>360</y>
       <width>77</width>
       <height>32</height>
      </rect>
@@ -135,7 +135,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>250</x>
       <y>260</y>
       <width>221</width>
       <height>21</height>
@@ -151,7 +151,7 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>250</x>
       <y>230</y>
       <width>121</width>
       <height>17</height>
@@ -170,7 +170,7 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>250</x>
       <y>300</y>
       <width>108</width>
       <height>17</height>
@@ -189,7 +189,7 @@
    <widget class="QLineEdit" name="lineEdit_3">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>250</x>
       <y>330</y>
       <width>221</width>
       <height>21</height>
@@ -199,7 +199,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>250</x>
       <y>160</y>
       <width>121</width>
       <height>17</height>
@@ -215,10 +215,10 @@
      <string>Enter Username</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>220</x>
       <y>120</y>
       <width>272</width>
       <height>20</height>
@@ -257,24 +257,60 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>250</x>
       <y>190</y>
       <width>221</width>
       <height>21</height>
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>180</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="rescources.qrc">:/Images/tick.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>250</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="rescources.qrc">:/Images/tick.png</pixmap>
+    </property>
+   </widget>
+   <zorder>lineEdit_2</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_6</zorder>
+   <zorder>lineEdit_3</zorder>
+   <zorder>lineEdit</zorder>
    <zorder>menuTitle</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>pushButton</zorder>
    <zorder>label_5</zorder>
    <zorder>label_7</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>label_3</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

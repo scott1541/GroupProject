@@ -41,11 +41,13 @@ public:
     QLabel *label_6;
     QLineEdit *lineEdit_3;
     QLabel *label_3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QRadioButton *radioButton;
     QRadioButton *radioButton_2;
     QLineEdit *lineEdit;
+    QLabel *label_8;
+    QLabel *label_9;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -76,11 +78,11 @@ public:
         label->setFont(font2);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(110, 180, 111, 111));
+        label_2->setGeometry(QRect(70, 180, 111, 111));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/Images/SecureShieldQT.png")));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(360, 370, 77, 32));
+        pushButton->setGeometry(QRect(320, 360, 77, 32));
         QFont font3;
         font3.setFamily(QStringLiteral("Corbel"));
         pushButton->setFont(font3);
@@ -96,39 +98,39 @@ public:
         lineEdit_2 = new QLineEdit(centralWidget);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setEnabled(true);
-        lineEdit_2->setGeometry(QRect(290, 260, 221, 21));
+        lineEdit_2->setGeometry(QRect(250, 260, 221, 21));
         lineEdit_2->setMaximumSize(QSize(267, 16777215));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(290, 230, 121, 17));
+        label_4->setGeometry(QRect(250, 230, 121, 17));
         label_4->setFont(font);
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(290, 300, 108, 17));
+        label_6->setGeometry(QRect(250, 300, 108, 17));
         label_6->setFont(font);
         lineEdit_3 = new QLineEdit(centralWidget);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(290, 330, 221, 21));
+        lineEdit_3->setGeometry(QRect(250, 330, 221, 21));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(290, 160, 121, 17));
+        label_3->setGeometry(QRect(250, 160, 121, 17));
         label_3->setFont(font);
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(260, 120, 272, 20));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(220, 120, 272, 20));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        radioButton = new QRadioButton(widget);
+        radioButton = new QRadioButton(layoutWidget);
         radioButton->setObjectName(QStringLiteral("radioButton"));
         radioButton->setFont(font3);
         radioButton->setChecked(true);
 
         horizontalLayout->addWidget(radioButton);
 
-        radioButton_2 = new QRadioButton(widget);
+        radioButton_2 = new QRadioButton(layoutWidget);
         radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
         radioButton_2->setFont(font3);
 
@@ -136,15 +138,31 @@ public:
 
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(290, 190, 221, 21));
+        lineEdit->setGeometry(QRect(250, 190, 221, 21));
+        label_8 = new QLabel(centralWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(480, 180, 41, 41));
+        label_8->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
+        label_9 = new QLabel(centralWidget);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(480, 250, 41, 41));
+        label_9->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
         startmenu->setCentralWidget(centralWidget);
+        lineEdit_2->raise();
+        label_4->raise();
+        label_6->raise();
+        lineEdit_3->raise();
+        lineEdit->raise();
         menuTitle->raise();
         label->raise();
         label_2->raise();
         pushButton->raise();
         label_5->raise();
         label_7->raise();
+        layoutWidget->raise();
         label_3->raise();
+        label_8->raise();
+        label_9->raise();
         mainToolBar = new QToolBar(startmenu);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         startmenu->addToolBar(Qt::TopToolBarArea, mainToolBar);
@@ -174,6 +192,8 @@ public:
         label_3->setText(QApplication::translate("startmenu", "Enter Username", 0));
         radioButton->setText(QApplication::translate("startmenu", "Existing User", 0));
         radioButton_2->setText(QApplication::translate("startmenu", "Create New Account", 0));
+        label_8->setText(QString());
+        label_9->setText(QString());
     } // retranslateUi
 
 };

@@ -47,6 +47,7 @@
         <file>addKey.png</file>
         <file>deleteKey.png</file>
         <file>editKey.png</file>
+        <file>tick.png</file>
     </qresource>
     <qresource prefix="/Image"/>
 </RCC>

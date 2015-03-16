@@ -213,7 +213,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 791, 93));
+        layoutWidget->setGeometry(QRect(10, 10, 791, 41));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -230,6 +230,7 @@ public:
 
         textEdit = new QTextEdit(layoutWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setEnabled(true);
         textEdit->setOverwriteMode(true);
 
         horizontalLayout->addWidget(textEdit);

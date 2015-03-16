@@ -51,3 +51,18 @@ void MainWindow::on_actionQuit_SecureShield_triggered()
 {
     close();
 }
+
+void MainWindow::on_actionCopy_triggered()
+{
+    ui->textEdit->copy();
+}
+
+void MainWindow::on_actionFormat_triggered()
+{
+    ui->textEdit->paste();
+}
+
+void MainWindow::on_action_Cut_triggered()
+{
+    ui->textEdit->cut();
+}
