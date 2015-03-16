@@ -231,7 +231,6 @@ public:
         textEdit = new QTextEdit(layoutWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setOverwriteMode(true);
-        textEdit->setCursorWidth(1);
 
         horizontalLayout->addWidget(textEdit);
 
