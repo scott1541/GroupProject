@@ -12,10 +12,15 @@ class password : public QDialog
     Q_OBJECT
 
 public:
+
+    int PassEntropy(const QString password);
+
     explicit password(QWidget *parent = 0);
     ~password();
 
 private slots:
+
+    //int PassEntropy(const QString password);
 
 private:
     Ui::password *ui;

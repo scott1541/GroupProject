@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
+#include "password.h"
 
 #define Path_to_DB "login.db"
 bool Login = true;
@@ -19,6 +20,8 @@ startmenu::startmenu(QWidget *parent) :
     ui->lineEdit_3->hide();
     ui->label_6->hide();
     ui->label_7->hide();
+    ui->label_10->hide();
+    ui->progressBar->hide();
 
     myDB = QSqlDatabase::addDatabase("QSQLITE");
     myDB.setDatabaseName(Path_to_DB);
@@ -66,6 +69,8 @@ void startmenu::on_radioButton_2_clicked()
     ui->lineEdit_3->show();
     ui->label_7->show();
     ui->label_8->show();
+    ui->label_10->show();
+    ui->progressBar->show();
     Login = false;
     Creation = true;
     QString Username = ui->lineEdit->text();
@@ -201,4 +206,7 @@ void startmenu::on_lineEdit_3_textEdited(const QString &arg1)
 void startmenu::on_lineEdit_2_textEdited(const QString &arg1)
 {
     ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+   // QString pass = ui->lineEdit_2->text();
+
+   // ui->progressBar->setValue(PassEntropy(pass));
 }
