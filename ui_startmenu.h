@@ -48,6 +48,7 @@ public:
     QLineEdit *lineEdit;
     QLabel *label_8;
     QLabel *label_9;
+    QLabel *label_10;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -95,6 +96,7 @@ public:
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setEnabled(true);
         label_7->setGeometry(QRect(530, 190, 201, 16));
+        label_7->setFont(font3);
         lineEdit_2 = new QLineEdit(centralWidget);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setEnabled(true);
@@ -141,12 +143,15 @@ public:
         lineEdit->setGeometry(QRect(250, 190, 221, 21));
         label_8 = new QLabel(centralWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(480, 180, 41, 41));
+        label_8->setGeometry(QRect(490, 180, 41, 41));
         label_8->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
         label_9 = new QLabel(centralWidget);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(480, 250, 41, 41));
-        label_9->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
+        label_9->setGeometry(QRect(490, 180, 41, 41));
+        label_9->setPixmap(QPixmap(QString::fromUtf8(":/Images/error-32-32x32.png")));
+        label_10 = new QLabel(centralWidget);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(490, 260, 191, 16));
         startmenu->setCentralWidget(centralWidget);
         lineEdit_2->raise();
         label_4->raise();
@@ -163,6 +168,7 @@ public:
         label_3->raise();
         label_8->raise();
         label_9->raise();
+        label_10->raise();
         mainToolBar = new QToolBar(startmenu);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         startmenu->addToolBar(Qt::TopToolBarArea, mainToolBar);
@@ -194,6 +200,7 @@ public:
         radioButton_2->setText(QApplication::translate("startmenu", "Create New Account", 0));
         label_8->setText(QString());
         label_9->setText(QString());
+        label_10->setText(QString());
     } // retranslateUi
 
 };

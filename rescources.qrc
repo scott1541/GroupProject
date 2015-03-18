@@ -48,6 +48,7 @@
         <file>deleteKey.png</file>
         <file>editKey.png</file>
         <file>tick.png</file>
+        <file>error-32-32x32.png</file>
     </qresource>
     <qresource prefix="/Image"/>
 </RCC>

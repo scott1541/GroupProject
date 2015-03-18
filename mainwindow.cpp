@@ -83,3 +83,13 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     password *p = new password();
     p->show();
 }
+
+void MainWindow::on_action_Redo_triggered()
+{
+    ui->textEdit->redo();
+}
+
+void MainWindow::on_action_Undo_triggered()
+{
+    ui->textEdit->undo();
+}

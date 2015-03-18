@@ -40,6 +40,10 @@ private slots:
 
     void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
+    void on_action_Redo_triggered();
+
+    void on_action_Undo_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
