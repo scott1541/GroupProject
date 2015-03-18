@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'startmenu.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -18,7 +18,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
@@ -50,10 +49,6 @@ public:
     QLabel *label_8;
     QLabel *label_9;
     QLabel *label_10;
-<<<<<<< HEAD
-=======
-    QProgressBar *progressBar;
->>>>>>> origin/master
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -152,23 +147,11 @@ public:
         label_8->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
         label_9 = new QLabel(centralWidget);
         label_9->setObjectName(QStringLiteral("label_9"));
-<<<<<<< HEAD
         label_9->setGeometry(QRect(490, 180, 41, 41));
         label_9->setPixmap(QPixmap(QString::fromUtf8(":/Images/error-32-32x32.png")));
         label_10 = new QLabel(centralWidget);
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setGeometry(QRect(490, 260, 191, 16));
-=======
-        label_9->setGeometry(QRect(480, 250, 41, 41));
-        label_9->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
-        label_10 = new QLabel(centralWidget);
-        label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setGeometry(QRect(540, 280, 59, 16));
-        progressBar = new QProgressBar(centralWidget);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(530, 260, 171, 23));
-        progressBar->setValue(24);
->>>>>>> origin/master
         startmenu->setCentralWidget(centralWidget);
         lineEdit_2->raise();
         label_4->raise();
@@ -186,10 +169,6 @@ public:
         label_8->raise();
         label_9->raise();
         label_10->raise();
-<<<<<<< HEAD
-=======
-        progressBar->raise();
->>>>>>> origin/master
         mainToolBar = new QToolBar(startmenu);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         startmenu->addToolBar(Qt::TopToolBarArea, mainToolBar);
@@ -221,11 +200,7 @@ public:
         radioButton_2->setText(QApplication::translate("startmenu", "Create New Account", 0));
         label_8->setText(QString());
         label_9->setText(QString());
-<<<<<<< HEAD
         label_10->setText(QString());
-=======
-        label_10->setText(QApplication::translate("startmenu", "Weak", 0));
->>>>>>> origin/master
     } // retranslateUi
 
 };
