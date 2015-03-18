@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -23,6 +22,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -57,12 +57,10 @@ public:
     QAction *actionDeleteEntry;
     QAction *actionEditEntry;
     QWidget *centralwidget;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_2;
-    QHBoxLayout *horizontalLayout;
+    QTreeWidget *treeWidget;
+    QPushButton *pushButton;
     QLabel *label;
     QTextEdit *textEdit;
-    QPushButton *pushButton;
     QStatusBar *statusbar;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -211,39 +209,26 @@ public:
         actionEditEntry->setIcon(icon17);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        layoutWidget = new QWidget(centralwidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 791, 41));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        treeWidget = new QTreeWidget(centralwidget);
+        treeWidget->setObjectName(QStringLiteral("treeWidget"));
+        treeWidget->setGeometry(QRect(45, 60, 690, 461));
+        treeWidget->setColumnCount(4);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(744, 15, 57, 32));
         QFont font1;
         font1.setFamily(QStringLiteral("Corbel"));
         font1.setPointSize(12);
+        pushButton->setFont(font1);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(12, 20, 25, 16));
         label->setFont(font1);
-
-        horizontalLayout->addWidget(label);
-
-        textEdit = new QTextEdit(layoutWidget);
+        textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setEnabled(true);
+        textEdit->setGeometry(QRect(45, 15, 690, 31));
         textEdit->setOverwriteMode(true);
-
-        horizontalLayout->addWidget(textEdit);
-
-
-        horizontalLayout_2->addLayout(horizontalLayout);
-
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setFont(font1);
-
-        horizontalLayout_2->addWidget(pushButton);
-
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -339,13 +324,18 @@ public:
         actionAddEntry->setText(QApplication::translate("MainWindow", "addEntry", 0));
         actionDeleteEntry->setText(QApplication::translate("MainWindow", "deleteEntry", 0));
         actionEditEntry->setText(QApplication::translate("MainWindow", "editEntry", 0));
+        QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
+        ___qtreewidgetitem->setText(3, QApplication::translate("MainWindow", "Strength", 0));
+        ___qtreewidgetitem->setText(2, QApplication::translate("MainWindow", "Date added", 0));
+        ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Password", 0));
+        ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "Name", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Go", 0));
         label->setText(QApplication::translate("MainWindow", "Find:", 0));
         textEdit->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Corbel'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#c1c1c1;\">Search...</span></p></body></html>", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Go", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", 0));
         menuTools->setTitle(QApplication::translate("MainWindow", "View", 0));

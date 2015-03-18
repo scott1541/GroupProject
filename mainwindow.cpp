@@ -5,12 +5,23 @@
 #include <QMessageBox>
 #include "startmenu.h"
 #include "qgrostlhash.h"
+#include "password.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QTreeWidgetItem *item = new QTreeWidgetItem();
+    item->setText(0, "Name");
+    item->setText(1, "The Password");
+    item->setText(2, "16/03/2015");
+    item->setText(3, "Weak");
+
+    //call sql function query here (based on username logged in)
+
+    ui->treeWidget->addTopLevelItem(item);
 
 }
 
@@ -65,4 +76,20 @@ void MainWindow::on_actionFormat_triggered()
 void MainWindow::on_action_Cut_triggered()
 {
     ui->textEdit->cut();
+}
+
+void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    password *p = new password();
+    p->show();
+}
+
+void MainWindow::on_action_Redo_triggered()
+{
+    ui->textEdit->redo();
+}
+
+void MainWindow::on_action_Undo_triggered()
+{
+    ui->textEdit->undo();
 }

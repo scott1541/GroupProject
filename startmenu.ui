@@ -125,6 +125,11 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Corbel</family>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -268,9 +273,15 @@
     <property name="geometry">
      <rect>
       <x>490</x>
+<<<<<<< HEAD
       <y>170</y>
       <width>59</width>
       <height>51</height>
+=======
+      <y>180</y>
+      <width>41</width>
+      <height>41</height>
+>>>>>>> origin/master
      </rect>
     </property>
     <property name="text">
@@ -281,14 +292,39 @@
     <property name="geometry">
      <rect>
       <x>490</x>
+<<<<<<< HEAD
       <y>170</y>
       <width>59</width>
       <height>51</height>
+=======
+      <y>180</y>
+      <width>41</width>
+      <height>41</height>
+>>>>>>> origin/master
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+<<<<<<< HEAD
+=======
+    <property name="pixmap">
+     <pixmap resource="rescources.qrc">:/Images/error-32-32x32.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>260</y>
+      <width>191</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+>>>>>>> origin/master
    </widget>
    <zorder>lineEdit_2</zorder>
    <zorder>label_4</zorder>
@@ -305,6 +341,7 @@
    <zorder>label_3</zorder>
    <zorder>label_8</zorder>
    <zorder>label_9</zorder>
+   <zorder>label_10</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

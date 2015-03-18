@@ -57,6 +57,7 @@ void startmenu::on_radioButton_clicked()
     ui->label_8->hide();
     ui->label_9->hide();
     Login = true;
+
 }
 
 void startmenu::on_radioButton_2_clicked()
@@ -67,8 +68,13 @@ void startmenu::on_radioButton_2_clicked()
     ui->label_6->show();
     ui->lineEdit_3->show();
     ui->label_7->show();
+    ui->label_8->show();
+    ui->label_9->hide();
     Login = false;
     Creation = true;
+    QString Username = ui->lineEdit->text();
+    CheckUsername(Username);
+
 }
 
 
@@ -81,7 +87,6 @@ void startmenu::on_pushButton_clicked()
     Password = ui->lineEdit_2->text();
     Password = UsernameS + Password;
     Password = QGrostlHash(Password).toHexString();
-
 
     if (!myDB.isOpen()){
         qDebug() << "Lost connection to db.";
@@ -151,7 +156,6 @@ void startmenu::CreateAccount(const QString Username, const QString Password)
     qry.addBindValue(Password);
     qry.exec();
 
-
 }
 
 bool startmenu::CheckUsername(const QString Username)
@@ -160,11 +164,33 @@ bool startmenu::CheckUsername(const QString Username)
 
     if (qry.exec("SELECT username FROM user WHERE username=\'" + Username + "\'"))
     {
+        if (Username.isEmpty())
+        {
+            ui->label_7->hide();
+            ui->label_9->hide();
+            ui->label_8->hide();
+        }
+        else
+        {
+            ui->label_7->show();
+            ui->label_9->show();
+            ui->label_8->show();
+        }
         if (qry.next())
         {
+<<<<<<< HEAD
 
             return true;
         } else {
+=======
+            ui->label_8->hide();
+            ui->label_7->setText("Username is already taken");
+            return true;
+        } else {
+            ui->label_9->hide();
+            ui->label_8->show();
+            ui->label_7->setText("Username is available");
+>>>>>>> origin/master
             return false;
         }
     }
@@ -176,6 +202,7 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
     QString Username;
     Username = ui->lineEdit->text();
 
+<<<<<<< HEAD
     if (CheckUsername(Username))
     {
             QPixmap mypix (":Images/error.png");
@@ -189,7 +216,12 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
         ui->label_9->show();
         ui->label_8->hide();
         ui->label_7->setText(("Username is available"));
+=======
+>>>>>>> origin/master
 
+    if (Creation)
+    {
+        CheckUsername(Username);
     }
 }
 

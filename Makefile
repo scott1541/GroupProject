@@ -582,6 +582,7 @@ qrc_rescources.cpp: rescources.qrc \
 		redo.png \
 		edit_add.png \
 		new.png \
+		error-32-32x32.png \
 		currency.png \
 		critical.png \
 		deleteKey.png \
@@ -1179,6 +1180,7 @@ moc_mainwindow.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Header
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		startmenu.h \
+<<<<<<< HEAD
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/QtSql \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsql.h \
@@ -1198,6 +1200,30 @@ moc_mainwindow.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Header
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+=======
+		../../QT/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/QtSql \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsql.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqldatabase.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqldriver.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqldriverplugin.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlerror.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlfield.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlindex.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlquery.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrecord.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlresult.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlquerymodel.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrelationaldelegate.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrelationaltablemodel.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqltablemodel.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtreewidget.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
+>>>>>>> origin/master
 		mainwindow.h
 	/Users/lewisyates/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/lewisyates/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/lewisyates/GroupProject -I/Users/lewisyates/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/lewisyates/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/lewisyates/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/lewisyates/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/lewisyates/Qt/5.4/clang_64/lib mainwindow.h -o moc_mainwindow.cpp
 
@@ -1518,10 +1544,20 @@ main.o: main.cpp startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		mainwindow.h \
+<<<<<<< HEAD
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
+=======
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtreewidget.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
+>>>>>>> origin/master
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 startmenu.o: startmenu.cpp startmenu.h \
@@ -1811,8 +1847,16 @@ startmenu.o: startmenu.cpp startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		ui_startmenu.h \
 		mainwindow.h \
+<<<<<<< HEAD
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+=======
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtreewidget.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
+>>>>>>> origin/master
 		ui_mainwindow.h \
 		qgrostlhash.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
@@ -2089,6 +2133,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		startmenu.h \
+<<<<<<< HEAD
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/QtSql \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsql.h \
@@ -2113,6 +2158,36 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile
+=======
+		../../QT/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/QtSql \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsql.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqldatabase.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqldriver.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqldriverplugin.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlerror.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlfield.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlindex.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlquery.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrecord.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlresult.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlquerymodel.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrelationaldelegate.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrelationaltablemodel.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqltablemodel.h \
+		../../QT/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtreewidget.h \
+		../../QT/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
+		ui_mainwindow.h \
+		qgrostlhash.h \
+		../../QT/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../QT/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../../QT/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		password.h
+>>>>>>> origin/master
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 qgrostlhash.o: qgrostlhash.cpp qgrostlhash.h \
