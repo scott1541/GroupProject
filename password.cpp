@@ -13,3 +13,10 @@ password::~password()
     delete ui;
 }
 
+int PassEntropy(const QString pass)
+{
+    int Entropy = 10;  //Random value for now
+
+
+    return Entropy;
+}
