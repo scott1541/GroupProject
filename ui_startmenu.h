@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'startmenu.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.1
+** Created by: Qt User Interface Compiler version 5.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -156,10 +156,10 @@ public:
         label_10->setGeometry(QRect(490, 260, 191, 16));
         label_11 = new QLabel(centralWidget);
         label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setGeometry(QRect(500, 290, 59, 16));
+        label_11->setGeometry(QRect(500, 290, 121, 16));
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(490, 260, 118, 23));
+        progressBar->setGeometry(QRect(490, 260, 131, 23));
         progressBar->setValue(24);
         startmenu->setCentralWidget(centralWidget);
         lineEdit_2->raise();
@@ -212,7 +212,7 @@ public:
         label_8->setText(QString());
         label_9->setText(QString());
         label_10->setText(QString());
-        label_11->setText(QApplication::translate("startmenu", "TextLabel", 0));
+        label_11->setText(QString());
     } // retranslateUi
 
 };

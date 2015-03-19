@@ -21,6 +21,9 @@ startmenu::startmenu(QWidget *parent) :
     ui->label_7->hide();
     ui->label_8->hide();
     ui->label_9->hide();
+    ui->progressBar->hide();
+    ui->label_11->hide();
+
 
     myDB = QSqlDatabase::addDatabase("QSQLITE");
     myDB.setDatabaseName(Path_to_DB);
@@ -44,7 +47,7 @@ startmenu::~startmenu()
     delete ui;
 }
 
-void startmenu::on_radioButton_clicked()
+void startmenu::on_radioButton_clicked()  //Existing user login
 {
     ui->pushButton->setGeometry(320,290,77,32);
     ui->lineEdit->show();
@@ -57,16 +60,21 @@ void startmenu::on_radioButton_clicked()
     ui->label_7->hide();
     ui->label_8->hide();
     ui->label_9->hide();
+    ui->progressBar->hide();
+    ui->label_11->hide();
     Login = true;
 
 }
 
-void startmenu::on_radioButton_2_clicked()
+void startmenu::on_radioButton_2_clicked()  //New user creation
 {
     ui->pushButton->setGeometry(320,370,77,32);
     ui->label_3->setText("Create Username");
     ui->label_4->setText("Create Password");
     ui->label_6->show();
+    ui->label_11->show();
+    ui->progressBar->show();
+    ui->progressBar->setValue(0);
     ui->lineEdit_3->show();
     ui->label_7->show();
     ui->label_8->show();
@@ -79,7 +87,7 @@ void startmenu::on_radioButton_2_clicked()
 }
 
 
-void startmenu::on_pushButton_clicked()
+void startmenu::on_pushButton_clicked() //Login/account creation button
 {
     QString Username, Password, UsernameS;
     Username = ui->lineEdit->text();
@@ -191,7 +199,7 @@ bool startmenu::CheckUsername(const QString Username)
     }
 }
 
-void startmenu::on_lineEdit_textChanged(const QString &arg1)
+void startmenu::on_lineEdit_textChanged(const QString &arg1) //Username input line
 {
     qDebug() << "Username has been changed";
     QString Username;
@@ -224,19 +232,36 @@ void startmenu::on_label_7_linkActivated(const QString &link)
 }
 
 
-void startmenu::on_lineEdit_3_textEdited(const QString &arg1)
+void startmenu::on_lineEdit_3_textEdited(const QString &arg1) //1st password field
 {
     ui->lineEdit_3->setEchoMode(QLineEdit::Password);
 }
 
-void startmenu::on_lineEdit_2_textEdited(const QString &arg1)
+void startmenu::on_lineEdit_2_textEdited(const QString &arg1)  //2nd password field (verify)
 {
     ui->lineEdit_2->setEchoMode(QLineEdit::Password);
     QString paswd = ui->lineEdit_2->text();
 
     password *ps = new password();
-    ui->progressBar->setValue(ps->passWord(paswd));
-    //ui->label_11->setText();f
+    int passBits = ps->passWord(paswd);
+
+    ui->progressBar->setValue(passBits);
+    QString output = QString::number(passBits);
+    //ui->label_11->setText(getDesc(passBits));
+    QString passDesc = "";
+
+    if (passBits < 20)
+        passDesc = "Very weak";
+    if (passBits > 19 && passBits < 30)
+        passDesc = "Relatively weak";
+    if (passBits > 29 && passBits < 50)
+        passDesc = "Moderately strong";
+    if (passBits > 49 && passBits < 70)
+        passDesc = "Strong";
+    if (passBits > 69)
+        passDesc = "Very Strong";
+    ui->label_11->setText(passDesc);
+
 }
 
 
@@ -250,3 +275,11 @@ void startmenu::on_label_9_linkActivated(const QString &link)
 {
     ui->label_9->hide();
 }
+/*
+static QString getDesc(int passStr)
+{
+    startmenu::Desc = "Hello";
+
+    return startmenu::Desc;
+}
+*/

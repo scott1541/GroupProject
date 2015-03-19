@@ -49,6 +49,8 @@ int password::passWord(QString passWd)
 
     passStr = charCnt * log2(charSet);  //Updated, should be working. //
 
+    passStr = (passStr * 0.7);
+
     return passStr;
 }
 

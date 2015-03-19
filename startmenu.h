@@ -18,6 +18,9 @@ class startmenu : public QMainWindow
     Q_OBJECT
 
 public:
+    //static QString Desc;
+    //static QString getDesc(int passStr) { return Desc; }
+
     explicit startmenu(QWidget *parent = 0);
     ~startmenu();
 
