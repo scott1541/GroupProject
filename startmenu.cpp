@@ -178,11 +178,6 @@ bool startmenu::CheckUsername(const QString Username)
         }
         if (qry.next())
         {
-<<<<<<< HEAD
-
-            return true;
-        } else {
-=======
             ui->label_8->hide();
             ui->label_7->setText("Username is already taken");
             return true;
@@ -190,7 +185,6 @@ bool startmenu::CheckUsername(const QString Username)
             ui->label_9->hide();
             ui->label_8->show();
             ui->label_7->setText("Username is available");
->>>>>>> origin/master
             return false;
         }
     }
@@ -202,22 +196,20 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1)
     QString Username;
     Username = ui->lineEdit->text();
 
-<<<<<<< HEAD
     if (CheckUsername(Username))
     {
             QPixmap mypix (":Images/error.png");
             ui->label_8->setPixmap(mypix);
             ui->label_8->show();
             ui->label_9->hide();
-        ui->label_7->setText("Username is already taken");
+            ui->label_7->setText("Username is already taken");
     } else {
         QPixmap mypix (":Images/tick.png");
         ui->label_9->setPixmap(mypix);
         ui->label_9->show();
         ui->label_8->hide();
         ui->label_7->setText(("Username is available"));
-=======
->>>>>>> origin/master
+    }
 
     if (Creation)
     {
