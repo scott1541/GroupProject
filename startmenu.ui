@@ -273,15 +273,12 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-<<<<<<< HEAD
       <y>170</y>
       <width>59</width>
       <height>51</height>
-=======
       <y>180</y>
       <width>41</width>
       <height>41</height>
->>>>>>> origin/master
      </rect>
     </property>
     <property name="text">
@@ -292,22 +289,17 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-<<<<<<< HEAD
       <y>170</y>
       <width>59</width>
       <height>51</height>
-=======
       <y>180</y>
       <width>41</width>
       <height>41</height>
->>>>>>> origin/master
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
-<<<<<<< HEAD
-=======
     <property name="pixmap">
      <pixmap resource="rescources.qrc">:/Images/error-32-32x32.png</pixmap>
     </property>
@@ -324,7 +316,6 @@
     <property name="text">
      <string/>
     </property>
->>>>>>> origin/master
    </widget>
    <zorder>lineEdit_2</zorder>
    <zorder>label_4</zorder>

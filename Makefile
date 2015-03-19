@@ -582,6 +582,7 @@ qrc_rescources.cpp: rescources.qrc \
 		redo.png \
 		edit_add.png \
 		new.png \
+		error-32-32x32.png \
 		currency.png \
 		critical.png \
 		deleteKey.png \
@@ -598,6 +599,7 @@ qrc_rescources.cpp: rescources.qrc \
 		icon_link-email.png \
 		checkmark.png \
 		demo_3.png \
+		error.png \
 		ico_note_attention.png \
 		EMail_48.png \
 		info.png \
