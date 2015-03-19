@@ -281,6 +281,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="rescources.qrc">:/Images/tick.png</pixmap>
+    </property>
    </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">

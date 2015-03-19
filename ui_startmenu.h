@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'startmenu.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -147,6 +147,7 @@ public:
         label_8 = new QLabel(centralWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(490, 180, 41, 41));
+        label_8->setPixmap(QPixmap(QString::fromUtf8(":/Images/tick.png")));
         label_9 = new QLabel(centralWidget);
         label_9->setObjectName(QStringLiteral("label_9"));
         label_9->setGeometry(QRect(490, 180, 41, 41));

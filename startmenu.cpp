@@ -77,7 +77,7 @@ void startmenu::on_radioButton_2_clicked()  //New user creation
     ui->progressBar->setValue(0);
     ui->lineEdit_3->show();
     ui->label_7->show();
-    ui->label_8->show();
+    ui->label_8->hide();
     ui->label_9->hide();
     Login = false;
     Creation = true;
@@ -205,21 +205,6 @@ void startmenu::on_lineEdit_textChanged(const QString &arg1) //Username input li
     QString Username;
     Username = ui->lineEdit->text();
 
-    if (CheckUsername(Username))
-    {
-            QPixmap mypix (":Images/error.png");
-            ui->label_8->setPixmap(mypix);
-            ui->label_8->show();
-            ui->label_9->hide();
-            ui->label_7->setText("Username is already taken");
-    } else {
-        QPixmap mypix (":Images/tick.png");
-        ui->label_9->setPixmap(mypix);
-        ui->label_9->show();
-        ui->label_8->hide();
-        ui->label_7->setText(("Username is available"));
-    }
-
     if (Creation)
     {
         CheckUsername(Username);
@@ -260,6 +245,9 @@ void startmenu::on_lineEdit_2_textEdited(const QString &arg1)  //2nd password fi
         passDesc = "Strong";
     if (passBits > 69)
         passDesc = "Very Strong";
+    if (passBits < 0)
+        ui->progressBar->setValue(0),
+        ui->label_11->hide();
     ui->label_11->setText(passDesc);
 
 }
