@@ -7,21 +7,15 @@
 #include "qgrostlhash.h"
 #include "password.h"
 
+#define Path_to_DB "login.db"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    QTreeWidgetItem *item = new QTreeWidgetItem();
-    item->setText(0, "Name");
-    item->setText(1, "The Password");
-    item->setText(2, "16/03/2015");
-    item->setText(3, "Weak");
-
-    //call sql function query here (based on username logged in)
-
-    ui->treeWidget->addTopLevelItem(item);
+    showPasswords();
 
 }
 
@@ -92,4 +86,36 @@ void MainWindow::on_action_Redo_triggered()
 void MainWindow::on_action_Undo_triggered()
 {
     ui->textEdit->undo();
+}
+
+void MainWindow::showPasswords()
+{
+    myDB = QSqlDatabase::addDatabase("QSQLITE");
+    myDB.setDatabaseName(Path_to_DB);
+    QFileInfo checkFile(Path_to_DB);
+
+    if (checkFile.isFile())
+    {
+        if(myDB.open())
+        {
+            qDebug() << "[+] Connected To Database!";
+        }
+
+    }else{
+            qDebug() << "[!] Database File Not Found.";
+    }
+
+    QSqlQuery qry;
+
+    if (qry.exec("SELECT * FROM user"))
+    {
+        while (qry.next())
+        {
+            QTreeWidgetItem *item = new QTreeWidgetItem();
+            item->setText(0, qry.value("username").toString());
+            item->setText(1, qry.value("password").toString());
+            //qDebug() << qry.value("username").toString();
+            ui->treeWidget->addTopLevelItem(item);
+        }
+    }
 }

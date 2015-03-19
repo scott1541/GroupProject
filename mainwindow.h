@@ -44,8 +44,12 @@ private slots:
 
     void on_action_Undo_triggered();
 
+    void showPasswords();
+
 private:
     Ui::MainWindow *ui;
+
+    QSqlDatabase myDB;
 };
 
 #endif // MAINWINDOW_H
