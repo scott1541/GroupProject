@@ -16,9 +16,9 @@ int password::passWord(QString passWd)
     bool nuM;  //Number characters
     bool slC;  //Special characters (ASCII Printable)
 
-    int charCnt;  //Character count
-    int charSet;  //Character set count
-    int passStr;  //Password bit strength
+    int charCnt = 0;  //Character count
+    int charSet = 0;  //Character set count
+    int passStr = 0;  //Password bit strength
 
     charCnt = passWd.length();   //Get length of password
 
