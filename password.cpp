@@ -8,6 +8,13 @@ password::password(QWidget *parent) :
     ui->setupUi(this);
 }
 
+int password::passWord(QString passwd)
+{
+
+    return 0;
+}
+
+
 password::~password()
 {
     delete ui;

@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
 #include <QLabel>
+#include "password.h"
 
 #define Path_to_DB "login.db"
 bool Login = true;
@@ -231,6 +232,11 @@ void startmenu::on_lineEdit_3_textEdited(const QString &arg1)
 void startmenu::on_lineEdit_2_textEdited(const QString &arg1)
 {
     ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    QString paswd = ui->lineEdit_2->text();
+
+    password *ps = new password();
+    ui->progressBar->setValue(ps->passWord(paswd));
+    //ui->label_11->setText();f
 }
 
 

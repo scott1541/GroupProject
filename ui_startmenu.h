@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'startmenu.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.1
+** Created by: Qt User Interface Compiler version 5.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
@@ -49,6 +50,8 @@ public:
     QLabel *label_8;
     QLabel *label_9;
     QLabel *label_10;
+    QLabel *label_11;
+    QProgressBar *progressBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -151,6 +154,13 @@ public:
         label_10 = new QLabel(centralWidget);
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setGeometry(QRect(490, 260, 191, 16));
+        label_11 = new QLabel(centralWidget);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setGeometry(QRect(500, 290, 59, 16));
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(490, 260, 118, 23));
+        progressBar->setValue(24);
         startmenu->setCentralWidget(centralWidget);
         lineEdit_2->raise();
         label_4->raise();
@@ -168,6 +178,8 @@ public:
         label_8->raise();
         label_9->raise();
         label_10->raise();
+        label_11->raise();
+        progressBar->raise();
         mainToolBar = new QToolBar(startmenu);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         startmenu->addToolBar(Qt::TopToolBarArea, mainToolBar);
@@ -200,6 +212,7 @@ public:
         label_8->setText(QString());
         label_9->setText(QString());
         label_10->setText(QString());
+        label_11->setText(QApplication::translate("startmenu", "TextLabel", 0));
     } // retranslateUi
 
 };

@@ -13,6 +13,7 @@ class password : public QDialog
 
 public:
     explicit password(QWidget *parent = 0);
+    int passWord(QString passwd);
     ~password();
 
 private slots:
