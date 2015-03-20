@@ -234,7 +234,8 @@ void startmenu::on_lineEdit_2_textEdited(const QString &arg1)  //2nd password fi
     QString output = QString::number(passBits);
     //ui->label_11->setText(getDesc(passBits));
     QString passDesc = "";
-
+    if (passBits > 0)
+        ui->label_11->show();
     if (passBits < 20)
         passDesc = "Very weak";
     if (passBits > 19 && passBits < 30)
@@ -245,11 +246,11 @@ void startmenu::on_lineEdit_2_textEdited(const QString &arg1)  //2nd password fi
         passDesc = "Strong";
     if (passBits > 69)
         passDesc = "Very Strong";
-    if (passBits < 0)
+    if (passBits <= 0){
         ui->progressBar->setValue(0),
         ui->label_11->hide();
-    ui->label_11->setText(passDesc);
-
+    }
+        ui->label_11->setText(passDesc);
 }
 
 
