@@ -51,6 +51,8 @@ private slots:
 
     void on_label_9_linkActivated(const QString &link);
 
+    void getPasswordStrength();
+
 private:
     Ui::startmenu *ui;
 

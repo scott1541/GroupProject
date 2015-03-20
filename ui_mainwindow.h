@@ -228,7 +228,10 @@ public:
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setEnabled(true);
         textEdit->setGeometry(QRect(45, 15, 690, 31));
+        textEdit->setAutoFillBackground(true);
+        textEdit->setReadOnly(false);
         textEdit->setOverwriteMode(true);
+        textEdit->setTextInteractionFlags(Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse);
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -297,7 +300,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Secure Shield", 0));
         action_File->setText(QApplication::translate("MainWindow", "&Open     Ctrl+O", 0));
         action_Undo->setText(QApplication::translate("MainWindow", "Undo       Ctrl+Z", 0));
         action_Redo->setText(QApplication::translate("MainWindow", "Redo       Ctrl+Y", 0));
@@ -335,7 +338,7 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Corbel'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#c1c1c1;\">Search...</span></p></body></html>", 0));
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", 0));
         menuTools->setTitle(QApplication::translate("MainWindow", "View", 0));

@@ -46,6 +46,8 @@ private slots:
 
     void showPasswords();
 
+    void on_actionAddEntry_triggered();
+
 private:
     Ui::MainWindow *ui;
 

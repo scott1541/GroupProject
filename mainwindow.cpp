@@ -6,6 +6,7 @@
 #include "startmenu.h"
 #include "qgrostlhash.h"
 #include "password.h"
+#include "addpassword.h"
 
 #define Path_to_DB "login.db"
 
@@ -119,3 +120,10 @@ void MainWindow::showPasswords()
         }
     }
 }
+
+void MainWindow::on_actionAddEntry_triggered()
+{
+    addPassword *ap = new addPassword();
+    ap->show();
+}
+
