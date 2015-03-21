@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[18];
-    char stringdata[388];
+    char stringdata[403];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,8 +45,8 @@ QT_MOC_LITERAL(12, 284, 4), // "item"
 QT_MOC_LITERAL(13, 289, 6), // "column"
 QT_MOC_LITERAL(14, 296, 24), // "on_action_Redo_triggered"
 QT_MOC_LITERAL(15, 321, 24), // "on_action_Undo_triggered"
-QT_MOC_LITERAL(16, 346, 13), // "showPasswords"
-QT_MOC_LITERAL(17, 360, 27) // "on_actionAddEntry_triggered"
+QT_MOC_LITERAL(16, 346, 27), // "on_actionAddEntry_triggered"
+QT_MOC_LITERAL(17, 374, 28) // "on_actionEditEntry_triggered"
 
     },
     "MainWindow\0on_actionAbout_SecureShield_triggered\0"
@@ -59,8 +59,9 @@ QT_MOC_LITERAL(17, 360, 27) // "on_actionAddEntry_triggered"
     "on_treeWidget_itemDoubleClicked\0"
     "QTreeWidgetItem*\0item\0column\0"
     "on_action_Redo_triggered\0"
-    "on_action_Undo_triggered\0showPasswords\0"
-    "on_actionAddEntry_triggered"
+    "on_action_Undo_triggered\0"
+    "on_actionAddEntry_triggered\0"
+    "on_actionEditEntry_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -123,8 +124,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->on_treeWidget_itemDoubleClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 8: _t->on_action_Redo_triggered(); break;
         case 9: _t->on_action_Undo_triggered(); break;
-        case 10: _t->showPasswords(); break;
-        case 11: _t->on_actionAddEntry_triggered(); break;
+        case 10: _t->on_actionAddEntry_triggered(); break;
+        case 11: _t->on_actionEditEntry_triggered(); break;
         default: ;
         }
     }

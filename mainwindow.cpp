@@ -91,6 +91,7 @@ void MainWindow::on_action_Undo_triggered()
 
 void MainWindow::showPasswords()
 {
+    ui->treeWidget->clear();
     myDB = QSqlDatabase::addDatabase("QSQLITE");
     myDB.setDatabaseName(Path_to_DB);
     QFileInfo checkFile(Path_to_DB);
@@ -113,10 +114,11 @@ void MainWindow::showPasswords()
         while (qry.next())
         {
             QTreeWidgetItem *item = new QTreeWidgetItem();
-            item->setText(0, qry.value("usernameID").toString());
-            item->setText(1, qry.value("password").toString());
-            item->setText(2, qry.value("dateadded").toString());
-            item->setText(3, qry.value("description").toString());
+            item->setText(0, qry.value("name").toString());
+            item->setText(1, qry.value("usernameID").toString());
+            item->setText(2, qry.value("password").toString());
+            item->setText(3, qry.value("dateadded").toString());
+            item->setText(4, qry.value("description").toString());
             //qDebug() << qry.value("username").toString();
             ui->treeWidget->addTopLevelItem(item);
         }
@@ -127,6 +129,10 @@ void MainWindow::on_actionAddEntry_triggered()
 {
     addPassword *ap = new addPassword();
     ap->show();
+}
+
+void MainWindow::on_actionEditEntry_triggered()
+{
     showPasswords();
 }
 

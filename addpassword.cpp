@@ -100,6 +100,7 @@ void addPassword::addNewPassword()
 void addPassword::on_pushButton_clicked(bool checked)
 {
     addNewPassword();
-    //qDebug() << "button clicked";
-    this->close();
+    MainWindow *m = new MainWindow();
+    m->showPasswords();
+    this->destroy(true, false);
 }

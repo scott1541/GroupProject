@@ -6,6 +6,7 @@
 #include <QtGui>
 #include <QDialog>
 #include "startmenu.h"
+#include "addpassword.h"
 #include <QMessageBox>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -20,6 +21,9 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
+    void showPasswords();
+
     ~MainWindow();
 
 private slots:
@@ -44,9 +48,9 @@ private slots:
 
     void on_action_Undo_triggered();
 
-    void showPasswords();
-
     void on_actionAddEntry_triggered();
+
+    void on_actionEditEntry_triggered();
 
 private:
     Ui::MainWindow *ui;

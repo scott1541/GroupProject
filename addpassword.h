@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QtSql>
 #include <QDialog>
+#include "mainwindow.h"
 
 namespace Ui {
 class addPassword;
