@@ -15,16 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         startmenu.cpp \
     mainwindow.cpp \
-    grostlimpl.cpp \
-    qgrostlhash.cpp \
     password.cpp \
-    addpassword.cpp
+    addpassword.cpp \
+    qgrostlhash.cpp \
+    grostlimpl.cpp
 
 HEADERS  += startmenu.h \
     mainwindow.h \
-    qgrostlhash.h \
     password.h \
-    addpassword.h
+    addpassword.h \
+    qgrostlhash.h
 
 FORMS    += startmenu.ui \
     mainwindow.ui \

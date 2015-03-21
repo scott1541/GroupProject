@@ -8,6 +8,8 @@
 #define Path_to_DB "login.db"
 bool Login = true;
 bool Creation = false;
+QString Username = "";
+
 startmenu::startmenu(QWidget *parent) :
 QMainWindow(parent),
 ui(new Ui::startmenu)
@@ -71,13 +73,13 @@ void startmenu::on_radioButton_2_clicked() //New user creation
         ui->label_9->hide();
         Login = false;
         Creation = true;
-        QString Username = ui->lineEdit->text();
+        Username = ui->lineEdit->text();
         CheckUsername(Username);
         getPasswordStrength();
 }
 void startmenu::on_pushButton_clicked() //Login/account creation button
 {
-        QString Username, Password, UsernameS;
+        QString Password, UsernameS;
         Username = ui->lineEdit->text();
         UsernameS = Username;
         UsernameS.resize(4);
@@ -179,7 +181,6 @@ bool startmenu::CheckUsername(const QString Username)
 void startmenu::on_lineEdit_textChanged(const QString &arg1) //Username input line
 {
         qDebug() << "Username has been changed";
-        QString Username;
         Username = ui->lineEdit->text();
         if (Creation)
         {
@@ -241,6 +242,7 @@ void startmenu::on_label_9_linkActivated(const QString &link)
 {
         ui->label_9->hide();
 }
+
 
 //
 //static QString getDesc(int passStr)

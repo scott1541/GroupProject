@@ -8,6 +8,7 @@
 #include <QtSql>
 #include <QDialog>
 
+extern QString Username;
 
 namespace Ui {
 class startmenu;

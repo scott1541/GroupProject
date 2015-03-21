@@ -212,7 +212,7 @@ public:
         treeWidget = new QTreeWidget(centralwidget);
         treeWidget->setObjectName(QStringLiteral("treeWidget"));
         treeWidget->setGeometry(QRect(45, 60, 690, 461));
-        treeWidget->setColumnCount(4);
+        treeWidget->setColumnCount(5);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(744, 15, 57, 32));
@@ -238,7 +238,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menu_Edit = new QMenu(menubar);
@@ -328,7 +328,8 @@ public:
         actionDeleteEntry->setText(QApplication::translate("MainWindow", "deleteEntry", 0));
         actionEditEntry->setText(QApplication::translate("MainWindow", "editEntry", 0));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
-        ___qtreewidgetitem->setText(3, QApplication::translate("MainWindow", "Strength", 0));
+        ___qtreewidgetitem->setText(4, QApplication::translate("MainWindow", "Strength", 0));
+        ___qtreewidgetitem->setText(3, QApplication::translate("MainWindow", "Description", 0));
         ___qtreewidgetitem->setText(2, QApplication::translate("MainWindow", "Date added", 0));
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Password", 0));
         ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "Name", 0));
@@ -337,8 +338,8 @@ public:
         textEdit->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Corbel'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0));
+"</style></head><body style=\" font-family:'Corbel'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:13pt;\"><br /></p></body></html>", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menu_Edit->setTitle(QApplication::translate("MainWindow", "&Edit", 0));
         menuTools->setTitle(QApplication::translate("MainWindow", "View", 0));

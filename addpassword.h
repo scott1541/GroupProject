@@ -1,6 +1,11 @@
 #ifndef ADDPASSWORD_H
 #define ADDPASSWORD_H
 
+#include <QMainWindow>
+#include <QtCore>
+#include <QtGui>
+#include <QDebug>
+#include <QtSql>
 #include <QDialog>
 
 namespace Ui {
@@ -13,6 +18,7 @@ class addPassword : public QDialog
 
 public:
     explicit addPassword(QWidget *parent = 0);
+
     ~addPassword();
 
 private slots:
@@ -20,10 +26,14 @@ private slots:
 
     void on_lineEdit_5_textEdited(const QString &arg1);
 
-    //void getPasswordStrength();
+    void addNewPassword();
+
+    void on_pushButton_clicked(bool checked);
 
 private:
     Ui::addPassword *ui;
+
+    QSqlDatabase myDB;
 };
 
 #endif // ADDPASSWORD_H

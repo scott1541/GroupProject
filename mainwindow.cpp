@@ -8,7 +8,7 @@
 #include "password.h"
 #include "addpassword.h"
 
-#define Path_to_DB "login.db"
+#define Path_to_DB "passwords.db"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -108,13 +108,15 @@ void MainWindow::showPasswords()
 
     QSqlQuery qry;
 
-    if (qry.exec("SELECT * FROM user"))
+    if (qry.exec("SELECT * FROM passwords WHERE username = '" + Username + "'"))
     {
         while (qry.next())
         {
             QTreeWidgetItem *item = new QTreeWidgetItem();
-            item->setText(0, qry.value("username").toString());
+            item->setText(0, qry.value("usernameID").toString());
             item->setText(1, qry.value("password").toString());
+            item->setText(2, qry.value("dateadded").toString());
+            item->setText(3, qry.value("description").toString());
             //qDebug() << qry.value("username").toString();
             ui->treeWidget->addTopLevelItem(item);
         }
@@ -125,5 +127,6 @@ void MainWindow::on_actionAddEntry_triggered()
 {
     addPassword *ap = new addPassword();
     ap->show();
+    showPasswords();
 }
 
