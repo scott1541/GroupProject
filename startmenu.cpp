@@ -8,6 +8,7 @@
 #define Path_to_DB "login.db"
 bool Login = true;
 bool Creation = false;
+bool PasswordIsNotEmpty = false;
 QString Username = "";
 
 startmenu::startmenu(QWidget *parent) :
@@ -91,7 +92,7 @@ void startmenu::on_pushButton_clicked() //Login/account creation button
                 return;
         }
         QSqlQuery qry;
-        if (Login)
+        if (Login && PasswordIsNotEmpty)
         {
                 if (qry.exec("SELECT username, password FROM user WHERE username=\'" + Username
                         + "\' AND password=\'" + Password + "\'"))
@@ -111,7 +112,7 @@ void startmenu::on_pushButton_clicked() //Login/account creation button
                         }
                 }
         }
-        if (Creation)
+        if (Creation && PasswordIsNotEmpty)
         {
         QString PasswordV;
         UsernameS = Username;
@@ -198,6 +199,15 @@ void startmenu::on_lineEdit_3_textEdited(const QString &arg1) //1st password fie
 void startmenu::on_lineEdit_2_textEdited(const QString &arg1) //2nd password field (verify)
 {
         ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+
+        QString Password = ui->lineEdit_2->text();
+
+        if (Password.isEmpty() || Password.isNull())
+        {
+            PasswordIsNotEmpty = false;
+        } else {
+            PasswordIsNotEmpty = true;
+        }
 
         if (Creation)
         {

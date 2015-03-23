@@ -205,6 +205,7 @@ public:
         pushButton->setText(QApplication::translate("startmenu", "Login", 0));
         label_5->setText(QApplication::translate("startmenu", "Connected To Database [+]", 0));
         label_7->setText(QString());
+        lineEdit_2->setPlaceholderText(QString());
         label_4->setText(QApplication::translate("startmenu", "Enter Password", 0));
         label_6->setText(QApplication::translate("startmenu", "Verify Password", 0));
         label_3->setText(QApplication::translate("startmenu", "Enter Username", 0));
