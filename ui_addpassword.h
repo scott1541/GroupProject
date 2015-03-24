@@ -89,6 +89,7 @@ public:
         lineEdit_3 = new QLineEdit(addPassword);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
         lineEdit_3->setGeometry(QRect(120, 220, 181, 21));
+        lineEdit_3->setEchoMode(QLineEdit::Password);
         pushButton = new QPushButton(addPassword);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(180, 430, 71, 31));
@@ -96,6 +97,7 @@ public:
         lineEdit_5 = new QLineEdit(addPassword);
         lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
         lineEdit_5->setGeometry(QRect(120, 280, 181, 21));
+        lineEdit_5->setEchoMode(QLineEdit::Password);
         label_6 = new QLabel(addPassword);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(120, 260, 121, 16));
@@ -106,7 +108,7 @@ public:
         progressBar = new QProgressBar(addPassword);
         progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(320, 220, 118, 23));
-        progressBar->setValue(24);
+        progressBar->setValue(0);
         label_8 = new QLabel(addPassword);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(318, 250, 151, 20));
