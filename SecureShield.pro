@@ -18,18 +18,21 @@ SOURCES += main.cpp\
     password.cpp \
     addpassword.cpp \
     qgrostlhash.cpp \
-    grostlimpl.cpp
+    grostlimpl.cpp \
+    viewpassword.cpp
 
 HEADERS  += startmenu.h \
     mainwindow.h \
     password.h \
     addpassword.h \
-    qgrostlhash.h
+    qgrostlhash.h \
+    viewpassword.h
 
 FORMS    += startmenu.ui \
     mainwindow.ui \
     password.ui \
-    addpassword.ui
+    addpassword.ui \
+    viewpassword.ui
 
 RESOURCES += \
     rescources.qrc

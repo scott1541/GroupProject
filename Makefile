@@ -53,22 +53,26 @@ SOURCES       = main.cpp \
 		mainwindow.cpp \
 		password.cpp \
 		addpassword.cpp \
-		qgrostlhash.cpp qrc_rescources.cpp \
+		qgrostlhash.cpp \
+		viewpassword.cpp qrc_rescources.cpp \
 		moc_startmenu.cpp \
 		moc_mainwindow.cpp \
 		moc_password.cpp \
-		moc_addpassword.cpp
+		moc_addpassword.cpp \
+		moc_viewpassword.cpp
 OBJECTS       = main.o \
 		startmenu.o \
 		mainwindow.o \
 		password.o \
 		addpassword.o \
 		qgrostlhash.o \
+		viewpassword.o \
 		qrc_rescources.o \
 		moc_startmenu.o \
 		moc_mainwindow.o \
 		moc_password.o \
-		moc_addpassword.o
+		moc_addpassword.o \
+		moc_viewpassword.o
 DIST          = ../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../Qt/5.4/clang_64/mkspecs/qdevice.pri \
 		../Qt/5.4/clang_64/mkspecs/features/device_config.prf \
@@ -201,12 +205,14 @@ DIST          = ../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		mainwindow.h \
 		password.h \
 		addpassword.h \
-		qgrostlhash.h main.cpp \
+		qgrostlhash.h \
+		viewpassword.h main.cpp \
 		startmenu.cpp \
 		mainwindow.cpp \
 		password.cpp \
 		addpassword.cpp \
-		qgrostlhash.cpp
+		qgrostlhash.cpp \
+		viewpassword.cpp
 QMAKE_TARGET  = SecureShield
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SecureShield.app/Contents/MacOS/SecureShield
@@ -244,7 +250,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_startmenu.h ui_mainwindow.h ui_password.h ui_addpassword.h $(OBJECTS)  
+$(TARGET): ui_startmenu.h ui_mainwindow.h ui_password.h ui_addpassword.h ui_viewpassword.h $(OBJECTS)  
 	@test -d SecureShield.app/Contents/MacOS/ || mkdir -p SecureShield.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -547,9 +553,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents rescources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents startmenu.h mainwindow.h password.h addpassword.h qgrostlhash.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp password.cpp addpassword.cpp qgrostlhash.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents startmenu.ui mainwindow.ui password.ui addpassword.ui $(DISTDIR)/
+	$(COPY_FILE) --parents startmenu.h mainwindow.h password.h addpassword.h qgrostlhash.h viewpassword.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp password.cpp addpassword.cpp qgrostlhash.cpp viewpassword.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents startmenu.ui mainwindow.ui password.ui addpassword.ui viewpassword.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -628,9 +634,9 @@ qrc_rescources.cpp: rescources.qrc \
 		fileopen.png
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/rcc -name rescources rescources.qrc -o qrc_rescources.cpp
 
-compiler_moc_header_make_all: moc_startmenu.cpp moc_mainwindow.cpp moc_password.cpp moc_addpassword.cpp
+compiler_moc_header_make_all: moc_startmenu.cpp moc_mainwindow.cpp moc_password.cpp moc_addpassword.cpp moc_viewpassword.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_startmenu.cpp moc_mainwindow.cpp moc_password.cpp moc_addpassword.cpp
+	-$(DEL_FILE) moc_startmenu.cpp moc_mainwindow.cpp moc_password.cpp moc_addpassword.cpp moc_viewpassword.cpp
 moc_startmenu.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtCore \
@@ -1203,6 +1209,8 @@ moc_mainwindow.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Header
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrelationaltablemodel.h \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqltablemodel.h \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
+		addpassword.h \
+		mainwindow.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
@@ -1500,14 +1508,27 @@ moc_addpassword.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Heade
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		mainwindow.h \
+		startmenu.h \
+		addpassword.h \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtreewidget.h \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
 		addpassword.h
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/carlmansfield/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/carlmansfield/GroupProject2 -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/carlmansfield/Qt/5.4/clang_64/lib addpassword.h -o moc_addpassword.cpp
 
+moc_viewpassword.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		viewpassword.h
+	/Users/carlmansfield/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/carlmansfield/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/carlmansfield/GroupProject2 -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/carlmansfield/Qt/5.4/clang_64/lib viewpassword.h -o moc_viewpassword.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_startmenu.h ui_mainwindow.h ui_password.h ui_addpassword.h
+compiler_uic_make_all: ui_startmenu.h ui_mainwindow.h ui_password.h ui_addpassword.h ui_viewpassword.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_startmenu.h ui_mainwindow.h ui_password.h ui_addpassword.h
+	-$(DEL_FILE) ui_startmenu.h ui_mainwindow.h ui_password.h ui_addpassword.h ui_viewpassword.h
 ui_startmenu.h: startmenu.ui
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/uic startmenu.ui -o ui_startmenu.h
 
@@ -1519,6 +1540,9 @@ ui_password.h: password.ui
 
 ui_addpassword.h: addpassword.ui
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/uic addpassword.ui -o ui_addpassword.h
+
+ui_viewpassword.h: viewpassword.ui
+	/Users/carlmansfield/Qt/5.4/clang_64/bin/uic viewpassword.ui -o ui_viewpassword.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -1818,6 +1842,7 @@ main.o: main.cpp startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		mainwindow.h \
+		addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
@@ -2114,6 +2139,7 @@ startmenu.o: startmenu.cpp startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		ui_startmenu.h \
 		mainwindow.h \
+		addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
@@ -2415,6 +2441,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqlrelationaltablemodel.h \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qsqltablemodel.h \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
+		addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
@@ -2425,8 +2452,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
-		password.h \
-		addpassword.h
+		password.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 password.o: password.cpp password.h \
@@ -2720,16 +2746,17 @@ addpassword.o: addpassword.cpp addpassword.h \
 		../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Headers/qtsqlversion.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
-		ui_addpassword.h \
-		startmenu.h \
 		mainwindow.h \
+		startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidget \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtreewidget.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
+		ui_addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
-		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
+		password.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addpassword.o addpassword.cpp
 
 qgrostlhash.o: qgrostlhash.cpp qgrostlhash.h \
@@ -2743,6 +2770,12 @@ qgrostlhash.o: qgrostlhash.cpp qgrostlhash.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		grostlimpl.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qgrostlhash.o qgrostlhash.cpp
+
+viewpassword.o: viewpassword.cpp viewpassword.h \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		ui_viewpassword.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o viewpassword.o viewpassword.cpp
 
 qrc_rescources.o: qrc_rescources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_rescources.o qrc_rescources.cpp
@@ -2758,6 +2791,9 @@ moc_password.o: moc_password.cpp
 
 moc_addpassword.o: moc_addpassword.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addpassword.o moc_addpassword.cpp
+
+moc_viewpassword.o: moc_viewpassword.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_viewpassword.o moc_viewpassword.cpp
 
 ####### Install
 

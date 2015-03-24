@@ -7,6 +7,7 @@
 #include "qgrostlhash.h"
 #include "password.h"
 #include "addpassword.h"
+#include "viewpassword.h"
 
 #define Path_to_DB "passwords.db"
 
@@ -75,8 +76,8 @@ void MainWindow::on_action_Cut_triggered()
 
 void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
-    password *p = new password();
-    p->show();
+    viewPassword *view = new viewPassword();
+    view->show();
 }
 
 void MainWindow::on_action_Redo_triggered()
