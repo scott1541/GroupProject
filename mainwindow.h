@@ -52,6 +52,8 @@ private slots:
 
     void on_actionEditEntry_triggered();
 
+    void on_actionChange_Password_triggered();
+
 private:
     Ui::MainWindow *ui;
 

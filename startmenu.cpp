@@ -99,10 +99,6 @@ void startmenu::on_pushButton_clicked() //Login/account creation button
                 {
                         if (qry.next())
                         {
-                                ui->label_5->setText("[+] Correct Username and Password");
-                                QString msg = "username = " + qry.value(0).toString() + " \n" +
-                                        "password = " + qry.value(1).toString() + " \n";
-                                //QMessageBox::warning(this, "Login was successful", msg);
                                 MainWindow *mainWin = new MainWindow;
                                 mainWin->show();
                                 hide();

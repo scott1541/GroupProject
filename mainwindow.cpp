@@ -8,6 +8,7 @@
 #include "password.h"
 #include "addpassword.h"
 #include "viewpassword.h"
+#include "changepassword.h"
 
 #define Path_to_DB "passwords.db"
 
@@ -137,3 +138,9 @@ void MainWindow::on_actionEditEntry_triggered()
     showPasswords();
 }
 
+
+void MainWindow::on_actionChange_Password_triggered()
+{
+    ChangePassword *chPass = new ChangePassword;
+    chPass->show();
+}

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.1
+** Created by: Qt User Interface Compiler version 5.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -56,6 +56,9 @@ public:
     QAction *actionAddEntry;
     QAction *actionDeleteEntry;
     QAction *actionEditEntry;
+    QAction *actionChange_Password;
+    QAction *actionRemove_All_Data;
+    QAction *actionDelete_Account;
     QWidget *centralwidget;
     QTreeWidget *treeWidget;
     QPushButton *pushButton;
@@ -68,6 +71,7 @@ public:
     QMenu *menuTools;
     QMenu *menuHelp_2;
     QMenu *menuHelp;
+    QMenu *menuOptions;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -207,6 +211,12 @@ public:
         QIcon icon17;
         icon17.addFile(QStringLiteral(":/Images/editKey.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionEditEntry->setIcon(icon17);
+        actionChange_Password = new QAction(MainWindow);
+        actionChange_Password->setObjectName(QStringLiteral("actionChange_Password"));
+        actionRemove_All_Data = new QAction(MainWindow);
+        actionRemove_All_Data->setObjectName(QStringLiteral("actionRemove_All_Data"));
+        actionDelete_Account = new QAction(MainWindow);
+        actionDelete_Account->setObjectName(QStringLiteral("actionDelete_Account"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         treeWidget = new QTreeWidget(centralwidget);
@@ -249,6 +259,8 @@ public:
         menuHelp_2->setObjectName(QStringLiteral("menuHelp_2"));
         menuHelp = new QMenu(menubar);
         menuHelp->setObjectName(QStringLiteral("menuHelp"));
+        menuOptions = new QMenu(menubar);
+        menuOptions->setObjectName(QStringLiteral("menuOptions"));
         MainWindow->setMenuBar(menubar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QStringLiteral("toolBar"));
@@ -261,6 +273,7 @@ public:
         menubar->addAction(menuTools->menuAction());
         menubar->addAction(menuHelp_2->menuAction());
         menubar->addAction(menuHelp->menuAction());
+        menubar->addAction(menuOptions->menuAction());
         menuFile->addSeparator();
         menuFile->addAction(actionNew);
         menuFile->addAction(action_File);
@@ -278,6 +291,9 @@ public:
         menuTools->addAction(actionShow_Toolbar);
         menuHelp->addAction(actionGet_Help_Online_2);
         menuHelp->addAction(actionAbout_SecureShield);
+        menuOptions->addAction(actionChange_Password);
+        menuOptions->addAction(actionRemove_All_Data);
+        menuOptions->addAction(actionDelete_Account);
         toolBar->addAction(action_File);
         toolBar->addAction(actionSave_Ctrl_S);
         toolBar->addSeparator();
@@ -327,6 +343,9 @@ public:
         actionAddEntry->setText(QApplication::translate("MainWindow", "addEntry", 0));
         actionDeleteEntry->setText(QApplication::translate("MainWindow", "deleteEntry", 0));
         actionEditEntry->setText(QApplication::translate("MainWindow", "editEntry", 0));
+        actionChange_Password->setText(QApplication::translate("MainWindow", "Change Password", 0));
+        actionRemove_All_Data->setText(QApplication::translate("MainWindow", "Remove All Data", 0));
+        actionDelete_Account->setText(QApplication::translate("MainWindow", "Delete Account", 0));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
         ___qtreewidgetitem->setText(5, QApplication::translate("MainWindow", "Strength", 0));
         ___qtreewidgetitem->setText(4, QApplication::translate("MainWindow", "Description", 0));
@@ -346,6 +365,7 @@ public:
         menuTools->setTitle(QApplication::translate("MainWindow", "View", 0));
         menuHelp_2->setTitle(QApplication::translate("MainWindow", "Tools", 0));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
+        menuOptions->setTitle(QApplication::translate("MainWindow", "Options", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
         toolBar->setProperty("searchBar", QVariant(QString()));
     } // retranslateUi
