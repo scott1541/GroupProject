@@ -24,6 +24,8 @@ public:
 
     void showPasswords();
 
+    void searchPasswords(QString Word);
+
     ~MainWindow();
 
 private slots:
@@ -53,6 +55,8 @@ private slots:
     void on_actionEditEntry_triggered();
 
     void on_actionChange_Password_triggered();
+
+    void on_textEdit_textChanged();
 
 private:
     Ui::MainWindow *ui;

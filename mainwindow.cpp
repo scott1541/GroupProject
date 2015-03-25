@@ -144,3 +144,51 @@ void MainWindow::on_actionChange_Password_triggered()
     ChangePassword *chPass = new ChangePassword;
     chPass->show();
 }
+
+void MainWindow::searchPasswords(QString Word)
+{
+    ui->treeWidget->clear();
+    myDB = QSqlDatabase::addDatabase("QSQLITE");
+    myDB.setDatabaseName(Path_to_DB);
+    QFileInfo checkFile(Path_to_DB);
+
+    if (checkFile.isFile())
+    {
+        if(myDB.open())
+        {
+            qDebug() << "[+] Connected To Database!";
+        }
+
+    }else{
+            qDebug() << "[!] Database File Not Found.";
+    }
+
+    QSqlQuery qry;
+
+    if (qry.exec("SELECT * FROM passwords WHERE username = '" + Username + "'AND name LIKE '" + Word + "'"))
+    {
+        while (qry.next())
+        {
+            QTreeWidgetItem *item = new QTreeWidgetItem();
+            item->setText(0, qry.value("name").toString());
+            item->setText(1, qry.value("usernameID").toString());
+            item->setText(2, qry.value("password").toString());
+            item->setText(3, qry.value("dateadded").toString());
+            item->setText(4, qry.value("description").toString());
+            //qDebug() << qry.value("username").toString();
+            ui->treeWidget->addTopLevelItem(item);
+        }
+    }
+}
+
+
+void MainWindow::on_textEdit_textChanged()
+{
+    QString Word;
+    Word = ui->textEdit->toPlainText();
+    Word = '%' + Word + '%';
+
+    searchPasswords(Word);
+}
+
+
