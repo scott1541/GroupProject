@@ -14,6 +14,10 @@ ChangePassword::ChangePassword(QWidget *parent) :
     qry.addBindValue(Password);
     qry.exec();
     */
+    QString oPassword = ui->lineEdit->text();
+    QString nPassword = ui->lineEdit_2->text();
+    QString vPassword = ui->lineEdit_3->text();
+
     /*
     QSqlQuery qry;
     if (Login && PasswordIsNotEmpty)
