@@ -192,3 +192,20 @@ void MainWindow::on_textEdit_textChanged()
 }
 
 
+
+void MainWindow::on_actionDeleteEntry_triggered()
+{
+
+    QMessageBox* msgBox = new QMessageBox(this);
+            msgBox->setWindowTitle("Confirmation");
+            msgBox->setText("Are You Sure You Want To Remove This Entry?");
+
+            QPushButton *yesButton = msgBox->addButton(tr("Yes"), QMessageBox::ActionRole);
+            msgBox->addButton(tr("No"), QMessageBox::ActionRole);
+            msgBox->exec();
+
+            if ((QPushButton*)msgBox->clickedButton() == yesButton)
+            {
+                delete ui->treeWidget->currentItem();
+            }
+}

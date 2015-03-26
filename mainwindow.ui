@@ -251,7 +251,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/fileopen.png</normaloff>:/Images/fileopen.png</iconset>
    </property>
    <property name="text">
@@ -265,7 +265,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="action_Undo">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/undo.png</normaloff>:/Images/undo.png</iconset>
    </property>
    <property name="text">
@@ -279,7 +279,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="action_Redo">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/redo.png</normaloff>:/Images/redo.png</iconset>
    </property>
    <property name="text">
@@ -293,7 +293,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="action_Cut">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/cut.png</normaloff>:/Images/cut.png</iconset>
    </property>
    <property name="text">
@@ -321,7 +321,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionFormat">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/paste.png</normaloff>:/Images/paste.png</iconset>
    </property>
    <property name="text">
@@ -345,7 +345,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSave_Ctrl_S">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/save.png</normaloff>:/Images/save.png</iconset>
    </property>
    <property name="text">
@@ -359,7 +359,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSave_As_F12">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/save.png</normaloff>:/Images/save.png</iconset>
    </property>
    <property name="text">
@@ -373,7 +373,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/filenew.png</normaloff>:/Images/filenew.png</iconset>
    </property>
    <property name="text">
@@ -387,7 +387,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionGet_Help_Online_2">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/defaulticon.png</normaloff>:/Images/defaulticon.png</iconset>
    </property>
    <property name="text">
@@ -401,7 +401,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionEncryption">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/encrypted.png</normaloff>:/Images/encrypted.png</iconset>
    </property>
    <property name="text">
@@ -410,7 +410,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAdd_New_Category">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/accessories-text-editor.png</normaloff>:/Images/accessories-text-editor.png</iconset>
    </property>
    <property name="text">
@@ -424,7 +424,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionHelpimage">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/help-browser.png</normaloff>:/Images/help-browser.png</iconset>
    </property>
    <property name="text">
@@ -433,7 +433,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAbout_SecureShield">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/info.png</normaloff>:/Images/info.png</iconset>
    </property>
    <property name="text">
@@ -447,7 +447,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSearchFunction">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/find.png</normaloff>:/Images/find.png</iconset>
    </property>
    <property name="text">
@@ -517,7 +517,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAddEntry">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/addKey.png</normaloff>:/Images/addKey.png</iconset>
    </property>
    <property name="text">
@@ -526,7 +526,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionDeleteEntry">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/deleteKey.png</normaloff>:/Images/deleteKey.png</iconset>
    </property>
    <property name="text">
@@ -535,7 +535,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionEditEntry">
    <property name="icon">
-    <iconset>
+    <iconset resource="rescources.qrc">
      <normaloff>:/Images/editKey.png</normaloff>:/Images/editKey.png</iconset>
    </property>
    <property name="text">
@@ -558,6 +558,8 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="rescources.qrc"/>
+ </resources>
  <connections/>
 </ui>
