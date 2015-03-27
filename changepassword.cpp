@@ -14,9 +14,9 @@ ChangePassword::ChangePassword(QWidget *parent) :
     qry.addBindValue(Password);
     qry.exec();
     */
-    QString oPassword = ui->lineEdit->text();
-    QString nPassword = ui->lineEdit_2->text();
-    QString vPassword = ui->lineEdit_3->text();
+    //QString oPassword = ui->lineEdit->text();
+    //QString nPassword = ui->lineEdit_2->text();
+    //QString vPassword = ui->lineEdit_3->text();
 
     /*
     QSqlQuery qry;
@@ -35,9 +35,9 @@ ChangePassword::ChangePassword(QWidget *parent) :
                             ui->label_5->setText("[-] Incorrect Username or Password");
                     }
             }
-    }
+    }*/
 }
-*/
+
 ChangePassword::~ChangePassword()
 {
     delete ui;

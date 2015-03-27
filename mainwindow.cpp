@@ -206,6 +206,10 @@ void MainWindow::on_actionDeleteEntry_triggered()
 
             if ((QPushButton*)msgBox->clickedButton() == yesButton)
             {
+                QString Name = ui->treeWidget->currentItem()->text(0);
+                QSqlQuery qry;
+                qry.exec("DELETE FROM passwords WHERE username ='" + Username + "'AND name ='" + Name + "'");
+                showPasswords();
                 delete ui->treeWidget->currentItem();
             }
 }
