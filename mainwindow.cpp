@@ -9,6 +9,7 @@
 #include "addpassword.h"
 #include "viewpassword.h"
 #include "changepassword.h"
+#include "twofish.h"
 
 #define Path_to_DB "passwords.db"
 
@@ -19,6 +20,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     showPasswords();
+
+    Twofish_Byte word [16];
+    Twofish_Byte encryptedword [16];
+
+    Twofish *twofish = new Twofish();
+    TwofishKey *key = new TwofishKey();
+    Twofish_Byte byte [32];
+
+    twofish->PrepareKey(byte, 16, key);
+    qDebug() << key;
+
+    twofish->Encrypt(key, word, encryptedword);
+    qDebug() << encryptedword;
+
+    Twofish_Byte decrypted[16];
+
+    twofish->Decrypt(key, encryptedword, decrypted);
+    qDebug() << decrypted;
 
 }
 

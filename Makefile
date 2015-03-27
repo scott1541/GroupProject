@@ -55,7 +55,8 @@ SOURCES       = main.cpp \
 		addpassword.cpp \
 		qgrostlhash.cpp \
 		viewpassword.cpp \
-		changepassword.cpp qrc_rescources.cpp \
+		changepassword.cpp \
+		twofish.cpp qrc_rescources.cpp \
 		moc_startmenu.cpp \
 		moc_mainwindow.cpp \
 		moc_password.cpp \
@@ -70,6 +71,7 @@ OBJECTS       = main.o \
 		qgrostlhash.o \
 		viewpassword.o \
 		changepassword.o \
+		twofish.o \
 		qrc_rescources.o \
 		moc_startmenu.o \
 		moc_mainwindow.o \
@@ -211,14 +213,16 @@ DIST          = ../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		addpassword.h \
 		qgrostlhash.h \
 		viewpassword.h \
-		changepassword.h main.cpp \
+		changepassword.h \
+		twofish.h main.cpp \
 		startmenu.cpp \
 		mainwindow.cpp \
 		password.cpp \
 		addpassword.cpp \
 		qgrostlhash.cpp \
 		viewpassword.cpp \
-		changepassword.cpp
+		changepassword.cpp \
+		twofish.cpp
 QMAKE_TARGET  = SecureShield
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SecureShield.app/Contents/MacOS/SecureShield
@@ -559,8 +563,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents rescources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents startmenu.h mainwindow.h password.h addpassword.h qgrostlhash.h viewpassword.h changepassword.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp password.cpp addpassword.cpp qgrostlhash.cpp viewpassword.cpp changepassword.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents startmenu.h mainwindow.h password.h addpassword.h qgrostlhash.h viewpassword.h changepassword.h twofish.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp password.cpp addpassword.cpp qgrostlhash.cpp viewpassword.cpp changepassword.cpp twofish.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents startmenu.ui mainwindow.ui password.ui addpassword.ui viewpassword.ui changepassword.ui $(DISTDIR)/
 
 
@@ -2862,6 +2866,9 @@ changepassword.o: changepassword.cpp changepassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		ui_changepassword.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o changepassword.o changepassword.cpp
+
+twofish.o: twofish.cpp twofish.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o twofish.o twofish.cpp
 
 qrc_rescources.o: qrc_rescources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_rescources.o qrc_rescources.cpp

@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     qgrostlhash.cpp \
     grostlimpl.cpp \
     viewpassword.cpp \
-    changepassword.cpp
+    changepassword.cpp \
+    twofish.cpp
 
 HEADERS  += startmenu.h \
     mainwindow.h \
@@ -28,7 +29,8 @@ HEADERS  += startmenu.h \
     addpassword.h \
     qgrostlhash.h \
     viewpassword.h \
-    changepassword.h
+    changepassword.h \
+    twofish.h
 
 FORMS    += startmenu.ui \
     mainwindow.ui \
