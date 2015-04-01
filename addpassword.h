@@ -33,6 +33,8 @@ private slots:
 
     void getPasswordStrength();
 
+    void on_pushButton_2_pressed();
+
 private:
     Ui::addPassword *ui;
 

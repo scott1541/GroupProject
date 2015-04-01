@@ -41,6 +41,7 @@ public:
     QTextEdit *textEdit;
     QProgressBar *progressBar;
     QLabel *label_8;
+    QPushButton *pushButton_2;
 
     void setupUi(QDialog *addPassword)
     {
@@ -112,6 +113,9 @@ public:
         label_8 = new QLabel(addPassword);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(318, 250, 151, 20));
+        pushButton_2 = new QPushButton(addPassword);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(10, 215, 115, 32));
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
@@ -135,6 +139,10 @@ public:
         pushButton->setText(QApplication::translate("addPassword", "Add ", 0));
         label_6->setText(QApplication::translate("addPassword", "Verify Password", 0));
         label_8->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        pushButton_2->setToolTip(QApplication::translate("addPassword", "Click to generate a password", 0));
+#endif // QT_NO_TOOLTIP
+        pushButton_2->setText(QApplication::translate("addPassword", "Generate", 0));
     } // retranslateUi
 
 };

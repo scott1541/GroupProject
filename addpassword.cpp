@@ -118,3 +118,15 @@ void addPassword::getPasswordStrength()
         }
         ui->label_11->setText(passDesc);*/
 }
+
+void addPassword::on_pushButton_2_pressed()
+{
+    passwordTools *p = new passwordTools();
+
+    QString Password = p->passwordGenerator();
+    qDebug() << Password;
+
+    ui->lineEdit_3->setText(Password);
+    ui->lineEdit_5->setText(Password);
+    getPasswordStrength();
+}

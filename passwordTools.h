@@ -15,6 +15,7 @@ class passwordTools : public QDialog
 public:
     explicit passwordTools(QWidget *parent = 0);
     int passwordEntropy(QString Password);
+    QString passwordGenerator();
     ~passwordTools();
 
 private slots:

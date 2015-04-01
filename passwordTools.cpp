@@ -1,5 +1,7 @@
 #include "passwordTools.h"
 #include "ui_passwordTools.h"
+#include <cstdlib>
+#include <ctime>
 
 passwordTools::passwordTools(QWidget *parent) :
     QDialog(parent),
@@ -52,6 +54,27 @@ int passwordTools::passwordEntropy(QString Password)
     passStr = (passStr * 0.7);
 
     return passStr;
+}
+
+QString passwordTools::passwordGenerator()
+{
+    static const char alphanum[] = "0123456789"
+    "!@#$%^&*_-"
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    "abcdefghijklmnopqrstuvwxyz";
+
+    int stringLength = sizeof(alphanum) - 1;
+
+    QString Password;
+
+    srand(time(0));
+
+    for (int i = 0; i < 20; ++i)
+    {
+        Password += alphanum[rand() % stringLength];
+    }
+
+    return Password;
 }
 
 
