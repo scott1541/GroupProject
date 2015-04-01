@@ -15,22 +15,22 @@ TEMPLATE = app
 SOURCES += main.cpp\
         startmenu.cpp \
     mainwindow.cpp \
-    password.cpp \
     addpassword.cpp \
     qgrostlhash.cpp \
     grostlimpl.cpp \
     viewpassword.cpp \
     changepassword.cpp \
-    twofish.cpp
+    twofish.cpp \
+    passwordTools.cpp
 
 HEADERS  += startmenu.h \
     mainwindow.h \
-    password.h \
     addpassword.h \
     qgrostlhash.h \
     viewpassword.h \
     changepassword.h \
-    twofish.h
+    twofish.h \
+    passwordTools.h
 
 FORMS    += startmenu.ui \
     mainwindow.ui \

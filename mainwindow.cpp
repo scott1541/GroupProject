@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include "startmenu.h"
 #include "qgrostlhash.h"
-#include "password.h"
+#include "passwordTools.h"
 #include "addpassword.h"
 #include "viewpassword.h"
 #include "changepassword.h"
@@ -151,8 +151,8 @@ void MainWindow::showPasswords()
             item->setText(4, qry.value("description").toString());
 
             QString Password = qry.value("password").toString();
-            password *p = new password();
-            int Strength = p->passWord(Password);
+            passwordTools *p = new passwordTools();
+            int Strength = p->passwordEntropy(Password);
 
             if (Strength <= 25)
             {
@@ -222,8 +222,8 @@ void MainWindow::searchPasswords(QString Word)
             item->setText(4, qry.value("description").toString());
             //qDebug() << qry.value("username").toString();
             QString Password = qry.value("password").toString();
-            password *p = new password();
-            int Strength = p->passWord(Password);
+            passwordTools *p = new passwordTools();
+            int Strength = p->passwordEntropy(Password);
 
             if (Strength <= 25)
             {

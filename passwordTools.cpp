@@ -1,14 +1,14 @@
-#include "password.h"
-#include "ui_password.h"
+#include "passwordTools.h"
+#include "ui_passwordTools.h"
 
-password::password(QWidget *parent) :
+passwordTools::passwordTools(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::password)
+    ui(new Ui::passwordTools)
 {
     ui->setupUi(this);
 }
 
-int password::passWord(QString passWd)
+int passwordTools::passwordEntropy(QString Password)
 {
 
     bool upC;  //Uppercase characters
@@ -20,15 +20,15 @@ int password::passWord(QString passWd)
     int charSet = 0;  //Character set count
     int passStr = 0;  //Password bit strength
 
-    charCnt = passWd.length();   //Get length of password
+    charCnt = Password.length();   //Get length of password
 
     //QString passcharo = QString::number(charCnt);
     //ui->charcount->setText(passcharo);
 
-    loC = passWd.contains(QRegExp("[a-z]"));   //Using regular expressions to detect characters in password string
-    upC = passWd.contains(QRegExp("[A-Z]"));
-    nuM = passWd.contains(QRegExp("[0-9]"));
-    slC = passWd.contains(QRegExp("[ -~][^a-z][^A-Z][^0-9]"));
+    loC = Password.contains(QRegExp("[a-z]"));   //Using regular expressions to detect characters in password string
+    upC = Password.contains(QRegExp("[A-Z]"));
+    nuM = Password.contains(QRegExp("[0-9]"));
+    slC = Password.contains(QRegExp("[ -~][^a-z][^A-Z][^0-9]"));
 
     if (loC == true)
     {
@@ -55,7 +55,7 @@ int password::passWord(QString passWd)
 }
 
 
-password::~password()
+passwordTools::~passwordTools()
 {
     delete ui;
 }
