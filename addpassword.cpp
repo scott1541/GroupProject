@@ -130,3 +130,13 @@ void addPassword::on_pushButton_2_pressed()
     ui->lineEdit_5->setText(Password);
     getPasswordStrength();
 }
+
+void addPassword::on_checkBox_toggled(bool checked)
+{
+    if (checked)
+    {
+        ui->lineEdit_3->setEchoMode(QLineEdit::EchoMode());
+    } else {
+        ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+    }
+}

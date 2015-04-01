@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -42,6 +43,7 @@ public:
     QProgressBar *progressBar;
     QLabel *label_8;
     QPushButton *pushButton_2;
+    QCheckBox *checkBox;
 
     void setupUi(QDialog *addPassword)
     {
@@ -116,6 +118,9 @@ public:
         pushButton_2 = new QPushButton(addPassword);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(10, 215, 115, 32));
+        checkBox = new QCheckBox(addPassword);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setGeometry(QRect(180, 240, 121, 20));
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
@@ -143,6 +148,7 @@ public:
         pushButton_2->setToolTip(QApplication::translate("addPassword", "Click to generate a password", 0));
 #endif // QT_NO_TOOLTIP
         pushButton_2->setText(QApplication::translate("addPassword", "Generate", 0));
+        checkBox->setText(QApplication::translate("addPassword", "Show password", 0));
     } // retranslateUi
 
 };
