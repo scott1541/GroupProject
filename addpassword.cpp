@@ -74,6 +74,22 @@ void addPassword::on_pushButton_clicked(bool checked)
     QString UsernameID = ui->lineEdit_2->text();
     QString Name = ui->lineEdit->text();
 
+    QSqlQuery nameUse;
+
+    bool validName;
+
+    if (nameUse.exec("SELECT name FROM passwords WHERE name = '" + Name + "' AND username = '" + Username + "'"))
+    {
+        if (nameUse.next())
+        {
+            validName = false;
+            qDebug() << "Name " + Name + " is in use";
+        } else {
+            validName = true;
+            qDebug() << "Name " + Name + " is available";
+        }
+    }
+
     if (Name.isEmpty() || UsernameID.isEmpty() || Password.isEmpty())
     {
         QMessageBox::warning(this, "Error!", "You have missed a field.");
@@ -81,6 +97,10 @@ void addPassword::on_pushButton_clicked(bool checked)
     else if (Password!= PasswordV)
     {
         QMessageBox::warning(this, "Error!", "Passwords do not match");
+    }
+    else if (!validName)
+    {
+        QMessageBox::warning(this, "Error", "You are already using this name for a password");
     } else {
         addNewPassword();
         //MainWindow::ui->treeWidget->clear();
