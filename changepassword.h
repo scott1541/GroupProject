@@ -15,6 +15,15 @@ public:
     explicit ChangePassword(QWidget *parent = 0);
     ~ChangePassword();
 
+private slots:
+    void on_lineEdit_textEdited(const QString &arg1);
+
+    void on_lineEdit_2_textEdited(const QString &arg1);
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::ChangePassword *ui;
 
