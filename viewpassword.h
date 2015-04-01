@@ -16,6 +16,11 @@ public:
     explicit viewPassword(QWidget *parent = 0);
     ~viewPassword();
 
+    void setName(QString Name);
+    void setUsername(QString Username);
+    void setPassword(QString Password);
+    void setDescription(QString Description);
+
 private:
     Ui::viewPassword *ui;
 

@@ -22,21 +22,29 @@ viewPassword::viewPassword(QWidget *parent) :
     }else{
             qDebug() << "[!] Database File Not Found.";
     }
-
-    QSqlQuery qry;
-
-    QString Name = qry.value("name").toString();
-    ui->lineEdit->setText(Name);
-
-    /*item->setText(0, qry.value("name").toString());
-    item->setText(1, qry.value("usernameID").toString());
-    item->setText(2, qry.value("password").toString());
-    item->setText(3, qry.value("dateadded").toString());
-    item->setText(4, qry.value("description").toString());*/
-
 }
 
 viewPassword::~viewPassword()
 {
     delete ui;
+}
+
+void viewPassword::setName(QString Name)
+{
+    ui->lineEdit->setText(Name);
+}
+
+void viewPassword::setUsername(QString Username)
+{
+    ui->lineEdit_2->setText(Username);
+}
+
+void viewPassword::setPassword(QString Password)
+{
+    ui->lineEdit_3->setText(Password);
+}
+
+void viewPassword::setDescription(QString Description)
+{
+    ui->textEdit->setText(Description);
 }

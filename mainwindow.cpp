@@ -98,6 +98,14 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
 {
     viewPassword *view = new viewPassword();
     view->show();
+    QString Name = item->text(0);
+    QString Username = item->text(1);
+    QString Password = item->text(2);
+    QString Description = item->text(0);
+    view->setName(Name);
+    view->setUsername(Username);
+    view->setPassword(Password);
+    view->setDescription(Description);
 }
 
 void MainWindow::on_action_Redo_triggered()
