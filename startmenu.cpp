@@ -99,7 +99,8 @@ void startmenu::on_pushButton_clicked() //Login/account creation button
                 {
                         if (qry.next())
                         {
-                                MainWindow *mainWin = new MainWindow;
+                                MainWindow *mainWin = new MainWindow();
+                                mainWin->setWindowTitle("Secure Shield: " + Username + " logged in");
                                 mainWin->show();
                                 hide();
                         }
@@ -123,7 +124,8 @@ void startmenu::on_pushButton_clicked() //Login/account creation button
                         {
                 CreateAccount(Username, Password);
                 QMessageBox::warning(this, "Success!", "Your account has been created!");
-                MainWindow *mainWin = new MainWindow;
+                MainWindow *mainWin = new MainWindow();
+                mainWin->setWindowTitle("Secure Shield: " + Username + " logged in");
                 mainWin->show();
                 hide();
                         }

@@ -101,11 +101,12 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     QString Name = item->text(0);
     QString Username = item->text(1);
     QString Password = item->text(2);
-    QString Description = item->text(0);
+    QString Description = item->text(4);
     view->setName(Name);
     view->setUsername(Username);
     view->setPassword(Password);
     view->setDescription(Description);
+    view->setWindowTitle("Secure Shield: " + Name);
 }
 
 void MainWindow::on_action_Redo_triggered()

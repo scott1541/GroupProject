@@ -82,6 +82,7 @@ public:
         QFont font;
         font.setFamily(QStringLiteral("Corbel"));
         MainWindow->setFont(font);
+        MainWindow->setWindowTitle(QStringLiteral("Secure Shield"));
         MainWindow->setIconSize(QSize(20, 20));
         action_File = new QAction(MainWindow);
         action_File->setObjectName(QStringLiteral("action_File"));
@@ -316,7 +317,6 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Secure Shield", 0));
         action_File->setText(QApplication::translate("MainWindow", "&Open     Ctrl+O", 0));
         action_Undo->setText(QApplication::translate("MainWindow", "Undo       Ctrl+Z", 0));
         action_Redo->setText(QApplication::translate("MainWindow", "Redo       Ctrl+Y", 0));
@@ -368,6 +368,7 @@ public:
         menuOptions->setTitle(QApplication::translate("MainWindow", "Options", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
         toolBar->setProperty("searchBar", QVariant(QString()));
+        Q_UNUSED(MainWindow);
     } // retranslateUi
 
 };

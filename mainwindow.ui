@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Secure Shield</string>
+   <string notr="true">Secure Shield</string>
   </property>
   <property name="iconSize">
    <size>
