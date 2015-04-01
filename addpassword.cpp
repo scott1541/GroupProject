@@ -6,6 +6,7 @@
 #include <QtGui>
 #include <QLabel>
 #include "password.h"
+#include "ui_mainwindow.h"
 #define Path_to_DB "passwords.db"
 
 addPassword::addPassword(QWidget *parent) :
@@ -82,8 +83,9 @@ void addPassword::on_pushButton_clicked(bool checked)
         QMessageBox::warning(this, "Error!", "Passwords do not match");
     } else {
         addNewPassword();
-        MainWindow *m = new MainWindow;
-        m->showPasswords();
+        //MainWindow::ui->treeWidget->clear();
+        MainWindow m;
+        m.showPasswords();
         this->close();
     }
 
