@@ -149,6 +149,23 @@ void MainWindow::showPasswords()
             item->setText(2, qry.value("password").toString());
             item->setText(3, qry.value("dateadded").toString());
             item->setText(4, qry.value("description").toString());
+
+            QString Password = qry.value("password").toString();
+            password *p = new password();
+            int Strength = p->passWord(Password);
+
+            if (Strength <= 25)
+            {
+                item->setIcon(5, QIcon("red.gif"));
+            }
+            else if (Strength > 25 && Strength <= 75)
+            {
+                item->setIcon(5, QIcon("orange.png"));
+            }
+            else if (Strength > 75)
+            {
+                item->setIcon(5, QIcon("green.png"));
+            }
             //qDebug() << qry.value("username").toString();
             ui->treeWidget->addTopLevelItem(item);
         }
@@ -204,6 +221,24 @@ void MainWindow::searchPasswords(QString Word)
             item->setText(3, qry.value("dateadded").toString());
             item->setText(4, qry.value("description").toString());
             //qDebug() << qry.value("username").toString();
+            QString Password = qry.value("password").toString();
+            password *p = new password();
+            int Strength = p->passWord(Password);
+
+            if (Strength <= 25)
+            {
+                item->setIcon(5, QIcon("red.gif"));
+            }
+            else if (Strength > 25 && Strength <= 75)
+            {
+                item->setIcon(5, QIcon("orange.png"));
+            }
+            else if (Strength > 75)
+            {
+                item->setIcon(5, QIcon("green.png"));
+            }
+
+
             ui->treeWidget->addTopLevelItem(item);
         }
     }
