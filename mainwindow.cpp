@@ -287,3 +287,21 @@ void MainWindow::on_actionDeleteEntry_triggered()
                 delete ui->treeWidget->currentItem();
             }
 }
+
+void MainWindow::on_actionRemove_All_Data_triggered()
+{
+    QMessageBox* msgBox = new QMessageBox(this);
+            msgBox->setWindowTitle("Confirmation");
+            msgBox->setText("Are You Sure You Want To Remove All Data?");
+
+            QPushButton *yesButton = msgBox->addButton(tr("Yes"), QMessageBox::ActionRole);
+            msgBox->addButton(tr("No"), QMessageBox::ActionRole);
+            msgBox->exec();
+
+            if ((QPushButton*)msgBox->clickedButton() == yesButton)
+            {
+                QSqlQuery qry;
+                qry.exec("DELETE FROM passwords WHERE username = Username");
+                showPasswords();
+            }
+}

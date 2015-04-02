@@ -49,7 +49,7 @@ public:
     {
         if (addPassword->objectName().isEmpty())
             addPassword->setObjectName(QStringLiteral("addPassword"));
-        addPassword->resize(458, 475);
+        addPassword->resize(458, 514);
         label = new QLabel(addPassword);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(120, 20, 171, 41));
@@ -81,7 +81,7 @@ public:
         label_5->setFont(font1);
         label_7 = new QLabel(addPassword);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(120, 320, 81, 16));
+        label_7->setGeometry(QRect(120, 350, 81, 16));
         label_7->setFont(font1);
         lineEdit = new QLineEdit(addPassword);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
@@ -95,19 +95,19 @@ public:
         lineEdit_3->setEchoMode(QLineEdit::Password);
         pushButton = new QPushButton(addPassword);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(180, 430, 71, 31));
+        pushButton->setGeometry(QRect(180, 460, 71, 31));
         pushButton->setFont(font1);
         lineEdit_5 = new QLineEdit(addPassword);
         lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
-        lineEdit_5->setGeometry(QRect(120, 280, 181, 21));
+        lineEdit_5->setGeometry(QRect(120, 310, 181, 21));
         lineEdit_5->setEchoMode(QLineEdit::Password);
         label_6 = new QLabel(addPassword);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(120, 260, 121, 16));
+        label_6->setGeometry(QRect(120, 290, 121, 16));
         label_6->setFont(font1);
         textEdit = new QTextEdit(addPassword);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(120, 340, 181, 79));
+        textEdit->setGeometry(QRect(120, 370, 181, 79));
         progressBar = new QProgressBar(addPassword);
         progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(320, 220, 118, 23));
@@ -117,10 +117,10 @@ public:
         label_8->setGeometry(QRect(318, 250, 151, 20));
         pushButton_2 = new QPushButton(addPassword);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(10, 215, 115, 32));
+        pushButton_2->setGeometry(QRect(20, 215, 91, 32));
         checkBox = new QCheckBox(addPassword);
         checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(180, 240, 121, 20));
+        checkBox->setGeometry(QRect(180, 250, 121, 20));
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
