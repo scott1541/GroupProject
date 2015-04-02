@@ -156,20 +156,27 @@ void MainWindow::showPasswords()
 
             if (Strength <= 25)
             {
+                item->setText(5, "x");
                 item->setIcon(5, QIcon("red.gif"));
             }
             else if (Strength > 25 && Strength <= 75)
             {
+                item->setText(5, "y");
                 item->setIcon(5, QIcon("orange.png"));
             }
             else if (Strength > 75)
             {
+                item->setText(5, "z");
                 item->setIcon(5, QIcon("green.png"));
             }
             //qDebug() << qry.value("username").toString();
             ui->treeWidget->addTopLevelItem(item);
         }
     }
+
+
+    ui->treeWidget->setSortingEnabled(true);
+
 }
 
 void MainWindow::on_actionAddEntry_triggered()
@@ -227,15 +234,19 @@ void MainWindow::searchPasswords(QString Word)
 
             if (Strength <= 25)
             {
+                item->setText(5, "x");
                 item->setIcon(5, QIcon("red.gif"));
+
             }
             else if (Strength > 25 && Strength <= 75)
             {
                 item->setIcon(5, QIcon("orange.png"));
+                item->setText(5, "y");
             }
             else if (Strength > 75)
             {
                 item->setIcon(5, QIcon("green.png"));
+                item->setText(5, "z");
             }
 
 
