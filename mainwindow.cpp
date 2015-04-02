@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include "startmenu.h"
 #include "qgrostlhash.h"
-#include "password.h"
+#include "passwordTools.h"
 #include "addpassword.h"
 #include "viewpassword.h"
 #include "changepassword.h"
@@ -97,7 +97,6 @@ void MainWindow::on_action_Cut_triggered()
 void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     viewPassword *view = new viewPassword();
-    view->show();
     QString Name = item->text(0);
     QString Username = item->text(1);
     QString Password = item->text(2);
@@ -107,6 +106,7 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     view->setPassword(Password);
     view->setDescription(Description);
     view->setWindowTitle("Secure Shield: " + Name);
+    view->show();
 }
 
 void MainWindow::on_action_Redo_triggered()
@@ -151,25 +151,32 @@ void MainWindow::showPasswords()
             item->setText(4, qry.value("description").toString());
 
             QString Password = qry.value("password").toString();
-            password *p = new password();
-            int Strength = p->passWord(Password);
+            passwordTools *p = new passwordTools();
+            int Strength = p->passwordEntropy(Password);
 
             if (Strength <= 25)
             {
+                item->setText(5, "x");
                 item->setIcon(5, QIcon("red.gif"));
             }
             else if (Strength > 25 && Strength <= 75)
             {
+                item->setText(5, "y");
                 item->setIcon(5, QIcon("orange.png"));
             }
             else if (Strength > 75)
             {
+                item->setText(5, "z");
                 item->setIcon(5, QIcon("green.png"));
             }
             //qDebug() << qry.value("username").toString();
             ui->treeWidget->addTopLevelItem(item);
         }
     }
+
+
+    ui->treeWidget->setSortingEnabled(true);
+
 }
 
 void MainWindow::on_actionAddEntry_triggered()
@@ -222,20 +229,24 @@ void MainWindow::searchPasswords(QString Word)
             item->setText(4, qry.value("description").toString());
             //qDebug() << qry.value("username").toString();
             QString Password = qry.value("password").toString();
-            password *p = new password();
-            int Strength = p->passWord(Password);
+            passwordTools *p = new passwordTools();
+            int Strength = p->passwordEntropy(Password);
 
             if (Strength <= 25)
             {
+                item->setText(5, "x");
                 item->setIcon(5, QIcon("red.gif"));
+
             }
             else if (Strength > 25 && Strength <= 75)
             {
                 item->setIcon(5, QIcon("orange.png"));
+                item->setText(5, "y");
             }
             else if (Strength > 75)
             {
                 item->setIcon(5, QIcon("green.png"));
+                item->setText(5, "z");
             }
 
 

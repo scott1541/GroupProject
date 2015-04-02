@@ -5,7 +5,7 @@
 #include <QtCore>
 #include <QtGui>
 #include <QLabel>
-#include "password.h"
+#include "passwordTools.h"
 #include "ui_mainwindow.h"
 #define Path_to_DB "passwords.db"
 
@@ -74,6 +74,22 @@ void addPassword::on_pushButton_clicked(bool checked)
     QString UsernameID = ui->lineEdit_2->text();
     QString Name = ui->lineEdit->text();
 
+    QSqlQuery nameUse;
+
+    bool validName;
+
+    if (nameUse.exec("SELECT name FROM passwords WHERE name = '" + Name + "' AND username = '" + Username + "'"))
+    {
+        if (nameUse.next())
+        {
+            validName = false;
+            qDebug() << "Name " + Name + " is in use";
+        } else {
+            validName = true;
+            qDebug() << "Name " + Name + " is available";
+        }
+    }
+
     if (Name.isEmpty() || UsernameID.isEmpty() || Password.isEmpty())
     {
         QMessageBox::warning(this, "Error!", "You have missed a field.");
@@ -81,6 +97,10 @@ void addPassword::on_pushButton_clicked(bool checked)
     else if (Password!= PasswordV)
     {
         QMessageBox::warning(this, "Error!", "Passwords do not match");
+    }
+    else if (!validName)
+    {
+        QMessageBox::warning(this, "Error", "You are already using this name for a password");
     } else {
         addNewPassword();
         //MainWindow::ui->treeWidget->clear();
@@ -94,8 +114,8 @@ void addPassword::on_pushButton_clicked(bool checked)
 void addPassword::getPasswordStrength()
 {
         QString paswd = ui->lineEdit_3->text();
-        password *ps = new password();
-        int passBits = ps->passWord(paswd);
+        passwordTools *ps = new passwordTools();
+        int passBits = ps->passwordEntropy(paswd);
         ui->progressBar->setValue(passBits);
         //QString output = QString::number(passBits);
         //ui->label_11->setText(getDesc(passBits));
@@ -117,4 +137,26 @@ void addPassword::getPasswordStrength()
                         ui->label_11->hide();
         }
         ui->label_11->setText(passDesc);*/
+}
+
+void addPassword::on_pushButton_2_pressed()
+{
+    passwordTools *p = new passwordTools();
+
+    QString Password = p->passwordGenerator();
+    qDebug() << Password;
+
+    ui->lineEdit_3->setText(Password);
+    ui->lineEdit_5->setText(Password);
+    getPasswordStrength();
+}
+
+void addPassword::on_checkBox_toggled(bool checked)
+{
+    if (checked)
+    {
+        ui->lineEdit_3->setEchoMode(QLineEdit::EchoMode());
+    } else {
+        ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+    }
 }

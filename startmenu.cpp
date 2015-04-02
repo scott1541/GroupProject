@@ -4,7 +4,7 @@
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
 #include <QLabel>
-#include "password.h"
+#include "passwordTools.h"
 #define Path_to_DB "login.db"
 bool Login = true;
 bool Creation = false;
@@ -217,8 +217,8 @@ void startmenu::on_lineEdit_2_textEdited(const QString &arg1) //2nd password fie
 void startmenu::getPasswordStrength()
 {
         QString paswd = ui->lineEdit_2->text();
-        password *ps = new password();
-        int passBits = ps->passWord(paswd);
+        passwordTools *ps = new passwordTools();
+        int passBits = ps->passwordEntropy(paswd);
         ui->progressBar->setValue(passBits);
         QString output = QString::number(passBits);
         //ui->label_11->setText(getDesc(passBits));

@@ -1,8 +1,12 @@
 #ifndef VIEWPASSWORD_H
 #define VIEWPASSWORD_H
 
-#include <QDialog>
+#include <QMainWindow>
+#include <QtCore>
+#include <QtGui>
+#include <QDebug>
 #include <QtSql>
+#include <QDialog>
 
 namespace Ui {
 class viewPassword;
@@ -20,6 +24,13 @@ public:
     void setUsername(QString Username);
     void setPassword(QString Password);
     void setDescription(QString Description);
+
+private slots:
+    void on_checkBox_toggled(bool checked);
+
+    void on_pushButton_clicked();
+
+    void editPassword(QString Name, QString newPassword);
 
 private:
     Ui::viewPassword *ui;

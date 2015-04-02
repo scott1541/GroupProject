@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addpassword.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -41,6 +42,8 @@ public:
     QTextEdit *textEdit;
     QProgressBar *progressBar;
     QLabel *label_8;
+    QPushButton *pushButton_2;
+    QCheckBox *checkBox;
 
     void setupUi(QDialog *addPassword)
     {
@@ -112,6 +115,12 @@ public:
         label_8 = new QLabel(addPassword);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(318, 250, 151, 20));
+        pushButton_2 = new QPushButton(addPassword);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(10, 215, 115, 32));
+        checkBox = new QCheckBox(addPassword);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setGeometry(QRect(180, 240, 121, 20));
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
@@ -135,6 +144,11 @@ public:
         pushButton->setText(QApplication::translate("addPassword", "Add ", 0));
         label_6->setText(QApplication::translate("addPassword", "Verify Password", 0));
         label_8->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        pushButton_2->setToolTip(QApplication::translate("addPassword", "Click to generate a password", 0));
+#endif // QT_NO_TOOLTIP
+        pushButton_2->setText(QApplication::translate("addPassword", "Generate", 0));
+        checkBox->setText(QApplication::translate("addPassword", "Show password", 0));
     } // retranslateUi
 
 };

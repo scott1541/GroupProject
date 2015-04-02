@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'viewpassword.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -31,16 +32,19 @@ public:
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_5;
-    QLabel *label_7;
-    QLineEdit *lineEdit;
     QLineEdit *lineEdit_2;
     QLineEdit *lineEdit_3;
     QPushButton *pushButton;
     QLineEdit *lineEdit_5;
     QLabel *label_6;
-    QTextEdit *textEdit;
     QProgressBar *progressBar;
     QLabel *label_8;
+    QLabel *label_9;
+    QLineEdit *lineEdit_6;
+    QLabel *label_7;
+    QLabel *label_10;
+    QTextEdit *textEdit;
+    QCheckBox *checkBox;
 
     void setupUi(QDialog *viewPassword)
     {
@@ -74,15 +78,8 @@ public:
         label_4->setFont(font1);
         label_5 = new QLabel(viewPassword);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(120, 200, 71, 16));
+        label_5->setGeometry(QRect(120, 200, 131, 16));
         label_5->setFont(font1);
-        label_7 = new QLabel(viewPassword);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(120, 320, 81, 16));
-        label_7->setFont(font1);
-        lineEdit = new QLineEdit(viewPassword);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(120, 100, 181, 21));
         lineEdit_2 = new QLineEdit(viewPassword);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setGeometry(QRect(120, 160, 181, 21));
@@ -92,7 +89,7 @@ public:
         lineEdit_3->setEchoMode(QLineEdit::Password);
         pushButton = new QPushButton(viewPassword);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(180, 430, 71, 31));
+        pushButton->setGeometry(QRect(360, 430, 71, 31));
         pushButton->setFont(font1);
         lineEdit_5 = new QLineEdit(viewPassword);
         lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
@@ -102,9 +99,6 @@ public:
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(120, 260, 121, 16));
         label_6->setFont(font1);
-        textEdit = new QTextEdit(viewPassword);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(120, 340, 181, 79));
         progressBar = new QProgressBar(viewPassword);
         progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(320, 220, 118, 23));
@@ -112,11 +106,34 @@ public:
         label_8 = new QLabel(viewPassword);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(318, 250, 151, 20));
-        QWidget::setTabOrder(lineEdit, lineEdit_2);
+        label_9 = new QLabel(viewPassword);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(120, 110, 151, 16));
+        QFont font2;
+        font2.setFamily(QStringLiteral("Lucida Grande"));
+        font2.setPointSize(12);
+        label_9->setFont(font2);
+        lineEdit_6 = new QLineEdit(viewPassword);
+        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
+        lineEdit_6->setGeometry(QRect(120, 340, 181, 21));
+        lineEdit_6->setEchoMode(QLineEdit::Password);
+        label_7 = new QLabel(viewPassword);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(120, 320, 151, 16));
+        label_7->setFont(font1);
+        label_10 = new QLabel(viewPassword);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(120, 370, 151, 16));
+        label_10->setFont(font1);
+        textEdit = new QTextEdit(viewPassword);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(120, 390, 181, 79));
+        checkBox = new QCheckBox(viewPassword);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setGeometry(QRect(190, 240, 121, 20));
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
-        QWidget::setTabOrder(lineEdit_5, textEdit);
-        QWidget::setTabOrder(textEdit, pushButton);
+        QWidget::setTabOrder(lineEdit_5, pushButton);
 
         retranslateUi(viewPassword);
 
@@ -128,13 +145,16 @@ public:
         viewPassword->setWindowTitle(QApplication::translate("viewPassword", "Add Password", 0));
         label->setText(QApplication::translate("viewPassword", "View Password", 0));
         label_2->setText(QString());
-        label_3->setText(QApplication::translate("viewPassword", "Name (e.g. Facebook)", 0));
+        label_3->setText(QApplication::translate("viewPassword", "Name", 0));
         label_4->setText(QApplication::translate("viewPassword", "Username/Email", 0));
-        label_5->setText(QApplication::translate("viewPassword", "Password", 0));
-        label_7->setText(QApplication::translate("viewPassword", "Description", 0));
-        pushButton->setText(QApplication::translate("viewPassword", "Add ", 0));
-        label_6->setText(QApplication::translate("viewPassword", "Verify Password", 0));
+        label_5->setText(QApplication::translate("viewPassword", "Current Password", 0));
+        pushButton->setText(QApplication::translate("viewPassword", "Edit", 0));
+        label_6->setText(QApplication::translate("viewPassword", "New Password", 0));
         label_8->setText(QString());
+        label_9->setText(QApplication::translate("viewPassword", "Name (e.g. Facebook)", 0));
+        label_7->setText(QApplication::translate("viewPassword", "Verify New Password", 0));
+        label_10->setText(QApplication::translate("viewPassword", "Description", 0));
+        checkBox->setText(QApplication::translate("viewPassword", "Show Password", 0));
     } // retranslateUi
 
 };
