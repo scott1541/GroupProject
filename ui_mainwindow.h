@@ -216,8 +216,14 @@ public:
         actionChange_Password->setObjectName(QStringLiteral("actionChange_Password"));
         actionRemove_All_Data = new QAction(MainWindow);
         actionRemove_All_Data->setObjectName(QStringLiteral("actionRemove_All_Data"));
+        QIcon icon18;
+        icon18.addFile(QStringLiteral(":/Images/clear.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionRemove_All_Data->setIcon(icon18);
         actionDelete_Account = new QAction(MainWindow);
         actionDelete_Account->setObjectName(QStringLiteral("actionDelete_Account"));
+        QIcon icon19;
+        icon19.addFile(QStringLiteral(":/Images/critical.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionDelete_Account->setIcon(icon19);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         treeWidget = new QTreeWidget(centralwidget);

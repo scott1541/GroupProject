@@ -60,6 +60,8 @@ private slots:
 
     void on_actionDeleteEntry_triggered();
 
+    void on_actionRemove_All_Data_triggered();
+
 private:
     Ui::MainWindow *ui;
 

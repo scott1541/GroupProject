@@ -548,11 +548,19 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionRemove_All_Data">
+   <property name="icon">
+    <iconset resource="rescources.qrc">
+     <normaloff>:/Images/clear.png</normaloff>:/Images/clear.png</iconset>
+   </property>
    <property name="text">
     <string>Remove All Data</string>
    </property>
   </action>
   <action name="actionDelete_Account">
+   <property name="icon">
+    <iconset resource="rescources.qrc">
+     <normaloff>:/Images/critical.png</normaloff>:/Images/critical.png</iconset>
+   </property>
    <property name="text">
     <string>Delete Account</string>
    </property>
