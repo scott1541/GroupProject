@@ -34,6 +34,7 @@ public:
     QProgressBar *progressBar;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QLabel *label_4;
 
     void setupUi(QDialog *ChangePassword)
     {
@@ -68,6 +69,9 @@ public:
         pushButton_2 = new QPushButton(ChangePassword);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(150, 260, 115, 32));
+        label_4 = new QLabel(ChangePassword);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(250, 170, 59, 16));
 
         retranslateUi(ChangePassword);
 
@@ -82,6 +86,7 @@ public:
         label_3->setText(QApplication::translate("ChangePassword", "Verify Password", 0));
         pushButton->setText(QApplication::translate("ChangePassword", "OK", 0));
         pushButton_2->setText(QApplication::translate("ChangePassword", "Cancel", 0));
+        label_4->setText(QApplication::translate("ChangePassword", "TextLabel", 0));
     } // retranslateUi
 
 };

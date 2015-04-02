@@ -2,6 +2,8 @@
 #include "ui_changepassword.h"
 #include "startmenu.h"
 #include "qgrostlhash.h"
+#include "qmessagebox.h"
+#include "password.h"
 #define Path_to_DB "login.db"
 
 QString oPassword;
@@ -32,6 +34,8 @@ void ChangePassword::on_lineEdit_textEdited(const QString &arg1)
 void ChangePassword::on_lineEdit_2_textEdited(const QString &arg1)
 {
     nPassword = ui->lineEdit_2->text();
+
+    getPasswordStrength();
 }
 
 void ChangePassword::on_pushButton_clicked() //OK button
@@ -39,7 +43,6 @@ void ChangePassword::on_pushButton_clicked() //OK button
     if (nPassword.isEmpty() || nPassword.isNull())
     {
         PasswordIsNtEmpty = false;
-        //Error message
     }
     else
         PasswordIsNtEmpty = true;
@@ -47,17 +50,22 @@ void ChangePassword::on_pushButton_clicked() //OK button
 
     if (PasswordIsNtEmpty == true) //If password isn't empty
     {
+
         if (nPassword == vPassword) //If new and verify passwords match
         {
-            QSqlQuery qry1;
+            QString UsernameS = Username;
+            UsernameS.resize(4);
+            oPassword = UsernameS + nPassword;
+            oPassword = QGrostlHash(nPassword).toHexString();
 
+            QSqlQuery qry1;
             if (qry1.exec("SELECT username, password FROM user WHERE username=\'" + Username
                     + "\' AND password=\'" + oPassword + "\'"))
             {
                     if (qry1.next())
                     {
-                        QString UsernameS = Username;
-                        UsernameS.resize(4);
+                        QMessageBox::information(NULL, "Hi", "Query successful...");
+
                         nPassword = UsernameS + nPassword;
                         nPassword = QGrostlHash(nPassword).toHexString();
 
@@ -70,7 +78,7 @@ void ChangePassword::on_pushButton_clicked() //OK button
                     }
                         else
                         {
-                            //invalid password error
+                            QMessageBox::information(NULL, "Error!", "Invalid something...");
                         }
 
             }
@@ -91,4 +99,37 @@ void ChangePassword::on_pushButton_clicked() //OK button
 void ChangePassword::on_pushButton_2_clicked() //Cancel button
 {
     this->close();
+}
+
+void ChangePassword::on_lineEdit_3_textEdited(const QString &arg1)
+{
+    vPassword = ui->lineEdit_3->text();
+}
+
+void ChangePassword::getPasswordStrength()
+{
+        QString paswd = ui->lineEdit_2->text();
+        password *ps = new password();
+        int passBits = ps->passWord(paswd);
+        ui->progressBar->setValue(passBits);
+        QString output = QString::number(passBits);
+        //ui->label_11->setText(getDesc(passBits));
+        QString passDesc = "";
+        if (passBits > 0)
+                ui->label_4->show();
+        if (passBits < 20)
+                passDesc = "Very weak";
+        if (passBits > 19 && passBits < 30)
+                passDesc = "Relatively weak";
+        if (passBits > 29 && passBits < 50)
+                passDesc = "Moderately strong";
+        if (passBits > 49 && passBits < 70)
+                passDesc = "Strong";
+        if (passBits > 69)
+                passDesc = "Very Strong";
+        if (passBits <= 0){
+                ui->progressBar->setValue(0),
+                        ui->label_4->hide();
+        }
+        ui->label_4->setText(passDesc);
 }
