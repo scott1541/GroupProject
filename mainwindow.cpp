@@ -10,6 +10,8 @@
 #include "viewpassword.h"
 #include "changepassword.h"
 #include "twofish.h"
+#include <exception>
+#include <iostream>
 
 #define Path_to_DB "passwords.db"
 
@@ -278,13 +280,14 @@ void MainWindow::on_actionDeleteEntry_triggered()
             msgBox->addButton(tr("No"), QMessageBox::ActionRole);
             msgBox->exec();
 
+
+
             if ((QPushButton*)msgBox->clickedButton() == yesButton)
             {
                 QString Name = ui->treeWidget->currentItem()->text(0);
                 QSqlQuery qry;
                 qry.exec("DELETE FROM passwords WHERE username ='" + Username + "'AND name ='" + Name + "'");
                 showPasswords();
-                delete ui->treeWidget->currentItem();
             }
 }
 
@@ -301,7 +304,7 @@ void MainWindow::on_actionRemove_All_Data_triggered()
             if ((QPushButton*)msgBox->clickedButton() == yesButton)
             {
                 QSqlQuery qry;
-                qry.exec("DELETE FROM passwords WHERE username = Username");
+                qry.exec("DELETE FROM passwords WHERE username ='" + Username + "'");
                 showPasswords();
             }
 }
