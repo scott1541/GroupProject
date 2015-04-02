@@ -3,7 +3,7 @@
 #include "startmenu.h"
 #include "qgrostlhash.h"
 #include "qmessagebox.h"
-#include "password.h"
+#include "passwordTools.h"
 #define Path_to_DB "login.db"
 
 QString oPassword;
@@ -109,8 +109,8 @@ void ChangePassword::on_lineEdit_3_textEdited(const QString &arg1)
 void ChangePassword::getPasswordStrength()
 {
         QString paswd = ui->lineEdit_2->text();
-        password *ps = new password();
-        int passBits = ps->passWord(paswd);
+        passwordTools *ps = new passwordTools();
+        int passBits = ps->passwordEntropy(paswd);
         ui->progressBar->setValue(passBits);
         QString output = QString::number(passBits);
         //ui->label_11->setText(getDesc(passBits));
