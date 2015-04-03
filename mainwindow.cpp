@@ -272,7 +272,13 @@ void MainWindow::on_textEdit_textChanged()
 void MainWindow::on_actionDeleteEntry_triggered()
 {
 
-    QMessageBox* msgBox = new QMessageBox(this);
+    bool empty = ui->treeWidget->isItemSelected(ui->treeWidget->currentItem());
+    //qDebug() << empty;
+
+    if (empty)
+    {
+
+            QMessageBox* msgBox = new QMessageBox(this);
             msgBox->setWindowTitle("Confirmation");
             msgBox->setText("Are You Sure You Want To Remove This Entry?");
 
@@ -289,6 +295,9 @@ void MainWindow::on_actionDeleteEntry_triggered()
                 qry.exec("DELETE FROM passwords WHERE username ='" + Username + "'AND name ='" + Name + "'");
                 showPasswords();
             }
+    } else {
+        QMessageBox::warning(this, "Error!", "You have not selected a password!");
+    }
 }
 
 void MainWindow::on_actionRemove_All_Data_triggered()

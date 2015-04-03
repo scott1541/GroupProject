@@ -26,6 +26,8 @@ public:
 
     void searchPasswords(QString Word);
 
+    Ui::MainWindow *ui;
+
     ~MainWindow();
 
 private slots:
@@ -63,7 +65,6 @@ private slots:
     void on_actionRemove_All_Data_triggered();
 
 private:
-    Ui::MainWindow *ui;
 
     QSqlDatabase myDB;
 };

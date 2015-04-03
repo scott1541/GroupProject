@@ -18,7 +18,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
@@ -61,7 +60,6 @@ public:
     QAction *actionDelete_Account;
     QWidget *centralwidget;
     QTreeWidget *treeWidget;
-    QPushButton *pushButton;
     QLabel *label;
     QTextEdit *textEdit;
     QStatusBar *statusbar;
@@ -230,16 +228,12 @@ public:
         treeWidget->setObjectName(QStringLiteral("treeWidget"));
         treeWidget->setGeometry(QRect(45, 60, 690, 461));
         treeWidget->setColumnCount(6);
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(744, 15, 57, 32));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Corbel"));
-        font1.setPointSize(12);
-        pushButton->setFont(font1);
         label = new QLabel(centralwidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(12, 20, 25, 16));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Corbel"));
+        font1.setPointSize(12);
         label->setFont(font1);
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
@@ -359,7 +353,6 @@ public:
         ___qtreewidgetitem->setText(2, QApplication::translate("MainWindow", "Password", 0));
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Username/Email", 0));
         ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "Name", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Go", 0));
         label->setText(QApplication::translate("MainWindow", "Find:", 0));
         textEdit->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
