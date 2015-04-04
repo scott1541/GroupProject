@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'changepassword.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -71,7 +71,7 @@ public:
         pushButton_2->setGeometry(QRect(150, 260, 115, 32));
         label_4 = new QLabel(ChangePassword);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(250, 170, 111, 16));
+        label_4->setGeometry(QRect(250, 170, 59, 16));
 
         retranslateUi(ChangePassword);
 
@@ -81,10 +81,6 @@ public:
     void retranslateUi(QDialog *ChangePassword)
     {
         ChangePassword->setWindowTitle(QApplication::translate("ChangePassword", "Dialog", 0));
-        lineEdit->setInputMask(QString());
-        lineEdit->setText(QString());
-        lineEdit_2->setInputMask(QApplication::translate("ChangePassword", "*", 0));
-        lineEdit_3->setInputMask(QApplication::translate("ChangePassword", "*", 0));
         label->setText(QApplication::translate("ChangePassword", "Current Password", 0));
         label_2->setText(QApplication::translate("ChangePassword", "New Password", 0));
         label_3->setText(QApplication::translate("ChangePassword", "Verify Password", 0));

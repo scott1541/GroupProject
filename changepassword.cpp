@@ -40,14 +40,12 @@ ChangePassword::~ChangePassword()
 
 void ChangePassword::on_lineEdit_textEdited(const QString &arg1)
 {
-    ui->lineEdit->setEchoMode(QLineEdit::Password);
     oPassword = ui->lineEdit->text();
 }
 
 
 void ChangePassword::on_lineEdit_2_textEdited(const QString &arg1)
 {
-    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
     nPassword = ui->lineEdit_2->text();
 
     getPasswordStrength();
@@ -75,7 +73,7 @@ void ChangePassword::on_pushButton_clicked() //OK button
 
             QSqlQuery qry1;
             if (qry1.exec("SELECT username, password FROM user WHERE username=\'" + Username
-                    + "\' AND password=\'" + oPassword + "\'"))  //THIS IF STATEMENT IS RETURNING FALSE
+                    + "\' AND password=\'" + oPassword + "\'"))
             {
 
                     if (qry1.next())
@@ -91,7 +89,6 @@ void ChangePassword::on_pushButton_clicked() //OK button
                         //qry.addBindValue(Username);
                         //qry.addBindValue(Password);
                         qry2.exec();
-<<<<<<< HEAD
                         this->close();
 
                     } else {
@@ -106,31 +103,6 @@ void ChangePassword::on_pushButton_clicked() //OK button
     } else {
             QMessageBox::information(this, "Error!", "You missed a field.");
            }
-=======
-                    }
-                        else
-                        {
-                            QMessageBox::information(NULL, "Error!", "An error occured!");
-                        }
-
-            }
-            else
-            {
-                QMessageBox::information(NULL, "Error!", "Incorrect password, please try again.");
-            }
-
-        }
-        else
-        {
-            QMessageBox::information(NULL, "Error!", "Please ensure that the new passwords match.");
-        }
-
-    }
-    else
-    {
-        QMessageBox::information(NULL, "Error!", "Please enter a new password:");
-    }
->>>>>>> origin/master
 }
 
 void ChangePassword::on_pushButton_2_clicked() //Cancel button
@@ -140,7 +112,6 @@ void ChangePassword::on_pushButton_2_clicked() //Cancel button
 
 void ChangePassword::on_lineEdit_3_textEdited(const QString &arg1)
 {
-    ui->lineEdit_3->setEchoMode(QLineEdit::Password);
     vPassword = ui->lineEdit_3->text();
 }
 
