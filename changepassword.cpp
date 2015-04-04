@@ -11,12 +11,25 @@ QString nPassword;
 QString vPassword;
 bool PasswordIsNtEmpty = false;
 
+
 ChangePassword::ChangePassword(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ChangePassword)
 {
     ui->setupUi(this);
     ui->progressBar->setValue(0);
+
+    myDB = QSqlDatabase::addDatabase("QSQLITE");
+    myDB.setDatabaseName(Path_to_DB);
+    QFileInfo checkFile(Path_to_DB);
+
+    if(checkFile.isFile())
+    {
+        if (myDB.open())
+        {
+            qDebug() << "DB is open";
+        }
+    }
 
 }
 
@@ -55,16 +68,17 @@ void ChangePassword::on_pushButton_clicked() //OK button
         {
             QString UsernameS = Username;
             UsernameS.resize(4);
-            oPassword = UsernameS + nPassword;
-            oPassword = QGrostlHash(nPassword).toHexString();
+            oPassword = UsernameS + oPassword;
+            oPassword = QGrostlHash(oPassword).toHexString();
 
             QSqlQuery qry1;
             if (qry1.exec("SELECT username, password FROM user WHERE username=\'" + Username
                     + "\' AND password=\'" + oPassword + "\'"))
             {
+
                     if (qry1.next())
                     {
-                        QMessageBox::information(NULL, "Hi", "Query successful...");
+                        QMessageBox::information(this, "Success!", "Your password has been changed.");
 
                         nPassword = UsernameS + nPassword;
                         nPassword = QGrostlHash(nPassword).toHexString();
@@ -75,25 +89,20 @@ void ChangePassword::on_pushButton_clicked() //OK button
                         //qry.addBindValue(Username);
                         //qry.addBindValue(Password);
                         qry2.exec();
+                        this->close();
+
+                    } else {
+                            QMessageBox::information(this, "Oops..", "Incorrect password.");
+                           }
+
                     }
-                        else
-                        {
-                            QMessageBox::information(NULL, "Error!", "Invalid something...");
-                        }
 
-            }
-
-        }
-        else
-        {
-
-        }
-
-    }
-    else
-    {
-
-    }
+            } else {
+                    QMessageBox::information(this, "Error!", "The passwords do not match.");
+                   }
+    } else {
+            QMessageBox::information(this, "Error!", "You missed a field.");
+           }
 }
 
 void ChangePassword::on_pushButton_2_clicked() //Cancel button
