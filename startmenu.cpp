@@ -4,7 +4,10 @@
 #include "ui_mainwindow.h"
 #include "qgrostlhash.h"
 #include <QLabel>
+#include <cstring>
+#include <string>
 #include "passwordTools.h"
+#include "sqlite3.h"
 #define Path_to_DB "login.db"
 bool Login = true;
 bool Creation = false;
@@ -27,15 +30,29 @@ ui(new Ui::startmenu)
         myDB = QSqlDatabase::addDatabase("QSQLITE");
         myDB.setDatabaseName(Path_to_DB);
         QFileInfo checkFile(Path_to_DB);
-        if (checkFile.isFile())
+
+        bool noDatabase = true;
+
+        while (noDatabase)
         {
-                if (myDB.open())
-                {
-                        ui->label_5->setText("[+] Connected To Database!");
-                }
-        }
-        else{
-                ui->label_5->setText("[!] Database File Not Found.");
+            if (checkFile.isFile())
+            {
+                    if (myDB.open())
+                    {
+                            ui->label_5->setText("[+] Connected To Database!");
+                            noDatabase = false;
+                    }
+            } else {
+                    ui->label_5->setText("[!] Database File Not Found.");
+                    sqlite3 *newDB;
+                    sqlite3_open("login.db", &newDB);
+
+                    std::string createTable = "CREATE TABLE user(username VARCHAR(20), password VARCHAR(20))";
+                    sqlite3_stmt *createStmt;
+                    qDebug() << "Creating Table Statement";
+                    sqlite3_prepare(newDB, createTable.c_str(), createTable.size(), &createStmt, NULL);
+                    if (sqlite3_step(createStmt) != SQLITE_DONE) qDebug() << "Didn't Create Table!";
+            }
         }
 }
 startmenu::~startmenu()

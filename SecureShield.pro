@@ -41,3 +41,5 @@ FORMS    += startmenu.ui \
 
 RESOURCES += \
     rescources.qrc
+
+LIBS += -lsqlite3
