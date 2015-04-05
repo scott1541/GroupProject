@@ -31,6 +31,10 @@ ChangePassword::ChangePassword(QWidget *parent) :
         }
     }
 
+    ui->lineEdit->setEchoMode(QLineEdit::Password);   //Input mask
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+
 }
 
 ChangePassword::~ChangePassword()
@@ -84,10 +88,7 @@ void ChangePassword::on_pushButton_clicked() //OK button
                         nPassword = QGrostlHash(nPassword).toHexString();
 
                         QString queryString = "UPDATE user SET password=\'" + nPassword + "\' WHERE username=\'" + Username + "\'";
-                        //QString queryString = "INSERT INTO user (username, password) VALUES (?,?)";
                         QSqlQuery qry2(queryString);
-                        //qry.addBindValue(Username);
-                        //qry.addBindValue(Password);
                         qry2.exec();
                         this->close();
 
@@ -112,6 +113,7 @@ void ChangePassword::on_pushButton_2_clicked() //Cancel button
 
 void ChangePassword::on_lineEdit_3_textEdited(const QString &arg1)
 {
+
     vPassword = ui->lineEdit_3->text();
 }
 
@@ -121,8 +123,6 @@ void ChangePassword::getPasswordStrength()
         passwordTools *ps = new passwordTools();
         int passBits = ps->passwordEntropy(paswd);
         ui->progressBar->setValue(passBits);
-        QString output = QString::number(passBits);
-        //ui->label_11->setText(getDesc(passBits));
         QString passDesc = "";
         if (passBits > 0)
                 ui->label_4->show();
