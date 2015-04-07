@@ -313,7 +313,37 @@ void MainWindow::on_actionRemove_All_Data_triggered()
             if ((QPushButton*)msgBox->clickedButton() == yesButton)
             {
                 QSqlQuery qry;
-                qry.exec("DELETE FROM passwords WHERE username ='" + Username + "'");
+                qry.exec("DELETE FROM passwords WHERE username='" + Username
+                         + "'");
                 showPasswords();
             }
+}
+
+void MainWindow::on_actionDelete_Account_triggered()
+{
+
+    QMessageBox* msgBox = new QMessageBox(this);
+            msgBox->setWindowTitle("Confirmation");
+            msgBox->setText("Are You Sure You Want To Close This Account?");
+
+            QPushButton *yesButton = msgBox->addButton(tr("Yes"), QMessageBox::ActionRole);
+            msgBox->addButton(tr("No"), QMessageBox::ActionRole);
+            msgBox->exec();
+
+            if ((QPushButton*)msgBox->clickedButton() == yesButton)
+            {
+                QSqlQuery qry;
+                qry.exec("DELETE FROM user WHERE username='" + Username
+                         + "'");
+                QSqlQuery qry1;
+                qry1.exec("DELETE FROM passwords WHERE username='" + Username
+                         + "'");
+                showPasswords();
+
+                this->close();
+                startmenu *sm = new startmenu;
+                sm->show();
+            }
+
+
 }
