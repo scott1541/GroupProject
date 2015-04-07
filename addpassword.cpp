@@ -160,8 +160,3 @@ void addPassword::on_checkBox_toggled(bool checked)
         ui->lineEdit_3->setEchoMode(QLineEdit::Password);
     }
 }
-
-void addPassword::on_pushButton_3_clicked()
-{
-    this->close();
-}

@@ -317,27 +317,3 @@ void MainWindow::on_actionRemove_All_Data_triggered()
                 showPasswords();
             }
 }
-
-void MainWindow::on_actionDelete_Account_triggered()
-{
-
-    QMessageBox* msgBox = new QMessageBox(this);
-            msgBox->setWindowTitle("Confirmation");
-            msgBox->setText("Are You Sure You Want To Close This Account?");
-
-            QPushButton *yesButton = msgBox->addButton(tr("Yes"), QMessageBox::ActionRole);
-            msgBox->addButton(tr("No"), QMessageBox::ActionRole);
-            msgBox->exec();
-
-            if ((QPushButton*)msgBox->clickedButton() == yesButton)
-            {
-                QSqlQuery qry;
-                qry.exec("DELETE username AND password FROM user");
-
-                this->close();
-                startmenu *sm = new startmenu;
-                sm->show();
-            }
-
-
-}

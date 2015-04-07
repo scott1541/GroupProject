@@ -64,8 +64,6 @@ private slots:
 
     void on_actionRemove_All_Data_triggered();
 
-    void on_actionDelete_Account_triggered();
-
 private:
 
     QSqlDatabase myDB;
