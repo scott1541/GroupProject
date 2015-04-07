@@ -37,8 +37,6 @@ private slots:
 
     void on_checkBox_toggled(bool checked);
 
-    void on_pushButton_3_clicked();
-
 private:
     Ui::addPassword *ui;
 
