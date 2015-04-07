@@ -96,3 +96,8 @@ void viewPassword::editPassword(QString Name, QString newPassword)
     qry.exec("UPDATE passwords SET password ='" + newPassword + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
     this->close();
 }
+
+void viewPassword::on_pushButton_2_clicked()
+{
+    this->close();
+}
