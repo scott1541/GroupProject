@@ -19,6 +19,7 @@ QMainWindow(parent),
 ui(new Ui::startmenu)
 {
         ui->setupUi(this);
+        on_radioButton_clicked();
         ui->pushButton->setGeometry(320, 290, 77, 32);
         ui->lineEdit_3->hide();
         ui->label_6->hide();

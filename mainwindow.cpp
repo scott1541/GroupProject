@@ -14,6 +14,7 @@
 #include <iostream>
 
 #define Path_to_DB "passwords.db"
+#define Path_to_Login "login.db"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     showPasswords();
 
-    Twofish_Byte word [16];
+    /*Twofish_Byte word [16];
     Twofish_Byte encryptedword [16];
 
     Twofish *twofish = new Twofish();
@@ -39,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Twofish_Byte decrypted[16];
 
     twofish->Decrypt(key, encryptedword, decrypted);
-    qDebug() << decrypted;
+    qDebug() << decrypted;*/
 
 }
 
@@ -332,14 +333,39 @@ void MainWindow::on_actionDelete_Account_triggered()
 
             if ((QPushButton*)msgBox->clickedButton() == yesButton)
             {
-                QSqlQuery qry;
-                qry.exec("DELETE FROM user WHERE username='" + Username
-                         + "'");
-                QSqlQuery qry1;
-                qry1.exec("DELETE FROM passwords WHERE username='" + Username
-                         + "'");
-                showPasswords();
+                myDB = QSqlDatabase::addDatabase("QSQLITE");
+                myDB.setDatabaseName(Path_to_Login);
+                QFileInfo checkFile(Path_to_Login);
 
+                if (checkFile.isFile())
+                {
+                    if(myDB.open())
+                    {
+                        //qDebug() << "[+] Connected To Database!";
+                    }
+
+                }else{
+                        //qDebug() << "[!] Database File Not Found.";
+                }
+                QSqlQuery qry;
+                qry.exec("DELETE FROM user WHERE username='" + Username + "'");
+                myDB.close();
+                myDB.setDatabaseName(Path_to_DB);
+                QFileInfo checkLoginFile(Path_to_DB);
+
+                if (checkLoginFile.isFile())
+                {
+                    if(myDB.open())
+                    {
+                        //qDebug() << "[+] Connected To Database!";
+                    }
+
+                }else{
+                        //qDebug() << "[!] Database File Not Found.";
+                }
+
+                qry.exec("DELETE FROM passwords WHERE username='" + Username + "'");
+                myDB.close();
                 this->close();
                 startmenu *sm = new startmenu;
                 sm->show();
