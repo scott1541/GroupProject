@@ -94,5 +94,6 @@ void viewPassword::editPassword(QString Name, QString newPassword)
     QSqlQuery qry;
 
     qry.exec("UPDATE passwords SET password ='" + newPassword + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
+    mainWin->showPasswords();
     this->close();
 }

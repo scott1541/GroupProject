@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QtSql>
 #include <QDialog>
+#include "mainwindow.h"
 
 namespace Ui {
 class viewPassword;
@@ -17,6 +18,7 @@ class viewPassword : public QDialog
     Q_OBJECT
 
 public:
+    MainWindow *mainWin;
     explicit viewPassword(QWidget *parent = 0);
     ~viewPassword();
 

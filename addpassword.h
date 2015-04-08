@@ -1,7 +1,6 @@
 #ifndef ADDPASSWORD_H
 #define ADDPASSWORD_H
 
-#include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
 #include <QDebug>
@@ -18,6 +17,8 @@ class addPassword : public QDialog
     Q_OBJECT
 
 public:
+    MainWindow *mainWin;
+
     explicit addPassword(QWidget *parent = 0);
 
     ~addPassword();

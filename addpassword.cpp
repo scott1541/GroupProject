@@ -6,7 +6,6 @@
 #include <QtGui>
 #include <QLabel>
 #include "passwordTools.h"
-#include "ui_mainwindow.h"
 #define Path_to_DB "passwords.db"
 
 addPassword::addPassword(QWidget *parent) :
@@ -103,9 +102,7 @@ void addPassword::on_pushButton_clicked(bool checked)
         QMessageBox::warning(this, "Error", "You are already using this name for a password");
     } else {
         addNewPassword();
-        //MainWindow::ui->treeWidget->clear();
-        MainWindow m;
-        m.showPasswords();
+        mainWin->showPasswords();
         this->close();
     }
 

@@ -6,7 +6,6 @@
 #include <QtGui>
 #include <QDialog>
 #include "startmenu.h"
-#include "addpassword.h"
 #include <QMessageBox>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -25,8 +24,6 @@ public:
     void showPasswords();
 
     void searchPasswords(QString Word);
-
-    Ui::MainWindow *ui;
 
     ~MainWindow();
 
@@ -67,6 +64,8 @@ private slots:
     void on_actionDelete_Account_triggered();
 
 private:
+
+    Ui::MainWindow *ui;
 
     QSqlDatabase myDB;
 };

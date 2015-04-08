@@ -1229,9 +1229,7 @@ moc_mainwindow.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Header
 		mainwindow.h
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/carlmansfield/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/carlmansfield/GroupProject2 -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/carlmansfield/Qt/5.4/clang_64/lib mainwindow.h -o moc_mainwindow.cpp
 
-moc_addpassword.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
-		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtCore \
+moc_addpassword.cpp: ../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtCore \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qabstractanimation.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qanimationgroup.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qparallelanimationgroup.h \
@@ -1514,6 +1512,8 @@ moc_addpassword.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Heade
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		mainwindow.h \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		startmenu.h \
 		addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
@@ -2775,8 +2775,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 addpassword.o: addpassword.cpp addpassword.h \
-		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
-		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtCore \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qabstractanimation.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qanimationgroup.h \
@@ -3060,6 +3058,8 @@ addpassword.o: addpassword.cpp addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		mainwindow.h \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \

@@ -124,6 +124,7 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     view->setPassword(Password);
     view->setDescription(Description);
     view->setWindowTitle("Secure Shield: " + Name);
+    view->mainWin = this;
     view->show();
 }
 
@@ -200,6 +201,7 @@ void MainWindow::showPasswords()
 void MainWindow::on_actionAddEntry_triggered()
 {
     addPassword *ap = new addPassword();
+    ap->mainWin = this;
     ap->show();
 }
 
