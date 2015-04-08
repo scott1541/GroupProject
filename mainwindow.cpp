@@ -406,5 +406,25 @@ void MainWindow::on_actionLog_Out_2_triggered()
 
 void MainWindow::on_actionEditEntry_triggered()
 {
+    QTreeWidgetItem *item = ui->treeWidget->currentItem();
+    bool empty = ui->treeWidget->isItemSelected(ui->treeWidget->currentItem());
+
+    if (empty)
+    {
+        viewPassword *view = new viewPassword();
+        QString Name = item->text(0);
+        QString Username = item->text(1);
+        QString Password = item->text(2);
+        QString Description = item->text(4);
+        view->setName(Name);
+        view->setUsername(Username);
+        view->setPassword(Password);
+        view->setDescription(Description);
+        view->setWindowTitle("Secure Shield: " + Name);
+        view->mainWin = this;
+        view->show();
+    } else {
+        QMessageBox::warning(this, "Error", "You have not selected a password to view.");
+    }
 
 }
