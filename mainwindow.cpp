@@ -24,23 +24,38 @@ MainWindow::MainWindow(QWidget *parent) :
 
     showPasswords();
 
-    /*Twofish_Byte word [16];
+    //const unsigned char* test = "test";
+
+    Twofish_Byte word [] = "hello";
     Twofish_Byte encryptedword [16];
+
+    std::string myString(reinterpret_cast<char*>(word));
+
+    QString qStr(myString.c_str());
+    qDebug() << qStr;
 
     Twofish *twofish = new Twofish();
     TwofishKey *key = new TwofishKey();
     Twofish_Byte byte [32];
 
     twofish->PrepareKey(byte, 16, key);
-    qDebug() << key;
+
+    std::string myKey(reinterpret_cast<char *>(key));
+    QString qKey(myKey.c_str());
+    qDebug() << qKey;
 
     twofish->Encrypt(key, word, encryptedword);
-    qDebug() << encryptedword;
+
+    std::string myEncrypt(reinterpret_cast<char*>(encryptedword));
+    QString qEncrypt(myEncrypt.c_str());
+    qDebug() << qEncrypt;
 
     Twofish_Byte decrypted[16];
 
     twofish->Decrypt(key, encryptedword, decrypted);
-    qDebug() << decrypted;*/
+    std::string myDecrypt(reinterpret_cast<char*>(decrypted));
+    QString qDecrypt(myDecrypt.c_str());
+    qDebug() << qDecrypt;
 
 }
 
