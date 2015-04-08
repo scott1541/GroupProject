@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_addPassword_t {
-    QByteArrayData data[11];
-    char stringdata[177];
+    QByteArrayData data[12];
+    char stringdata[201];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,14 +39,16 @@ QT_MOC_LITERAL(6, 83, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(7, 105, 7), // "checked"
 QT_MOC_LITERAL(8, 113, 19), // "getPasswordStrength"
 QT_MOC_LITERAL(9, 133, 23), // "on_pushButton_2_pressed"
-QT_MOC_LITERAL(10, 157, 19) // "on_checkBox_toggled"
+QT_MOC_LITERAL(10, 157, 19), // "on_checkBox_toggled"
+QT_MOC_LITERAL(11, 177, 23) // "on_pushButton_3_clicked"
 
     },
     "addPassword\0on_lineEdit_3_textEdited\0"
     "\0arg1\0on_lineEdit_5_textEdited\0"
     "addNewPassword\0on_pushButton_clicked\0"
     "checked\0getPasswordStrength\0"
-    "on_pushButton_2_pressed\0on_checkBox_toggled"
+    "on_pushButton_2_pressed\0on_checkBox_toggled\0"
+    "on_pushButton_3_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +58,7 @@ static const uint qt_meta_data_addPassword[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,13 +66,14 @@ static const uint qt_meta_data_addPassword[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   49,    2, 0x08 /* Private */,
-       4,    1,   52,    2, 0x08 /* Private */,
-       5,    0,   55,    2, 0x08 /* Private */,
-       6,    1,   56,    2, 0x08 /* Private */,
-       8,    0,   59,    2, 0x08 /* Private */,
-       9,    0,   60,    2, 0x08 /* Private */,
-      10,    1,   61,    2, 0x08 /* Private */,
+       1,    1,   54,    2, 0x08 /* Private */,
+       4,    1,   57,    2, 0x08 /* Private */,
+       5,    0,   60,    2, 0x08 /* Private */,
+       6,    1,   61,    2, 0x08 /* Private */,
+       8,    0,   64,    2, 0x08 /* Private */,
+       9,    0,   65,    2, 0x08 /* Private */,
+      10,    1,   66,    2, 0x08 /* Private */,
+      11,    0,   69,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -80,6 +83,7 @@ static const uint qt_meta_data_addPassword[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -96,6 +100,7 @@ void addPassword::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 4: _t->getPasswordStrength(); break;
         case 5: _t->on_pushButton_2_pressed(); break;
         case 6: _t->on_checkBox_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->on_pushButton_3_clicked(); break;
         default: ;
         }
     }
@@ -126,13 +131,13 @@ int addPassword::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

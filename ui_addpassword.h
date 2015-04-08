@@ -44,6 +44,7 @@ public:
     QLabel *label_8;
     QPushButton *pushButton_2;
     QCheckBox *checkBox;
+    QPushButton *pushButton_3;
 
     void setupUi(QDialog *addPassword)
     {
@@ -95,7 +96,7 @@ public:
         lineEdit_3->setEchoMode(QLineEdit::Password);
         pushButton = new QPushButton(addPassword);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(180, 460, 71, 31));
+        pushButton->setGeometry(QRect(140, 460, 71, 31));
         pushButton->setFont(font1);
         lineEdit_5 = new QLineEdit(addPassword);
         lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
@@ -121,6 +122,10 @@ public:
         checkBox = new QCheckBox(addPassword);
         checkBox->setObjectName(QStringLiteral("checkBox"));
         checkBox->setGeometry(QRect(180, 250, 121, 20));
+        pushButton_3 = new QPushButton(addPassword);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(210, 460, 71, 31));
+        pushButton_3->setFont(font1);
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
@@ -149,6 +154,7 @@ public:
 #endif // QT_NO_TOOLTIP
         pushButton_2->setText(QApplication::translate("addPassword", "Generate", 0));
         checkBox->setText(QApplication::translate("addPassword", "Show password", 0));
+        pushButton_3->setText(QApplication::translate("addPassword", "Exit", 0));
     } // retranslateUi
 
 };

@@ -97,3 +97,8 @@ void viewPassword::editPassword(QString Name, QString newPassword)
     mainWin->showPasswords();
     this->close();
 }
+
+void viewPassword::on_pushButton_2_clicked()
+{
+    this->close();
+}
