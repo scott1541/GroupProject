@@ -179,6 +179,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionChange_Password"/>
     <addaction name="actionRemove_All_Data"/>
     <addaction name="actionDelete_Account"/>
+    <addaction name="actionLog_Out_2"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_Edit"/>
@@ -223,6 +224,7 @@ p, li { white-space: pre-wrap; }
    <addaction name="actionEncryption"/>
    <addaction name="separator"/>
    <addaction name="actionSearchFunction"/>
+   <addaction name="actionLog_Out_2"/>
   </widget>
   <action name="action_File">
    <property name="checkable">
@@ -544,6 +546,15 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Delete Account</string>
+   </property>
+  </action>
+  <action name="actionLog_Out_2">
+   <property name="icon">
+    <iconset resource="rescources.qrc">
+     <normaloff>:/Images/demo_3.png</normaloff>:/Images/demo_3.png</iconset>
+   </property>
+   <property name="text">
+    <string>Log Out</string>
    </property>
   </action>
  </widget>

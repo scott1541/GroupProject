@@ -390,3 +390,21 @@ void MainWindow::on_actionDelete_Account_triggered()
 
 
 }
+
+void MainWindow::on_actionLog_Out_2_triggered()
+{
+    QMessageBox* msgBox = new QMessageBox(this);
+            msgBox->setWindowTitle("Confirmation");
+            msgBox->setText("Are You Sure You Want To Log Out?");
+
+            QPushButton *yesButton = msgBox->addButton(tr("Yes"), QMessageBox::ActionRole);
+            msgBox->addButton(tr("No"), QMessageBox::ActionRole);
+            msgBox->exec();
+
+            if ((QPushButton*)msgBox->clickedButton() == yesButton)
+            {
+                this->close();
+                startmenu *logOut = new startmenu;
+                logOut->show();
+            }
+}

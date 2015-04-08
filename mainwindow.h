@@ -63,6 +63,8 @@ private slots:
 
     void on_actionDelete_Account_triggered();
 
+    void on_actionLog_Out_2_triggered();
+
 private:
 
     Ui::MainWindow *ui;

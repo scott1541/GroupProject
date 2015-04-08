@@ -58,6 +58,7 @@ public:
     QAction *actionChange_Password;
     QAction *actionRemove_All_Data;
     QAction *actionDelete_Account;
+    QAction *actionLog_Out_2;
     QWidget *centralwidget;
     QTreeWidget *treeWidget;
     QLabel *label;
@@ -222,6 +223,11 @@ public:
         QIcon icon19;
         icon19.addFile(QStringLiteral(":/Images/critical.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionDelete_Account->setIcon(icon19);
+        actionLog_Out_2 = new QAction(MainWindow);
+        actionLog_Out_2->setObjectName(QStringLiteral("actionLog_Out_2"));
+        QIcon icon20;
+        icon20.addFile(QStringLiteral(":/Images/demo_3.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionLog_Out_2->setIcon(icon20);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         treeWidget = new QTreeWidget(centralwidget);
@@ -295,6 +301,7 @@ public:
         menuOptions->addAction(actionChange_Password);
         menuOptions->addAction(actionRemove_All_Data);
         menuOptions->addAction(actionDelete_Account);
+        menuOptions->addAction(actionLog_Out_2);
         toolBar->addAction(action_File);
         toolBar->addAction(actionSave_Ctrl_S);
         toolBar->addSeparator();
@@ -309,6 +316,7 @@ public:
         toolBar->addAction(actionEncryption);
         toolBar->addSeparator();
         toolBar->addAction(actionSearchFunction);
+        toolBar->addAction(actionLog_Out_2);
 
         retranslateUi(MainWindow);
 
@@ -346,6 +354,7 @@ public:
         actionChange_Password->setText(QApplication::translate("MainWindow", "Change Password", 0));
         actionRemove_All_Data->setText(QApplication::translate("MainWindow", "Remove All Data", 0));
         actionDelete_Account->setText(QApplication::translate("MainWindow", "Delete Account", 0));
+        actionLog_Out_2->setText(QApplication::translate("MainWindow", "Log Out", 0));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
         ___qtreewidgetitem->setText(5, QApplication::translate("MainWindow", "Strength", 0));
         ___qtreewidgetitem->setText(4, QApplication::translate("MainWindow", "Description", 0));
