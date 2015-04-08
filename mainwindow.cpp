@@ -205,11 +205,6 @@ void MainWindow::on_actionAddEntry_triggered()
     ap->show();
 }
 
-void MainWindow::on_actionEditEntry_triggered()
-{
-    showPasswords();
-}
-
 
 void MainWindow::on_actionChange_Password_triggered()
 {
@@ -407,4 +402,9 @@ void MainWindow::on_actionLog_Out_2_triggered()
                 startmenu *logOut = new startmenu;
                 logOut->show();
             }
+}
+
+void MainWindow::on_actionEditEntry_triggered()
+{
+
 }

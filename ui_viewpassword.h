@@ -46,12 +46,13 @@ public:
     QTextEdit *textEdit;
     QCheckBox *checkBox;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
 
     void setupUi(QDialog *viewPassword)
     {
         if (viewPassword->objectName().isEmpty())
             viewPassword->setObjectName(QStringLiteral("viewPassword"));
-        viewPassword->resize(458, 549);
+        viewPassword->resize(458, 553);
         label = new QLabel(viewPassword);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(120, 20, 171, 41));
@@ -102,7 +103,7 @@ public:
         label_6->setFont(font1);
         progressBar = new QProgressBar(viewPassword);
         progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(320, 220, 118, 23));
+        progressBar->setGeometry(QRect(320, 300, 118, 23));
         progressBar->setValue(0);
         label_8 = new QLabel(viewPassword);
         label_8->setObjectName(QStringLiteral("label_8"));
@@ -136,6 +137,9 @@ public:
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(210, 500, 71, 31));
         pushButton_2->setFont(font1);
+        pushButton_3 = new QPushButton(viewPassword);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(20, 296, 91, 32));
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
         QWidget::setTabOrder(lineEdit_5, pushButton);
@@ -161,6 +165,10 @@ public:
         label_10->setText(QApplication::translate("viewPassword", "Description", 0));
         checkBox->setText(QApplication::translate("viewPassword", "Show Password", 0));
         pushButton_2->setText(QApplication::translate("viewPassword", "Exit", 0));
+#ifndef QT_NO_TOOLTIP
+        pushButton_3->setToolTip(QApplication::translate("viewPassword", "Click to generate a password", 0));
+#endif // QT_NO_TOOLTIP
+        pushButton_3->setText(QApplication::translate("viewPassword", "Generate", 0));
     } // retranslateUi
 
 };

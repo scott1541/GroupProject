@@ -102,3 +102,45 @@ void viewPassword::on_pushButton_2_clicked()
 {
     this->close();
 }
+
+void viewPassword::getPasswordStrength()
+{
+        QString paswd = ui->lineEdit_5->text();
+        passwordTools *ps = new passwordTools();
+        int passBits = ps->passwordEntropy(paswd);
+        ui->progressBar->setValue(passBits);
+        //QString output = QString::number(passBits);
+        //ui->label_11->setText(getDesc(passBits));
+        /*QString passDesc = "";
+        if (passBits > 0)
+                ui->label_11->show();
+        if (passBits < 20)
+                passDesc = "Very weak";
+        if (passBits > 19 && passBits < 30)
+                passDesc = "Relatively weak";
+        if (passBits > 29 && passBits < 50)
+                passDesc = "Moderately strong";
+        if (passBits > 49 && passBits < 70)
+                passDesc = "Strong";
+        if (passBits > 69)
+                passDesc = "Very Strong";
+        if (passBits <= 0){
+                ui->progressBar->setValue(0),
+                        ui->label_11->hide();
+        }
+        ui->label_11->setText(passDesc);*/
+}
+
+void viewPassword::on_pushButton_3_pressed()
+{
+
+     passwordTools *p = new passwordTools();
+
+     QString Password = p->passwordGenerator();
+     qDebug() << Password;
+
+     ui->lineEdit_5->setText(Password);
+     ui->lineEdit_6->setText(Password);
+     getPasswordStrength();
+
+}

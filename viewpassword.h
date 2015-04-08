@@ -34,7 +34,11 @@ private slots:
 
     void editPassword(QString Name, QString newPassword);
 
+    void getPasswordStrength();
+
     void on_pushButton_2_clicked();
+
+    void on_pushButton_3_pressed();
 
 private:
     Ui::viewPassword *ui;

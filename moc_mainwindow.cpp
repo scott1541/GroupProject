@@ -46,13 +46,13 @@ QT_MOC_LITERAL(13, 289, 6), // "column"
 QT_MOC_LITERAL(14, 296, 24), // "on_action_Redo_triggered"
 QT_MOC_LITERAL(15, 321, 24), // "on_action_Undo_triggered"
 QT_MOC_LITERAL(16, 346, 27), // "on_actionAddEntry_triggered"
-QT_MOC_LITERAL(17, 374, 28), // "on_actionEditEntry_triggered"
-QT_MOC_LITERAL(18, 403, 34), // "on_actionChange_Password_trig..."
-QT_MOC_LITERAL(19, 438, 23), // "on_textEdit_textChanged"
-QT_MOC_LITERAL(20, 462, 30), // "on_actionDeleteEntry_triggered"
-QT_MOC_LITERAL(21, 493, 34), // "on_actionRemove_All_Data_trig..."
-QT_MOC_LITERAL(22, 528, 33), // "on_actionDelete_Account_trigg..."
-QT_MOC_LITERAL(23, 562, 28) // "on_actionLog_Out_2_triggered"
+QT_MOC_LITERAL(17, 374, 34), // "on_actionChange_Password_trig..."
+QT_MOC_LITERAL(18, 409, 23), // "on_textEdit_textChanged"
+QT_MOC_LITERAL(19, 433, 30), // "on_actionDeleteEntry_triggered"
+QT_MOC_LITERAL(20, 464, 34), // "on_actionRemove_All_Data_trig..."
+QT_MOC_LITERAL(21, 499, 33), // "on_actionDelete_Account_trigg..."
+QT_MOC_LITERAL(22, 533, 28), // "on_actionLog_Out_2_triggered"
+QT_MOC_LITERAL(23, 562, 28) // "on_actionEditEntry_triggered"
 
     },
     "MainWindow\0on_actionAbout_SecureShield_triggered\0"
@@ -67,13 +67,13 @@ QT_MOC_LITERAL(23, 562, 28) // "on_actionLog_Out_2_triggered"
     "on_action_Redo_triggered\0"
     "on_action_Undo_triggered\0"
     "on_actionAddEntry_triggered\0"
-    "on_actionEditEntry_triggered\0"
     "on_actionChange_Password_triggered\0"
     "on_textEdit_textChanged\0"
     "on_actionDeleteEntry_triggered\0"
     "on_actionRemove_All_Data_triggered\0"
     "on_actionDelete_Account_triggered\0"
-    "on_actionLog_Out_2_triggered"
+    "on_actionLog_Out_2_triggered\0"
+    "on_actionEditEntry_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -149,13 +149,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 8: _t->on_action_Redo_triggered(); break;
         case 9: _t->on_action_Undo_triggered(); break;
         case 10: _t->on_actionAddEntry_triggered(); break;
-        case 11: _t->on_actionEditEntry_triggered(); break;
-        case 12: _t->on_actionChange_Password_triggered(); break;
-        case 13: _t->on_textEdit_textChanged(); break;
-        case 14: _t->on_actionDeleteEntry_triggered(); break;
-        case 15: _t->on_actionRemove_All_Data_triggered(); break;
-        case 16: _t->on_actionDelete_Account_triggered(); break;
-        case 17: _t->on_actionLog_Out_2_triggered(); break;
+        case 11: _t->on_actionChange_Password_triggered(); break;
+        case 12: _t->on_textEdit_textChanged(); break;
+        case 13: _t->on_actionDeleteEntry_triggered(); break;
+        case 14: _t->on_actionRemove_All_Data_triggered(); break;
+        case 15: _t->on_actionDelete_Account_triggered(); break;
+        case 16: _t->on_actionLog_Out_2_triggered(); break;
+        case 17: _t->on_actionEditEntry_triggered(); break;
         default: ;
         }
     }

@@ -51,8 +51,6 @@ private slots:
 
     void on_actionAddEntry_triggered();
 
-    void on_actionEditEntry_triggered();
-
     void on_actionChange_Password_triggered();
 
     void on_textEdit_textChanged();
@@ -64,6 +62,8 @@ private slots:
     void on_actionDelete_Account_triggered();
 
     void on_actionLog_Out_2_triggered();
+
+    void on_actionEditEntry_triggered();
 
 private:
 
