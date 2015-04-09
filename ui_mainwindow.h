@@ -302,9 +302,8 @@ public:
         menuOptions->addAction(actionRemove_All_Data);
         menuOptions->addAction(actionDelete_Account);
         menuOptions->addAction(actionLog_Out_2);
-        toolBar->addAction(action_File);
-        toolBar->addAction(actionSave_Ctrl_S);
-        toolBar->addSeparator();
+        toolBar->addAction(actionCopy);
+        toolBar->addAction(actionFormat);
         toolBar->addAction(action_Undo);
         toolBar->addAction(action_Redo);
         toolBar->addSeparator();
@@ -313,9 +312,9 @@ public:
         toolBar->addAction(actionDeleteEntry);
         toolBar->addSeparator();
         toolBar->addAction(actionHelpimage);
+        toolBar->addSeparator();
         toolBar->addAction(actionEncryption);
         toolBar->addSeparator();
-        toolBar->addAction(actionSearchFunction);
         toolBar->addAction(actionLog_Out_2);
 
         retranslateUi(MainWindow);

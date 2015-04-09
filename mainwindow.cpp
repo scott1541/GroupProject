@@ -183,17 +183,17 @@ void MainWindow::showPasswords()
 
             if (Strength <= 25)
             {
-                item->setText(5, "x");
+                item->setText(5, "");
                 item->setIcon(5, QIcon("red.gif"));
             }
             else if (Strength > 25 && Strength <= 75)
             {
-                item->setText(5, "y");
+                item->setText(5, " ");
                 item->setIcon(5, QIcon("orange.png"));
             }
             else if (Strength > 75)
             {
-                item->setText(5, "z");
+                item->setText(5, "  ");
                 item->setIcon(5, QIcon("green.png"));
             }
             //qDebug() << qry.value("username").toString();
