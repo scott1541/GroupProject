@@ -5,7 +5,7 @@
 #include <QtCore>
 #include <QtGui>
 #include <QLabel>
-#include "passwordTools.h"
+#include <iostream>
 #define Path_to_DB "passwords.db"
 
 addPassword::addPassword(QWidget *parent) :
@@ -50,18 +50,38 @@ void addPassword::on_lineEdit_5_textEdited(const QString &arg1)
 
 void addPassword::addNewPassword()
 {
+    passwordTools *pt = new passwordTools();
+
     QString Password = ui->lineEdit_3->text();
     QString UsernameID = ui->lineEdit_2->text();
     QString Name = ui->lineEdit->text();
     QString Description = ui->textEdit->toPlainText();
 
-    QString queryString = "INSERT INTO passwords (username, name, usernameID, password, description) VALUES (?,?,?,?,?)";
+    QByteArray ba= ui->lineEdit_3->text().toUtf8();
+
+    char *cPassword = ba.data();
+    //qDebug() << cPassword;
+
+    Twofish *twofish = new Twofish();
+    TwofishKey *key = new TwofishKey();
+    Twofish_Byte byte [32];
+
+    twofish->PrepareKey(byte, 16, key);
+    QString passwordEncrypted = pt->encryptPassword(cPassword, key);
+
+    QString queryString = "INSERT INTO passwords (username, name, usernameID, password, description, key) VALUES (?,?,?,?,?,?)";
     QSqlQuery qry(queryString);
     qry.addBindValue(Username);
     qry.addBindValue(Name);
     qry.addBindValue(UsernameID);
-    qry.addBindValue(Password);
+    //qDebug() << passwordEncrypted;
+    qry.addBindValue(passwordEncrypted);
     qry.addBindValue(Description);
+
+    char *myKey(reinterpret_cast<char *>(key));
+    QByteArray newKey = myKey;
+    qDebug() << myKey;
+    qry.addBindValue(myKey);
     qry.exec();
 }
 

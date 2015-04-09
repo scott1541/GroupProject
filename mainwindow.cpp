@@ -9,7 +9,6 @@
 #include "addpassword.h"
 #include "viewpassword.h"
 #include "changepassword.h"
-#include "twofish.h"
 #include <exception>
 #include <iostream>
 
@@ -26,7 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //const unsigned char* test = "test";
 
-    Twofish_Byte word [] = "hello";
+    char *test = "hello";
+    unsigned char *cPassword = reinterpret_cast<unsigned char*>(test);
+    Twofish_Byte *word = cPassword;
     Twofish_Byte encryptedword [16];
 
     std::string myString(reinterpret_cast<char*>(word));
@@ -40,9 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     twofish->PrepareKey(byte, 16, key);
 
-    std::string myKey(reinterpret_cast<char *>(key));
-    QString qKey(myKey.c_str());
-    qDebug() << qKey;
+    char* myKey(reinterpret_cast<char *>(key));
+    qDebug() << myKey;
 
     twofish->Encrypt(key, word, encryptedword);
 
@@ -50,9 +50,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QString qEncrypt(myEncrypt.c_str());
     qDebug() << qEncrypt;
 
+    QString newKey(myKey);
+
+    //char* cNewKey = (char*)newKey.toStdString().c_str();
+
     Twofish_Byte decrypted[16];
 
-    twofish->Decrypt(key, encryptedword, decrypted);
+    TwofishKey* theKey = (reinterpret_cast<TwofishKey*>(myKey));
+
+    twofish->Decrypt(theKey, encryptedword, decrypted);
     std::string myDecrypt(reinterpret_cast<char*>(decrypted));
     QString qDecrypt(myDecrypt.c_str());
     qDebug() << qDecrypt;
@@ -118,6 +124,8 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     QString Name = item->text(0);
     QString Username = item->text(1);
     QString Password = item->text(2);
+    QByteArray tet = item->text(2).toLatin1();
+    char* cPassword = tet.data();
     QString Description = item->text(4);
     view->setName(Name);
     view->setUsername(Username);
@@ -418,7 +426,7 @@ void MainWindow::on_actionEditEntry_triggered()
         QString Description = item->text(4);
         view->setName(Name);
         view->setUsername(Username);
-        view->setPassword(Password);
+        //view->setPassword(Password);
         view->setDescription(Description);
         view->setWindowTitle("Secure Shield: " + Name);
         view->mainWin = this;

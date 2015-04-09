@@ -7,6 +7,7 @@
 #include <QtSql>
 #include <QDialog>
 #include "mainwindow.h"
+#include "passwordTools.h"
 
 namespace Ui {
 class addPassword;

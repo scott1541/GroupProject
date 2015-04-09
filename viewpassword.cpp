@@ -47,6 +47,31 @@ void viewPassword::setUsername(QString Username)
 
 void viewPassword::setPassword(QString Password)
 {
+    passwordTools *pt = new passwordTools();
+
+    QString Name = ui->label_9->text();
+
+    QSqlQuery qry;
+    QByteArray keyB;
+
+    if (qry.exec("SELECT key FROM passwords WHERE username = '" + Username + "' AND name = '" + Name + "'"))
+    {
+        while (qry.next())
+        {
+            keyB = qry.value("key").toByteArray();
+        }
+    }
+    //qDebug() << keyB;
+
+    char* theKey = keyB.data();
+    qDebug() << theKey;
+    QByteArray ba = Password.toUtf8();
+    //qDebug() << ba;
+    char *cPassword = ba.data();
+
+    TwofishKey *myKey = (reinterpret_cast<TwofishKey*>(theKey));
+    Password = pt->decryptPassword(cPassword, myKey);
+
     ui->lineEdit_3->setText(Password);
     ui->lineEdit_3->setReadOnly(true);
 }

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "math.h"
+#include "twofish.h"
 
 namespace Ui {
 class passwordTools;
@@ -16,6 +17,10 @@ public:
     explicit passwordTools(QWidget *parent = 0);
     int passwordEntropy(QString Password);
     QString passwordGenerator();
+
+    QString encryptPassword(char *Password, TwofishKey *key);
+    QString decryptPassword(char *Password, TwofishKey *key);
+
     ~passwordTools();
 
 private slots:

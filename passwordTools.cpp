@@ -1,6 +1,7 @@
 #include "passwordTools.h"
 #include "ui_passwordTools.h"
 #include <cstdlib>
+#include <QDebug>
 #include <ctime>
 
 passwordTools::passwordTools(QWidget *parent) :
@@ -75,6 +76,35 @@ QString passwordTools::passwordGenerator()
     }
 
     return Password;
+}
+
+QString passwordTools::encryptPassword(char *Password, TwofishKey *key)
+{
+
+    unsigned char *cPassword = reinterpret_cast<unsigned char*>(Password);
+    Twofish_Byte *passwordToEncrypt = cPassword;
+    Twofish_Byte encryptedWord [16];
+    Twofish *twofish = new Twofish();
+    twofish->Encrypt(key, passwordToEncrypt, encryptedWord);
+
+    std::string encrypted(reinterpret_cast<char*>(encryptedWord));
+    QString encryptedPassword(encrypted.c_str());
+    //qDebug() << encryptedPassword;
+    return encryptedPassword;
+}
+
+QString passwordTools::decryptPassword(char *Password, TwofishKey *key)
+{
+    unsigned char *cPassword = reinterpret_cast<unsigned char*>(Password);
+    Twofish_Byte *passwordToDecrypt = cPassword;
+    Twofish_Byte decryptedWord [16];
+    Twofish *twofish = new Twofish();
+    twofish->Encrypt(key, passwordToDecrypt, decryptedWord);
+
+    std::string decrypted(reinterpret_cast<char*>(decryptedWord));
+    QString decryptedPassword(decrypted.c_str());
+    //qDebug() << decryptedPassword;
+    return decryptedPassword;
 }
 
 
