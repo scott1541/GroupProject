@@ -78,33 +78,55 @@ QString passwordTools::passwordGenerator()
     return Password;
 }
 
-QString passwordTools::encryptPassword(char *Password, TwofishKey *key)
+QString passwordTools::encryptPassword(QString Password, TwofishKey *key)
 {
-
-    unsigned char *cPassword = reinterpret_cast<unsigned char*>(Password);
+    std::string st = Password.toUtf8().constData();
+    char *test = (char*)st.c_str();
+    unsigned char *cPassword(reinterpret_cast<unsigned char*>(test));
+    //qDebug() << cPassword;
     Twofish_Byte *passwordToEncrypt = cPassword;
     Twofish_Byte encryptedWord [16];
     Twofish *twofish = new Twofish();
     twofish->Encrypt(key, passwordToEncrypt, encryptedWord);
+    char* myKey(reinterpret_cast<char *>(key));
+    //qDebug() << "Encrypted with the key: " << myKey;
 
     std::string encrypted(reinterpret_cast<char*>(encryptedWord));
     QString encryptedPassword(encrypted.c_str());
-    //qDebug() << encryptedPassword;
+    qDebug() << encryptedPassword;
     return encryptedPassword;
 }
 
-QString passwordTools::decryptPassword(char *Password, TwofishKey *key)
+QString passwordTools::decryptPassword(QString Password, QString key)
 {
-    unsigned char *cPassword = reinterpret_cast<unsigned char*>(Password);
+    qDebug() << Password;
+    std::string st = Password.toUtf8().constData();
+    char *test = (char*)st.c_str();
+    qDebug() << test;
+    unsigned char *cPassword(reinterpret_cast<unsigned char*>(test));
+    qDebug() << (char*)cPassword;
+    //qDebug() << Password;
+    //unsigned char *cPassword = reinterpret_cast<unsigned char*>(Password);
+    //qDebug() << cPassword;
     Twofish_Byte *passwordToDecrypt = cPassword;
     Twofish_Byte decryptedWord [16];
     Twofish *twofish = new Twofish();
-    twofish->Encrypt(key, passwordToDecrypt, decryptedWord);
+    //TwofishKey *unlock = key;
+    Twofish_Byte byte [16];
+    std::string gg = key.toStdString();
+    char* keyToUnlock = (char *)gg.c_str();
+    //qDebug() << "gaga" << gg.c_str();
+    //qDebug() << "bebe" << keyToUnlock;
+    TwofishKey *unlock = (reinterpret_cast<TwofishKey*>(keyToUnlock));
+    twofish->Decrypt(unlock, passwordToDecrypt, decryptedWord);
+    char* myKey(reinterpret_cast<char *>(unlock));
+    //qDebug() << "Tried to decrypt with key: " << myKey;
 
-    std::string decrypted(reinterpret_cast<char*>(decryptedWord));
-    QString decryptedPassword(decrypted.c_str());
-    //qDebug() << decryptedPassword;
-    return decryptedPassword;
+    //qDebug() << (char*)decryptedWord;
+    std::string myDecrypt(reinterpret_cast<char*>(decryptedWord));
+    QString qDecrypt(myDecrypt.c_str());
+    //qDebug() << qDecrypt;
+    return qDecrypt;
 }
 
 

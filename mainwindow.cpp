@@ -24,16 +24,20 @@ MainWindow::MainWindow(QWidget *parent) :
     showPasswords();
 
     //const unsigned char* test = "test";
-
-    char *test = "hello";
-    unsigned char *cPassword = reinterpret_cast<unsigned char*>(test);
+    //****WORKING IMPLEMENTATION****//
+    QString hello = "hello";
+    std::string st = hello.toUtf8().constData();
+    char *test = (char*)st.c_str();
+    qDebug() << "Input: " << test;
+    unsigned char *cPassword(reinterpret_cast<unsigned char*>(test));
+    //qDebug() << (char*)cPassword;
     Twofish_Byte *word = cPassword;
     Twofish_Byte encryptedword [16];
 
     std::string myString(reinterpret_cast<char*>(word));
 
     QString qStr(myString.c_str());
-    qDebug() << qStr;
+    //qDebug() << qStr;
 
     Twofish *twofish = new Twofish();
     TwofishKey *key = new TwofishKey();
@@ -42,26 +46,26 @@ MainWindow::MainWindow(QWidget *parent) :
     twofish->PrepareKey(byte, 16, key);
 
     char* myKey(reinterpret_cast<char *>(key));
-    qDebug() << myKey;
+    QString Key = myKey;
+    Key = Key.toLatin1().toHex();
+    qDebug() << "The Key: " << Key;
 
     twofish->Encrypt(key, word, encryptedword);
 
     std::string myEncrypt(reinterpret_cast<char*>(encryptedword));
     QString qEncrypt(myEncrypt.c_str());
-    qDebug() << qEncrypt;
-
-    QString newKey(myKey);
-
-    //char* cNewKey = (char*)newKey.toStdString().c_str();
+    qDebug() << "Encrypted word: " << qEncrypt;
 
     Twofish_Byte decrypted[16];
 
     TwofishKey* theKey = (reinterpret_cast<TwofishKey*>(myKey));
+    char* sKey(reinterpret_cast<char*>(theKey));
+    //qDebug() << sKey;
 
     twofish->Decrypt(theKey, encryptedword, decrypted);
     std::string myDecrypt(reinterpret_cast<char*>(decrypted));
     QString qDecrypt(myDecrypt.c_str());
-    qDebug() << qDecrypt;
+    qDebug() << "Decrypted word: "<< qDecrypt;
 
 }
 
@@ -124,8 +128,11 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     QString Name = item->text(0);
     QString Username = item->text(1);
     QString Password = item->text(2);
-    QByteArray tet = item->text(2).toLatin1();
-    char* cPassword = tet.data();
+    //qDebug() << Password;
+    //QByteArray tet = item->text(2).toLatin1();
+    //char* cPassword = tet.data();
+
+    //qDebug() << cPassword;
     QString Description = item->text(4);
     view->setName(Name);
     view->setUsername(Username);

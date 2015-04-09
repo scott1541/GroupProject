@@ -18,8 +18,8 @@ public:
     int passwordEntropy(QString Password);
     QString passwordGenerator();
 
-    QString encryptPassword(char *Password, TwofishKey *key);
-    QString decryptPassword(char *Password, TwofishKey *key);
+    QString encryptPassword(QString Password, TwofishKey *key);
+    QString decryptPassword(QString Password, QString key);
 
     ~passwordTools();
 
