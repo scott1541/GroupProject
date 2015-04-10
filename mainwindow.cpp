@@ -11,6 +11,7 @@
 #include "changepassword.h"
 #include <exception>
 #include <iostream>
+#include "botanwrapper.h"
 
 #define Path_to_DB "passwords.db"
 #define Path_to_Login "login.db"
@@ -23,50 +24,21 @@ MainWindow::MainWindow(QWidget *parent) :
 
     showPasswords();
 
-    //const unsigned char* test = "test";
-    //****WORKING IMPLEMENTATION****//
-    QString hello = "hello";
-    std::string st = hello.toUtf8().constData();
-    char *test = (char*)st.c_str();
-    qDebug() << "Input: " << test;
-    unsigned char *cPassword(reinterpret_cast<unsigned char*>(test));
-    //qDebug() << (char*)cPassword;
-    Twofish_Byte *word = cPassword;
-    Twofish_Byte encryptedword [16];
+    BotanWrapper cWrapper;
 
-    std::string myString(reinterpret_cast<char*>(word));
+   // QString cPlain = "/home/rootshell/Source/Wraper/test.txt";
+   // QString cEncrypted = "/home/rootshell/Source/Wraper/encrypted.txt";
+   // QString cDecrypted = "/home/rootshell/Source/Wraper/decrypted.txt";
 
-    QString qStr(myString.c_str());
-    //qDebug() << qStr;
+   // cWrapper.EncryptFile(cPlain,cEncrypted);
+   // cWrapper.DecryptFile(cEncrypted,cDecrypted);
 
-    Twofish *twofish = new Twofish();
-    TwofishKey *key = new TwofishKey();
-    Twofish_Byte byte [32];
+    cWrapper.setPassword("hello");
+    //cWrapper.setSalt("#$%^&!*@y9sg08dfsdfs");
+    QString cEnc = cWrapper.Encrypt("This is my secret :)");
 
-    twofish->PrepareKey(byte, 16, key);
-
-    char* myKey(reinterpret_cast<char *>(key));
-    QString Key = myKey;
-    Key = Key.toLatin1().toHex();
-    qDebug() << "The Key: " << Key;
-
-    twofish->Encrypt(key, word, encryptedword);
-
-    std::string myEncrypt(reinterpret_cast<char*>(encryptedword));
-    QString qEncrypt(myEncrypt.c_str());
-    qDebug() << "Encrypted word: " << qEncrypt;
-
-    Twofish_Byte decrypted[16];
-
-    TwofishKey* theKey = (reinterpret_cast<TwofishKey*>(myKey));
-    char* sKey(reinterpret_cast<char*>(theKey));
-    //qDebug() << sKey;
-
-    twofish->Decrypt(theKey, encryptedword, decrypted);
-    std::string myDecrypt(reinterpret_cast<char*>(decrypted));
-    QString qDecrypt(myDecrypt.c_str());
-    qDebug() << "Decrypted word: "<< qDecrypt;
-
+    qDebug() << cEnc;
+    qDebug() << cWrapper.Decrypt(cEnc);
 }
 
 MainWindow::~MainWindow()

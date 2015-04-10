@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     viewpassword.cpp \
     changepassword.cpp \
     twofish.cpp \
-    passwordTools.cpp
+    passwordTools.cpp \
+    botan.cpp \
+    botanwrapper.cpp
 
 HEADERS  += startmenu.h \
     mainwindow.h \
@@ -30,7 +32,10 @@ HEADERS  += startmenu.h \
     viewpassword.h \
     changepassword.h \
     twofish.h \
-    passwordTools.h
+    passwordTools.h \
+    const.h \
+    botan.h \
+    botanwrapper.h
 
 FORMS    += startmenu.ui \
     mainwindow.ui \

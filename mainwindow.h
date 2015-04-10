@@ -70,6 +70,7 @@ private:
     Ui::MainWindow *ui;
 
     QSqlDatabase myDB;
+
 };
 
 #endif // MAINWINDOW_H

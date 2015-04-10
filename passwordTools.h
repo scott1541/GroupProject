@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "math.h"
 #include "twofish.h"
+#include "botanwrapper.h"
 
 namespace Ui {
 class passwordTools;
@@ -18,7 +19,7 @@ public:
     int passwordEntropy(QString Password);
     QString passwordGenerator();
 
-    QString encryptPassword(QString Password, TwofishKey *key);
+    QString encryptPassword(QString Password, QString Key);
     QString decryptPassword(QString Password, QString key);
 
     ~passwordTools();

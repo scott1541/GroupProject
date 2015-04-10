@@ -52,36 +52,27 @@ void addPassword::addNewPassword()
 {
     passwordTools *pt = new passwordTools();
 
+
     QString Password = ui->lineEdit_3->text();
     QString UsernameID = ui->lineEdit_2->text();
     QString Name = ui->lineEdit->text();
     QString Description = ui->textEdit->toPlainText();
 
-    std::string sPassword = ui->lineEdit_3->text().toStdString();
-    char *cPassword = (char*)sPassword.c_str();
-    //qDebug() << cPassword;
+    QString Key = pt->passwordGenerator();
+    qDebug() << Key;
 
-    Twofish *twofish = new Twofish();
-    TwofishKey *key = new TwofishKey();
-    Twofish_Byte byte [32];
+    QString Encrypted = pt->encryptPassword(Password, Key);
+    qDebug() << Encrypted;
 
-
-    twofish->PrepareKey(byte, 16, key);
-    QString passwordEncrypted = pt->encryptPassword(Password, key);
     //qDebug() << passwordEncrypted;
     QString queryString = "INSERT INTO passwords (username, name, usernameID, password, description, key) VALUES (?,?,?,?,?,?)";
     QSqlQuery qry(queryString);
     qry.addBindValue(Username);
     qry.addBindValue(Name);
     qry.addBindValue(UsernameID);
-    qDebug() << passwordEncrypted;
-    qry.addBindValue(passwordEncrypted);
+    qry.addBindValue(Encrypted);
     qry.addBindValue(Description);
-
-    char *myKey = (reinterpret_cast<char *>(key));
-    QByteArray newKey = myKey;
-    //qDebug() << "The key is: " << myKey;
-    qry.addBindValue(myKey);
+    qry.addBindValue(Key);
     qry.exec();
 }
 

@@ -8,6 +8,8 @@
 #include <QDialog>
 #include "mainwindow.h"
 #include "passwordTools.h"
+#include "botanwrapper.h"
+
 
 namespace Ui {
 class addPassword;

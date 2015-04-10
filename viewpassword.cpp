@@ -49,40 +49,23 @@ void viewPassword::setPassword(QString Password)
 {
     passwordTools *pt = new passwordTools();
 
-    Twofish *twofish = new Twofish();
-    TwofishKey *keyw = new TwofishKey();
-    Twofish_Byte byte [32];
-
-    //twofish->PrepareKey(byte, 16, key);
-
     QString Name = ui->label_9->text();
 
     QSqlQuery qry;
-    QString keyB;
+    QString Key;
 
     if (qry.exec("SELECT key FROM passwords WHERE username = '" + Username + "' AND name = '" + Name + "'"))
     {
         while (qry.next())
         {
-            keyB = qry.value("key").toString();
+            Key = qry.value("key").toString();
         }
     }
 
-    char* theKey = (char*)keyB.toStdString().c_str();
-    TwofishKey *myKey = (reinterpret_cast<TwofishKey*>(theKey));
-    //twofish->PrepareKey(byte, 16, myKey);
-    //qDebug() << theKey;
-    std::string sPassword = Password.toStdString();
-    char *cPassword = &(sPassword[0]);
-    //qDebug() << cPassword;
-    //qDebug() << Password;
-    char* pKey(reinterpret_cast<char *>(keyw));
-    //qDebug() << "Passing in key: " << keyB;
-    Password = pt->decryptPassword(Password, keyB);
-    //qDebug() << Password;
+    Password = pt->decryptPassword(Password, Key);
+
     ui->lineEdit_3->setText(Password);
     ui->lineEdit_3->setReadOnly(true);
-    //delete cPassword;
 }
 
 void viewPassword::setDescription(QString Description)

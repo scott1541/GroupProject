@@ -78,55 +78,20 @@ QString passwordTools::passwordGenerator()
     return Password;
 }
 
-QString passwordTools::encryptPassword(QString Password, TwofishKey *key)
+QString passwordTools::encryptPassword(QString Password, QString Key)
 {
-    std::string st = Password.toUtf8().constData();
-    char *test = (char*)st.c_str();
-    unsigned char *cPassword(reinterpret_cast<unsigned char*>(test));
-    //qDebug() << cPassword;
-    Twofish_Byte *passwordToEncrypt = cPassword;
-    Twofish_Byte encryptedWord [16];
-    Twofish *twofish = new Twofish();
-    twofish->Encrypt(key, passwordToEncrypt, encryptedWord);
-    char* myKey(reinterpret_cast<char *>(key));
-    //qDebug() << "Encrypted with the key: " << myKey;
-
-    std::string encrypted(reinterpret_cast<char*>(encryptedWord));
-    QString encryptedPassword(encrypted.c_str());
-    qDebug() << encryptedPassword;
+    BotanWrapper botan;
+    botan.setPassword(Key);
+    QString encryptedPassword = botan.Encrypt(Password);
     return encryptedPassword;
 }
 
 QString passwordTools::decryptPassword(QString Password, QString key)
 {
-    qDebug() << Password;
-    std::string st = Password.toUtf8().constData();
-    char *test = (char*)st.c_str();
-    qDebug() << test;
-    unsigned char *cPassword(reinterpret_cast<unsigned char*>(test));
-    qDebug() << (char*)cPassword;
-    //qDebug() << Password;
-    //unsigned char *cPassword = reinterpret_cast<unsigned char*>(Password);
-    //qDebug() << cPassword;
-    Twofish_Byte *passwordToDecrypt = cPassword;
-    Twofish_Byte decryptedWord [16];
-    Twofish *twofish = new Twofish();
-    //TwofishKey *unlock = key;
-    Twofish_Byte byte [16];
-    std::string gg = key.toStdString();
-    char* keyToUnlock = (char *)gg.c_str();
-    //qDebug() << "gaga" << gg.c_str();
-    //qDebug() << "bebe" << keyToUnlock;
-    TwofishKey *unlock = (reinterpret_cast<TwofishKey*>(keyToUnlock));
-    twofish->Decrypt(unlock, passwordToDecrypt, decryptedWord);
-    char* myKey(reinterpret_cast<char *>(unlock));
-    //qDebug() << "Tried to decrypt with key: " << myKey;
-
-    //qDebug() << (char*)decryptedWord;
-    std::string myDecrypt(reinterpret_cast<char*>(decryptedWord));
-    QString qDecrypt(myDecrypt.c_str());
-    //qDebug() << qDecrypt;
-    return qDecrypt;
+    BotanWrapper botan;
+    botan.setPassword(key);
+    QString decryptedPassword = botan.Decrypt(Password);
+    return decryptedPassword;
 }
 
 
