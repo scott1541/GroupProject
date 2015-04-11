@@ -19,6 +19,7 @@ class viewPassword : public QDialog
 
 public:
     MainWindow *mainWin;
+    QString passwordName;
     explicit viewPassword(QWidget *parent = 0);
     ~viewPassword();
 

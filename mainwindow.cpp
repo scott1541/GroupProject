@@ -24,21 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     showPasswords();
 
-    BotanWrapper cWrapper;
-
-   // QString cPlain = "/home/rootshell/Source/Wraper/test.txt";
-   // QString cEncrypted = "/home/rootshell/Source/Wraper/encrypted.txt";
-   // QString cDecrypted = "/home/rootshell/Source/Wraper/decrypted.txt";
-
-   // cWrapper.EncryptFile(cPlain,cEncrypted);
-   // cWrapper.DecryptFile(cEncrypted,cDecrypted);
-
-    cWrapper.setPassword("hello");
-    //cWrapper.setSalt("#$%^&!*@y9sg08dfsdfs");
-    QString cEnc = cWrapper.Encrypt("This is my secret :)");
-
-    qDebug() << cEnc;
-    qDebug() << cWrapper.Decrypt(cEnc);
 }
 
 MainWindow::~MainWindow()
@@ -99,16 +84,12 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
     viewPassword *view = new viewPassword();
     QString Name = item->text(0);
     QString Username = item->text(1);
-    QString Password = item->text(2);
-    //qDebug() << Password;
-    //QByteArray tet = item->text(2).toLatin1();
-    //char* cPassword = tet.data();
-
-    //qDebug() << cPassword;
+    //QString Password = item->text(2);
     QString Description = item->text(4);
     view->setName(Name);
     view->setUsername(Username);
-    view->setPassword(Password);
+    view->passwordName = Name;
+    view->setPassword(Name);
     view->setDescription(Description);
     view->setWindowTitle("Secure Shield: " + Name);
     view->mainWin = this;
@@ -144,38 +125,45 @@ void MainWindow::showPasswords()
     }
 
     QSqlQuery qry;
+    passwordTools *pt = new passwordTools();
 
     if (qry.exec("SELECT * FROM passwords WHERE username = '" + Username + "'"))
     {
         while (qry.next())
         {
+            QString Password = pt->decryptPassword(qry.value("password").toString(), qry.value("key").toString());
+
+
             QTreeWidgetItem *item = new QTreeWidgetItem();
             item->setText(0, qry.value("name").toString());
             item->setText(1, qry.value("usernameID").toString());
-            item->setText(2, qry.value("password").toString());
+            item->setText(2, Password);
             item->setText(3, qry.value("dateadded").toString());
             item->setText(4, qry.value("description").toString());
-
-            QString Password = qry.value("password").toString();
-            passwordTools *p = new passwordTools();
-            int Strength = p->passwordEntropy(Password);
+;
+            int Strength = pt->passwordEntropy(Password);
 
             if (Strength <= 25)
             {
-                item->setText(10, "");
+                item->setText(5, "");
                 item->setIcon(5, QIcon("red.gif"));
             }
             else if (Strength > 25 && Strength <= 75)
             {
-                item->setText(10, " ");
+                item->setText(5, " ");
                 item->setIcon(5, QIcon("orange.png"));
             }
             else if (Strength > 75)
             {
-                item->setText(10, "  ");
+                item->setText(5, "  ");
                 item->setIcon(5, QIcon("green.png"));
             }
-            //qDebug() << qry.value("username").toString();
+            QString censored;
+            for (int i = 0; i < Password.length(); i++)
+            {
+                censored = censored + "*";
+            }
+            item->setText(2, censored);
             ui->treeWidget->addTopLevelItem(item);
         }
     }
@@ -218,38 +206,47 @@ void MainWindow::searchPasswords(QString Word)
     }
 
     QSqlQuery qry;
+    passwordTools *pt = new passwordTools();
 
     if (qry.exec("SELECT * FROM passwords WHERE username = '" + Username + "'AND name LIKE '" + Word + "'"))
     {
         while (qry.next())
         {
+            QString Password = pt->decryptPassword(qry.value("password").toString(), qry.value("key").toString());
+
+
             QTreeWidgetItem *item = new QTreeWidgetItem();
             item->setText(0, qry.value("name").toString());
             item->setText(1, qry.value("usernameID").toString());
-            item->setText(2, qry.value("password").toString());
+            item->setText(2, Password);
             item->setText(3, qry.value("dateadded").toString());
             item->setText(4, qry.value("description").toString());
-            //qDebug() << qry.value("username").toString();
-            QString Password = qry.value("password").toString();
-            passwordTools *p = new passwordTools();
-            int Strength = p->passwordEntropy(Password);
+
+            int Strength = pt->passwordEntropy(Password);
 
             if (Strength <= 25)
             {
-                item->setText(5, "x");
+                item->setText(5, "");
                 item->setIcon(5, QIcon("red.gif"));
 
             }
             else if (Strength > 25 && Strength <= 75)
             {
                 item->setIcon(5, QIcon("orange.png"));
-                item->setText(5, "y");
+                item->setText(5, " ");
             }
             else if (Strength > 75)
             {
                 item->setIcon(5, QIcon("green.png"));
-                item->setText(5, "z");
+                item->setText(5, "  ");
             }
+
+            QString censored;
+            for (int i = 0; i < Password.length(); i++)
+            {
+                censored = censored + "*";
+            }
+            item->setText(2, censored);
 
 
             ui->treeWidget->addTopLevelItem(item);

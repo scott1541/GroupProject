@@ -1,5 +1,6 @@
 #include "passwordTools.h"
 #include "ui_passwordTools.h"
+#include "qgrostlhash.h"
 #include <cstdlib>
 #include <QDebug>
 #include <ctime>
@@ -82,6 +83,7 @@ QString passwordTools::encryptPassword(QString Password, QString Key)
 {
     BotanWrapper botan;
     botan.setPassword(Key);
+    botan.setSalt(QGrostlHash(Key).toHexString());
     QString encryptedPassword = botan.Encrypt(Password);
     return encryptedPassword;
 }
@@ -90,6 +92,7 @@ QString passwordTools::decryptPassword(QString Password, QString key)
 {
     BotanWrapper botan;
     botan.setPassword(key);
+    botan.setSalt(QGrostlHash(key).toHexString());
     QString decryptedPassword = botan.Decrypt(Password);
     return decryptedPassword;
 }

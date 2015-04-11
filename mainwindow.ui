@@ -66,6 +66,11 @@
      <property name="text">
       <string>Strength</string>
      </property>
+     <property name="font">
+      <font>
+       <stylestrategy>PreferAntialias</stylestrategy>
+      </font>
+     </property>
     </column>
    </widget>
    <widget class="QLabel" name="label">

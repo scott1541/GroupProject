@@ -28,6 +28,18 @@ viewPassword::viewPassword(QWidget *parent) :
     }else{
             qDebug() << "[!] Database File Not Found.";
     }
+
+    QString Name = ui->label_9->text();
+    qDebug() << Name;
+
+    QString Password;
+    QSqlQuery qry;
+
+    qDebug() << passwordName;
+
+    qDebug() << Password;
+
+    setPassword(Password);
 }
 
 viewPassword::~viewPassword()
@@ -48,10 +60,18 @@ void viewPassword::setUsername(QString Username)
 void viewPassword::setPassword(QString Password)
 {
     passwordTools *pt = new passwordTools();
+    QSqlQuery qry;
+
+    if (qry.exec("SELECT password FROM passwords WHERE username = '" + Username + "' AND name = '" + Password + "'"))
+    {
+        while (qry.next())
+        {
+            Password = qry.value("password").toString();
+        }
+    }
 
     QString Name = ui->label_9->text();
 
-    QSqlQuery qry;
     QString Key;
 
     if (qry.exec("SELECT key FROM passwords WHERE username = '" + Username + "' AND name = '" + Name + "'"))
