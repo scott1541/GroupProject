@@ -18,6 +18,7 @@ public:
     explicit passwordTools(QWidget *parent = 0);
     int passwordEntropy(QString Password);
     QString passwordGenerator();
+    QString passwordRecommender(QString Password);
 
     QString encryptPassword(QString Password, QString Key);
     QString decryptPassword(QString Password, QString key);

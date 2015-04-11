@@ -45,6 +45,7 @@ public:
     QPushButton *pushButton_2;
     QCheckBox *checkBox;
     QPushButton *pushButton_3;
+    QLabel *label_9;
 
     void setupUi(QDialog *addPassword)
     {
@@ -126,6 +127,13 @@ public:
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(210, 460, 71, 31));
         pushButton_3->setFont(font1);
+        label_9 = new QLabel(addPassword);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(310, 250, 141, 201));
+        QFont font2;
+        font2.setPointSize(10);
+        label_9->setFont(font2);
+        label_9->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
@@ -155,6 +163,7 @@ public:
         pushButton_2->setText(QApplication::translate("addPassword", "Generate", 0));
         checkBox->setText(QApplication::translate("addPassword", "Show password", 0));
         pushButton_3->setText(QApplication::translate("addPassword", "Exit", 0));
+        label_9->setText(QApplication::translate("addPassword", "TextLabel", 0));
     } // retranslateUi
 
 };

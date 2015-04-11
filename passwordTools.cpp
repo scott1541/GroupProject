@@ -97,6 +97,44 @@ QString passwordTools::decryptPassword(QString Password, QString key)
     return decryptedPassword;
 }
 
+QString passwordTools::passwordRecommender(QString Password)
+{
+    QString recommend = "Improve password by: \n";
+    bool upC;  //Uppercase characters
+    bool loC;  //Lowercase characters
+    bool nuM;  //Number characters
+    bool slC;  //Special characters (ASCII Printable)
+
+    loC = Password.contains(QRegExp("[a-z]"));   //Using regular expressions to detect characters in password string
+    upC = Password.contains(QRegExp("[A-Z]"));
+    nuM = Password.contains(QRegExp("[0-9]"));
+    slC = Password.contains(QRegExp("[ -~]"));
+
+    if (!loC)
+    {
+        recommend += "- adding lowercase\n";
+    }
+    if (!upC)
+    {
+        recommend += "- adding uppercase\n";
+    }
+    if(!nuM)
+    {
+        recommend += "- adding numbers\n";
+    }
+    if (!slC)
+    {
+        recommend += "- adding symbols\n";
+    }
+    if(loC && upC && nuM && slC)
+    {
+        recommend += "- adding more characters\n";
+    }
+
+
+    return recommend;
+}
+
 
 passwordTools::~passwordTools()
 {

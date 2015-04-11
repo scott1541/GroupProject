@@ -29,6 +29,8 @@ addPassword::addPassword(QWidget *parent) :
             qDebug() << "[!] Database File Not Found.";
     }
 
+    on_lineEdit_3_textEdited(NULL);
+
 }
 
 addPassword::~addPassword()
@@ -40,6 +42,10 @@ void addPassword::on_lineEdit_3_textEdited(const QString &arg1)
 {
 
     getPasswordStrength();
+    passwordTools *pt = new passwordTools();
+    QString Recommend = pt->passwordRecommender(ui->lineEdit_3->text());
+    //QString Recommend = (char*)recommend;
+    ui->label_9->setText(Recommend);
 
 }
 

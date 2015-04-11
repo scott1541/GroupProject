@@ -56,13 +56,16 @@ SOURCES       = main.cpp \
 		viewpassword.cpp \
 		changepassword.cpp \
 		twofish.cpp \
-		passwordTools.cpp qrc_rescources.cpp \
+		passwordTools.cpp \
+		botan.cpp \
+		botanwrapper.cpp qrc_rescources.cpp \
 		moc_startmenu.cpp \
 		moc_mainwindow.cpp \
 		moc_addpassword.cpp \
 		moc_viewpassword.cpp \
 		moc_changepassword.cpp \
-		moc_passwordTools.cpp
+		moc_passwordTools.cpp \
+		moc_botanwrapper.cpp
 OBJECTS       = main.o \
 		startmenu.o \
 		mainwindow.o \
@@ -72,13 +75,16 @@ OBJECTS       = main.o \
 		changepassword.o \
 		twofish.o \
 		passwordTools.o \
+		botan.o \
+		botanwrapper.o \
 		qrc_rescources.o \
 		moc_startmenu.o \
 		moc_mainwindow.o \
 		moc_addpassword.o \
 		moc_viewpassword.o \
 		moc_changepassword.o \
-		moc_passwordTools.o
+		moc_passwordTools.o \
+		moc_botanwrapper.o
 DIST          = ../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../Qt/5.4/clang_64/mkspecs/qdevice.pri \
 		../Qt/5.4/clang_64/mkspecs/features/device_config.prf \
@@ -214,7 +220,10 @@ DIST          = ../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		viewpassword.h \
 		changepassword.h \
 		twofish.h \
-		passwordTools.h main.cpp \
+		passwordTools.h \
+		const.h \
+		botan.h \
+		botanwrapper.h main.cpp \
 		startmenu.cpp \
 		mainwindow.cpp \
 		addpassword.cpp \
@@ -222,7 +231,9 @@ DIST          = ../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		viewpassword.cpp \
 		changepassword.cpp \
 		twofish.cpp \
-		passwordTools.cpp
+		passwordTools.cpp \
+		botan.cpp \
+		botanwrapper.cpp
 QMAKE_TARGET  = SecureShield
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SecureShield.app/Contents/MacOS/SecureShield
@@ -563,8 +574,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents rescources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents startmenu.h mainwindow.h addpassword.h qgrostlhash.h viewpassword.h changepassword.h twofish.h passwordTools.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp addpassword.cpp qgrostlhash.cpp viewpassword.cpp changepassword.cpp twofish.cpp passwordTools.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents startmenu.h mainwindow.h addpassword.h qgrostlhash.h viewpassword.h changepassword.h twofish.h passwordTools.h const.h botan.h botanwrapper.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp startmenu.cpp mainwindow.cpp addpassword.cpp qgrostlhash.cpp viewpassword.cpp changepassword.cpp twofish.cpp passwordTools.cpp botan.cpp botanwrapper.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents startmenu.ui mainwindow.ui password.ui addpassword.ui viewpassword.ui changepassword.ui $(DISTDIR)/
 
 
@@ -644,9 +655,9 @@ qrc_rescources.cpp: rescources.qrc \
 		fileopen.png
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/rcc -name rescources rescources.qrc -o qrc_rescources.cpp
 
-compiler_moc_header_make_all: moc_startmenu.cpp moc_mainwindow.cpp moc_addpassword.cpp moc_viewpassword.cpp moc_changepassword.cpp moc_passwordTools.cpp
+compiler_moc_header_make_all: moc_startmenu.cpp moc_mainwindow.cpp moc_addpassword.cpp moc_viewpassword.cpp moc_changepassword.cpp moc_passwordTools.cpp moc_botanwrapper.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_startmenu.cpp moc_mainwindow.cpp moc_addpassword.cpp moc_viewpassword.cpp moc_changepassword.cpp moc_passwordTools.cpp
+	-$(DEL_FILE) moc_startmenu.cpp moc_mainwindow.cpp moc_addpassword.cpp moc_viewpassword.cpp moc_changepassword.cpp moc_passwordTools.cpp moc_botanwrapper.cpp
 moc_startmenu.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtCore \
@@ -1520,6 +1531,11 @@ moc_addpassword.cpp: ../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
 		passwordTools.h \
 		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
 		addpassword.h
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/carlmansfield/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/carlmansfield/GroupProject2 -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/carlmansfield/Qt/5.4/clang_64/lib addpassword.h -o moc_addpassword.cpp
 
@@ -1841,8 +1857,30 @@ moc_changepassword.cpp: ../Qt/5.4/clang_64/lib/QtSql.framework/Versions/5/Header
 moc_passwordTools.cpp: ../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qglobal.h \
 		passwordTools.h
 	/Users/carlmansfield/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/carlmansfield/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/carlmansfield/GroupProject2 -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/carlmansfield/Qt/5.4/clang_64/lib passwordTools.h -o moc_passwordTools.cpp
+
+moc_botanwrapper.cpp: ../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qglobal.h \
+		botanwrapper.h
+	/Users/carlmansfield/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/carlmansfield/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/carlmansfield/GroupProject2 -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtSql.framework/Headers -I/Users/carlmansfield/Qt/5.4/clang_64/lib/QtCore.framework/Headers -F/Users/carlmansfield/Qt/5.4/clang_64/lib botanwrapper.h -o moc_botanwrapper.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -2474,7 +2512,11 @@ startmenu.o: startmenu.cpp startmenu.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		passwordTools.h \
-		twofish.h
+		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startmenu.o startmenu.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -2775,6 +2817,10 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
 		passwordTools.h \
 		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
 		addpassword.h \
 		viewpassword.h \
 		changepassword.h
@@ -3074,6 +3120,11 @@ addpassword.o: addpassword.cpp addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QTreeWidgetItem \
 		passwordTools.h \
 		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
 		ui_addpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h
@@ -3388,6 +3439,11 @@ viewpassword.o: viewpassword.cpp viewpassword.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		passwordTools.h \
 		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o viewpassword.o viewpassword.cpp
 
@@ -3684,7 +3740,11 @@ changepassword.o: changepassword.cpp changepassword.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		passwordTools.h \
-		twofish.h
+		twofish.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o changepassword.o changepassword.cpp
 
 twofish.o: twofish.cpp twofish.h
@@ -3694,10 +3754,40 @@ passwordTools.o: passwordTools.cpp passwordTools.h \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		twofish.h \
-		ui_passwordTools.h \
+		botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
 		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qglobal.h \
+		ui_passwordTools.h \
+		qgrostlhash.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o passwordTools.o passwordTools.cpp
+
+botan.o: botan.cpp botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qglobal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o botan.o botan.cpp
+
+botanwrapper.o: botanwrapper.cpp botanwrapper.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QObject \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qobject.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QByteArray \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qbytearray.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		botan.h \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QtGlobal \
+		../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qglobal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o botanwrapper.o botanwrapper.cpp
 
 qrc_rescources.o: qrc_rescources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_rescources.o qrc_rescources.cpp
@@ -3719,6 +3809,9 @@ moc_changepassword.o: moc_changepassword.cpp
 
 moc_passwordTools.o: moc_passwordTools.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_passwordTools.o moc_passwordTools.cpp
+
+moc_botanwrapper.o: moc_botanwrapper.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_botanwrapper.o moc_botanwrapper.cpp
 
 ####### Install
 

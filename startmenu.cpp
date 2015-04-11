@@ -145,6 +145,7 @@ void startmenu::on_pushButton_clicked() //Login/account creation button
                 MainWindow *mainWin = new MainWindow();
                 mainWin->setWindowTitle("Secure Shield: " + Username + " logged in");
                 mainWin->show();
+                mainWin->showPasswords();
                 hide();
                         }
         else {

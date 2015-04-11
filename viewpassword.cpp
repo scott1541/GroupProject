@@ -29,17 +29,6 @@ viewPassword::viewPassword(QWidget *parent) :
             qDebug() << "[!] Database File Not Found.";
     }
 
-    QString Name = ui->label_9->text();
-    qDebug() << Name;
-
-    QString Password;
-    QSqlQuery qry;
-
-    qDebug() << passwordName;
-
-    qDebug() << Password;
-
-    setPassword(Password);
 }
 
 viewPassword::~viewPassword()
@@ -129,8 +118,16 @@ void viewPassword::on_pushButton_clicked()
 void viewPassword::editPassword(QString Name, QString newPassword)
 {
     QSqlQuery qry;
+    passwordTools *pt = new passwordTools();
 
-    qry.exec("UPDATE passwords SET password ='" + newPassword + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
+    QString Key = pt->passwordGenerator();
+    qDebug() << Key;
+
+    //newPassword = pt->encryptPassword(newPassword, Key);
+    QString Password = pt->encryptPassword(newPassword, Key);
+    //qDebug() << newPassword;
+
+    qry.exec("UPDATE passwords SET password ='" + Password + "'AND key ='" + Key + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
     mainWin->showPasswords();
     this->close();
 }
