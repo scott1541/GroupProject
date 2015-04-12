@@ -127,7 +127,7 @@ void viewPassword::editPassword(QString Name, QString newPassword)
     QString Password = pt->encryptPassword(newPassword, Key);
     //qDebug() << newPassword;
 
-    qry.exec("UPDATE passwords SET password ='" + Password + "'AND key ='" + Key + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
+    qry.exec("UPDATE passwords SET password ='" + Password + "', key ='" + Key + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
     mainWin->showPasswords();
     this->close();
 }
