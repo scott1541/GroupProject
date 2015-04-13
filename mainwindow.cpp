@@ -9,6 +9,7 @@
 #include "addpassword.h"
 #include "viewpassword.h"
 #include "changepassword.h"
+#include "sqlite3.h"
 #include <exception>
 #include <iostream>
 #include "botanwrapper.h"
@@ -122,6 +123,16 @@ void MainWindow::showPasswords()
 
     }else{
             qDebug() << "[!] Database File Not Found.";
+            sqlite3 *newDB;
+            sqlite3_open("passwords.db", &newDB);
+
+            std::string createTable = "CREATE TABLE passwords(username VARCHAR(20), name VARCHAR(20), usernameID VARCHAR(30), "
+                                      "password VARCHAR(64), dateadded DATETIME DEFAULT current_timestamp, description TEXT,"
+                                      "key VARCHAR(32), url VARCHAR(64), length INTEGER, strength CHAR(1))";
+            sqlite3_stmt *createStmt;
+            qDebug() << "Creating Table Statement";
+            sqlite3_prepare(newDB, createTable.c_str(), createTable.size(), &createStmt, NULL);
+            if (sqlite3_step(createStmt) != SQLITE_DONE) qDebug() << "Didn't Create Table!";
     }
 
     QSqlQuery qry;
@@ -342,7 +353,7 @@ void MainWindow::on_actionDelete_Account_triggered()
 
                 }else{
                         //qDebug() << "[!] Database File Not Found.";
-                }
+                    }
                 QSqlQuery qry;
                 qry.exec("DELETE FROM user WHERE username='" + Username + "'");
                 myDB.close();
