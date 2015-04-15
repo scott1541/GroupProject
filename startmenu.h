@@ -54,8 +54,6 @@ private slots:
 
     void getPasswordStrength();
 
-    void keyPressEvent(QKeyEvent* pe);
-
 private:
     Ui::startmenu *ui;
 

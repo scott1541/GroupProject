@@ -22,11 +22,11 @@ addPassword::addPassword(QWidget *parent) :
     {
         if(myDB.open())
         {
-            //qDebug() << "[+] Connected To Database!";
+            qDebug() << "[+] Connected To Database!";
         }
 
     }else{
-            //qDebug() << "[!] Database File Not Found.";
+            qDebug() << "[!] Database File Not Found.";
     }
 
     on_lineEdit_3_textEdited(NULL);
@@ -60,7 +60,7 @@ void addPassword::addNewPassword()
 
 
     QString Password = ui->lineEdit_3->text();
-    //qDebug() << "You stored the password: " << Password << " which has the length of" << Password.length();
+    qDebug() << "You stored the password: " << Password << " which has the length of" << Password.length();
     int Strength = pt->passwordEntropy(Password);
     QString qStrength;
     if (Strength <= 25)
@@ -117,10 +117,10 @@ void addPassword::on_pushButton_clicked(bool checked)
         if (nameUse.next())
         {
             validName = false;
-            //qDebug() << "Name " + Name + " is in use";
+            qDebug() << "Name " + Name + " is in use";
         } else {
             validName = true;
-            //qDebug() << "Name " + Name + " is available";
+            qDebug() << "Name " + Name + " is available";
         }
     }
 

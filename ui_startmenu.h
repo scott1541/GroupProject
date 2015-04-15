@@ -90,9 +90,6 @@ public:
         QFont font3;
         font3.setFamily(QStringLiteral("Corbel"));
         pushButton->setFont(font3);
-        pushButton->setFocusPolicy(Qt::TabFocus);
-        pushButton->setAutoDefault(false);
-        pushButton->setFlat(false);
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setEnabled(true);

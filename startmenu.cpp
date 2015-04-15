@@ -19,7 +19,6 @@ QMainWindow(parent),
 ui(new Ui::startmenu)
 {
         ui->setupUi(this);
-        ui->pushButton->setDefault(true);
         on_radioButton_clicked();
         ui->pushButton->setGeometry(320, 290, 77, 32);
         ui->lineEdit_3->hide();
@@ -271,8 +270,10 @@ void startmenu::on_label_9_linkActivated(const QString &link)
         ui->label_9->hide();
 }
 
-void startmenu::keyPressEvent(QKeyEvent* pe)
-{
-    if(pe->key() == Qt::Key_Return)
-        on_pushButton_clicked();
-}
+
+//
+//static QString getDesc(int passStr)
+//{
+//startmenu::Desc = "Hello";
+//return startmenu::Desc;
+//}
