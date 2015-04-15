@@ -54,7 +54,15 @@ public:
     {
         if (viewPassword->objectName().isEmpty())
             viewPassword->setObjectName(QStringLiteral("viewPassword"));
-        viewPassword->resize(458, 553);
+        viewPassword->setWindowModality(Qt::WindowModal);
+        viewPassword->resize(448, 553);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(viewPassword->sizePolicy().hasHeightForWidth());
+        viewPassword->setSizePolicy(sizePolicy);
+        viewPassword->setMinimumSize(QSize(448, 553));
+        viewPassword->setMaximumSize(QSize(448, 553));
         label = new QLabel(viewPassword);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(120, 20, 171, 41));

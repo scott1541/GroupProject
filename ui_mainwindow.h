@@ -78,6 +78,13 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(800, 600);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
+        MainWindow->setMinimumSize(QSize(800, 600));
+        MainWindow->setMaximumSize(QSize(800, 600));
         QFont font;
         font.setFamily(QStringLiteral("Corbel"));
         MainWindow->setFont(font);

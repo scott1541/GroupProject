@@ -40,7 +40,15 @@ public:
     {
         if (ChangePassword->objectName().isEmpty())
             ChangePassword->setObjectName(QStringLiteral("ChangePassword"));
+        ChangePassword->setWindowModality(Qt::WindowModal);
         ChangePassword->resize(400, 300);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(ChangePassword->sizePolicy().hasHeightForWidth());
+        ChangePassword->setSizePolicy(sizePolicy);
+        ChangePassword->setMinimumSize(QSize(400, 300));
+        ChangePassword->setMaximumSize(QSize(400, 300));
         lineEdit = new QLineEdit(ChangePassword);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(60, 50, 171, 21));

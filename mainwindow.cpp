@@ -416,6 +416,7 @@ void MainWindow::on_actionEditEntry_triggered()
         view->setDescription(Description);
         view->setWindowTitle("Secure Shield: " + Name);
         view->mainWin = this;
+        //view->setFixedSize(view->maximumSize());
         view->show();
     } else {
         QMessageBox::warning(this, "Error", "You have not selected a password to view.");
