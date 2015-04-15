@@ -60,18 +60,34 @@ void addPassword::addNewPassword()
 
 
     QString Password = ui->lineEdit_3->text();
+    qDebug() << "You stored the password: " << Password << " which has the length of" << Password.length();
+    int Strength = pt->passwordEntropy(Password);
+    QString qStrength;
+    if (Strength <= 25)
+    {
+        qStrength = "w";
+    }
+    else if (Strength > 25 && Strength <= 75)
+    {
+        qStrength = "x";
+    }
+    else if (Strength > 75)
+    {
+        qStrength = "y";
+    }
     QString UsernameID = ui->lineEdit_2->text();
     QString Name = ui->lineEdit->text();
     QString Description = ui->textEdit->toPlainText();
 
     QString Key = pt->passwordGenerator();
-    qDebug() << Key;
+    //qDebug() << "Key used: " << Key;
 
     QString Encrypted = pt->encryptPassword(Password, Key);
-    qDebug() << Encrypted;
+    //qDebug() << "Password after encryption: " << Encrypted;
+    //qDebug() << "Password strength is: " << Strength;
 
     //qDebug() << passwordEncrypted;
-    QString queryString = "INSERT INTO passwords (username, name, usernameID, password, description, key) VALUES (?,?,?,?,?,?)";
+    QString queryString = "INSERT INTO passwords (username, name, usernameID, password, description, key, length, strength) VALUES (?,?,?,?,?,?,?,?)";
     QSqlQuery qry(queryString);
     qry.addBindValue(Username);
     qry.addBindValue(Name);
@@ -79,6 +95,8 @@ void addPassword::addNewPassword()
     qry.addBindValue(Encrypted);
     qry.addBindValue(Description);
     qry.addBindValue(Key);
+    qry.addBindValue(Password.length());
+    qry.addBindValue(qStrength);
     qry.exec();
 }
 
@@ -131,26 +149,6 @@ void addPassword::getPasswordStrength()
         passwordTools *ps = new passwordTools();
         int passBits = ps->passwordEntropy(paswd);
         ui->progressBar->setValue(passBits);
-        //QString output = QString::number(passBits);
-        //ui->label_11->setText(getDesc(passBits));
-        /*QString passDesc = "";
-        if (passBits > 0)
-                ui->label_11->show();
-        if (passBits < 20)
-                passDesc = "Very weak";
-        if (passBits > 19 && passBits < 30)
-                passDesc = "Relatively weak";
-        if (passBits > 29 && passBits < 50)
-                passDesc = "Moderately strong";
-        if (passBits > 49 && passBits < 70)
-                passDesc = "Strong";
-        if (passBits > 69)
-                passDesc = "Very Strong";
-        if (passBits <= 0){
-                ui->progressBar->setValue(0),
-                        ui->label_11->hide();
-        }
-        ui->label_11->setText(passDesc);*/
 }
 
 void addPassword::on_pushButton_2_pressed()

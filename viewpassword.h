@@ -41,6 +41,10 @@ private slots:
 
     void on_pushButton_3_pressed();
 
+    void on_lineEdit_5_textEdited(const QString &arg1);
+
+    void on_checkBox_2_clicked(bool checked);
+
 private:
     Ui::viewPassword *ui;
 

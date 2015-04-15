@@ -10,7 +10,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SecureShield
 TEMPLATE = app
-CONFIG-=app_bundle
 
 
 SOURCES += main.cpp\

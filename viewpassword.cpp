@@ -119,15 +119,33 @@ void viewPassword::editPassword(QString Name, QString newPassword)
 {
     QSqlQuery qry;
     passwordTools *pt = new passwordTools();
+    int Strength = pt->passwordEntropy(newPassword);
+    QString qStrength;
+    if (Strength <= 25)
+    {
+        qStrength = "w";
+    }
+    else if (Strength > 25 && Strength <= 75)
+    {
+        qStrength = "x";
+    }
+    else if (Strength > 75)
+    {
+        qStrength = "y";
+    }
+
+    QString Description = ui->textEdit->toPlainText();
+    QString UsernameID = ui->lineEdit_2->text();
 
     QString Key = pt->passwordGenerator();
     qDebug() << Key;
+    int length = newPassword.length();
+    QString qLength = QString::number(length);
 
     //newPassword = pt->encryptPassword(newPassword, Key);
     QString Password = pt->encryptPassword(newPassword, Key);
     //qDebug() << newPassword;
-
-    qry.exec("UPDATE passwords SET password ='" + Password + "', key ='" + Key + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
+    qry.exec("UPDATE passwords SET password ='" + Password + "', usernameID ='" + UsernameID + "', description ='" + Description + "', key ='" + Key + "', length =" + qLength + ", strength ='" + qStrength + "' WHERE username ='" + Username + "'AND name ='" + Name + "'");
     mainWin->showPasswords();
     this->close();
 }
@@ -175,6 +193,24 @@ void viewPassword::on_pushButton_3_pressed()
 
      ui->lineEdit_5->setText(Password);
      ui->lineEdit_6->setText(Password);
-     getPasswordStrength();
+     on_lineEdit_5_textEdited(NULL);
 
+}
+
+void viewPassword::on_lineEdit_5_textEdited(const QString &arg1)
+{
+    getPasswordStrength();
+    passwordTools *pt = new passwordTools();
+    QString Recommend = pt->passwordRecommender(ui->lineEdit_5->text());
+    ui->label_11->setText(Recommend);
+}
+
+void viewPassword::on_checkBox_2_clicked(bool checked)
+{
+    if (checked)
+    {
+        ui->lineEdit_5->setEchoMode(QLineEdit::EchoMode());
+    } else {
+        ui->lineEdit_5->setEchoMode(QLineEdit::Password);
+    }
 }

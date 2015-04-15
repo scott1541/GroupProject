@@ -47,6 +47,8 @@ public:
     QCheckBox *checkBox;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
+    QLabel *label_11;
+    QCheckBox *checkBox_2;
 
     void setupUi(QDialog *viewPassword)
     {
@@ -140,6 +142,16 @@ public:
         pushButton_3 = new QPushButton(viewPassword);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(20, 296, 91, 32));
+        label_11 = new QLabel(viewPassword);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setGeometry(QRect(310, 330, 151, 191));
+        QFont font3;
+        font3.setPointSize(10);
+        label_11->setFont(font3);
+        label_11->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        checkBox_2 = new QCheckBox(viewPassword);
+        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
+        checkBox_2->setGeometry(QRect(180, 320, 121, 20));
         QWidget::setTabOrder(lineEdit_2, lineEdit_3);
         QWidget::setTabOrder(lineEdit_3, lineEdit_5);
         QWidget::setTabOrder(lineEdit_5, pushButton);
@@ -169,6 +181,8 @@ public:
         pushButton_3->setToolTip(QApplication::translate("viewPassword", "Click to generate a password", 0));
 #endif // QT_NO_TOOLTIP
         pushButton_3->setText(QApplication::translate("viewPassword", "Generate", 0));
+        label_11->setText(QString());
+        checkBox_2->setText(QApplication::translate("viewPassword", "Show Password", 0));
     } // retranslateUi
 
 };

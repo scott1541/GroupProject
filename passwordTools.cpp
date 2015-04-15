@@ -84,6 +84,7 @@ QString passwordTools::encryptPassword(QString Password, QString Key)
     BotanWrapper botan;
     botan.setPassword(Key);
     botan.setSalt(QGrostlHash(Key).toHexString());
+    //qDebug() << "Salt used: " << QGrostlHash(Key).toHexString();
     QString encryptedPassword = botan.Encrypt(Password);
     return encryptedPassword;
 }

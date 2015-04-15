@@ -142,38 +142,41 @@ void MainWindow::showPasswords()
     {
         while (qry.next())
         {
-            QString Password = pt->decryptPassword(qry.value("password").toString(), qry.value("key").toString());
+            QString qStrength = qry.value("strength").toString();
+            int length = qry.value("length").toInt();
 
 
             QTreeWidgetItem *item = new QTreeWidgetItem();
             item->setText(0, qry.value("name").toString());
             item->setText(1, qry.value("usernameID").toString());
-            item->setText(2, Password);
+            //item->setText(2, Password);
             item->setText(3, qry.value("dateadded").toString());
             item->setText(4, qry.value("description").toString());
-;
-            int Strength = pt->passwordEntropy(Password);
+            //int Strength = pt->passwordEntropy(Password);
 
-            if (Strength <= 25)
+            if (qStrength == "w")
             {
                 item->setText(5, "");
                 item->setIcon(5, QIcon("red.gif"));
             }
-            else if (Strength > 25 && Strength <= 75)
+            else if (qStrength == "x")
             {
                 item->setText(5, " ");
                 item->setIcon(5, QIcon("orange.png"));
             }
-            else if (Strength > 75)
+            else if (qStrength == "y")
             {
                 item->setText(5, "  ");
                 item->setIcon(5, QIcon("green.png"));
             }
             QString censored;
-            for (int i = 0; i < Password.length(); i++)
+            //qDebug() << "The length of the password stored was: " << length;
+            for (int i = 0; i < length; i++)
             {
+                //qDebug() << "We need " << i + 1 << "asterisks to display";
                 censored = censored + "*";
             }
+            //qDebug() << censored << " is what will be displayed in the application";
             item->setText(2, censored);
             ui->treeWidget->addTopLevelItem(item);
         }
@@ -223,43 +226,39 @@ void MainWindow::searchPasswords(QString Word)
     {
         while (qry.next())
         {
-            QString Password = pt->decryptPassword(qry.value("password").toString(), qry.value("key").toString());
+            QString qStrength = qry.value("strength").toString();
+            int length = qry.value("length").toInt();
 
 
             QTreeWidgetItem *item = new QTreeWidgetItem();
             item->setText(0, qry.value("name").toString());
             item->setText(1, qry.value("usernameID").toString());
-            item->setText(2, Password);
+            //item->setText(2, Password);
             item->setText(3, qry.value("dateadded").toString());
             item->setText(4, qry.value("description").toString());
+            //int Strength = pt->passwordEntropy(Password);
 
-            int Strength = pt->passwordEntropy(Password);
-
-            if (Strength <= 25)
+            if (qStrength == "w")
             {
                 item->setText(5, "");
                 item->setIcon(5, QIcon("red.gif"));
-
             }
-            else if (Strength > 25 && Strength <= 75)
+            else if (qStrength == "x")
             {
-                item->setIcon(5, QIcon("orange.png"));
                 item->setText(5, " ");
+                item->setIcon(5, QIcon("orange.png"));
             }
-            else if (Strength > 75)
+            else if (qStrength == "y")
             {
-                item->setIcon(5, QIcon("green.png"));
                 item->setText(5, "  ");
+                item->setIcon(5, QIcon("green.png"));
             }
-
             QString censored;
-            for (int i = 0; i < Password.length(); i++)
+            for (int i = 0; i < length; i++)
             {
                 censored = censored + "*";
             }
             item->setText(2, censored);
-
-
             ui->treeWidget->addTopLevelItem(item);
         }
     }
