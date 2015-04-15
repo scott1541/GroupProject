@@ -242,9 +242,7 @@ p, li { white-space: pre-wrap; }
    <addaction name="actionEditEntry"/>
    <addaction name="actionDeleteEntry"/>
    <addaction name="separator"/>
-   <addaction name="actionHelpimage"/>
-   <addaction name="separator"/>
-   <addaction name="actionEncryption"/>
+   <addaction name="actionAbout_SecureShield"/>
    <addaction name="separator"/>
    <addaction name="actionLog_Out_2"/>
   </widget>

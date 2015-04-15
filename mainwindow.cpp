@@ -37,8 +37,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionAbout_SecureShield_triggered()
 {
     QMessageBox::information(this, "About Secure Shield", "Secure Shield\
-                                        Created and Developed by Lewis Yates, Scott Pollard and Carl Mansfield.\
-                                        Open-Source Password Management Software aiding the good practice of cyber security. March 2015.");
+                                        Created and Developed by Lewis Yates, Scott Pollard, Carl Mansfield, Bina Limbu and Connor Shanks.\
+                                        Open-Source Password Management Software. April 2015.");
 }
 
 void MainWindow::on_actionShow_Toolbar_triggered(bool isTriggered)

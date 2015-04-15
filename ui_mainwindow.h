@@ -323,9 +323,7 @@ public:
         toolBar->addAction(actionEditEntry);
         toolBar->addAction(actionDeleteEntry);
         toolBar->addSeparator();
-        toolBar->addAction(actionHelpimage);
-        toolBar->addSeparator();
-        toolBar->addAction(actionEncryption);
+        toolBar->addAction(actionAbout_SecureShield);
         toolBar->addSeparator();
         toolBar->addAction(actionLog_Out_2);
 
