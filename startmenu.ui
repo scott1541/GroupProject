@@ -88,8 +88,17 @@
       <family>Corbel</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
     <property name="text">
      <string>Login</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -153,7 +162,7 @@
      </size>
     </property>
     <property name="placeholderText">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
